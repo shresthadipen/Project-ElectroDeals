@@ -11,7 +11,8 @@
     <div class="wrapper">
         
         <div class="form-section">
-            <form method="post">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token%}
                 <h1>Sign Up</h1>
                 <div class="input-box">
                     <input type="text" name = "signup-username" placeholder="Username" required>
