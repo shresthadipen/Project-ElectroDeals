@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        
+        <div class="form-section">
+            <form method="post">
+                <h1>Sign Up</h1>
+                <div class="input-box">
+                    <input type="text" name = "signup-username" placeholder="Username" required>
+                </div>
+                <br>
+                <div class="input-box">
+                    <input type="email" name = "signup-email" placeholder="E-mail" required>
+                </div>
+                <br>
+                <div class="input-box">
+                    <input type="password" name = "signup-password" placeholder="Password" required>
+                </div>
+                <br>
+                <div class="agreement">
+                    <label>
+                        <input type="checkbox"> I agree with the <a href="#">Privacy Policy</a> and <a href="#">Terms of Condition</a>
+                    </label>
+                </div>
+                <br>
+                <button type="submit" class="btn">Sign Up</button>
+                <br>
+                <div class="login-link">Already have an account? <a href="#">Login</a></div>
+            </form>
+        </div>
+
+        <div class="right-section">
+            <img src="{% static 'img/apple.jpg' %}" alt="Sign Up Image">
+        </div>
+    </div>
+</body>
+</html>
