@@ -20,7 +20,7 @@ def signup (request):
             signup_email = signup_email,
             signup_password =signup_password
         )
-        return redirect('signup')
+        return redirect('login')
     return render(request, "signup.html")
 
 def product (request):
