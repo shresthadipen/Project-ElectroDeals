@@ -66,7 +66,7 @@ header .actions .btn {
 /* Middle Section */
 .container {
     width: 90%;
-    max-width: 1200px;
+    
     margin: auto;
 }
 
@@ -145,44 +145,6 @@ header .actions .btn {
     cursor: pointer;
 }
 
-/* Related Products Section */
-.related-products {
-    margin: 40px 0;
-}
-
-.related-products h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
-.related-products .product-card {
-    display: inline-block;
-    width: 200px;
-    margin-right: 20px;
-    border: 1px solid #ddd;
-  
-    overflow: hidden;
-    text-align: center;
-    background-color: #fff;
-}
-
-.related-products .product-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-}
-
-.related-products .product-card .product-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-.related-products .product-card .price {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-}
 
 /* Footer Section */
 footer {
@@ -198,11 +160,7 @@ footer .container {
     gap: 20px;
 }
 
-footer .section {
-    flex: 1;
-    min-width: 200px;
-    
-}
+
 
 footer .section h3 {
     font-size: 18px;
@@ -235,8 +193,8 @@ footer .section ul li a {
     font-size: 14px;
     color: #bbb;
     background-color: #222;
-    max-width: 1200px;             
     margin: 0 auto;
+    width: 90%;
 }
 
 .footer-bottom .copyright {
@@ -252,7 +210,7 @@ footer .section ul li a {
     color: #bbb;
     text-decoration: none;
     font-size: 14px;
-    margin-right: 10px; 
+    margin-right: 5px; 
 }
 
 .footer-bottom .footer-links .separator {
@@ -284,7 +242,7 @@ footer p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 100px;
 }
 
 /* Individual Product Cards */
@@ -296,6 +254,7 @@ footer p {
     background-color: #fff;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    margin: 20px 0;
 }
 
 .related-products .product-card:hover {
@@ -343,8 +302,7 @@ hr.weak-line {
     border: none;
     height: 1px;
     background-color: white;
-    max-width: 1200px; 
-    
+    width: 90%;    
 }
 
 
