@@ -1,4 +1,5 @@
-* {
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,11 +19,10 @@ body {
     font-size: 18px;
 }
 
-
-.front-container{
-    padding:20px 60px 0px 60px  ;
+.front-container {
+    padding: 20px 60px 0px 60px;
     height: 875px;
-    background-color:#ddd8d3;
+    background-color: #ddd8d3;
 }
 
 .navbar {
@@ -42,7 +42,6 @@ body {
     list-style: none;
     display: flex;
     gap: 80px;
-
 }
 
 .navbar ul li a {
@@ -63,6 +62,7 @@ footer {
     background-color: #222;
     color: #fff;
     padding: 40px 0;
+    /* width: 100%; */
 }
 
 footer .container {
@@ -71,8 +71,6 @@ footer .container {
     justify-content: space-between;
     gap: 20px;
 }
-
-
 
 footer .section h3 {
     font-size: 18px;
@@ -95,18 +93,17 @@ footer .section ul li a {
     font-size: 14px;
 }
 
-
-
 .footer-bottom {
     display: flex;
-    justify-content: space-between; 
-    align-items: center;            
-    padding: 20px 40px;             
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px; /* Maintain spacing */
     font-size: 14px;
     color: #bbb;
     background-color: #222;
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Align with container width */
     margin: 0 auto;
-    width: 90%;
 }
 
 .footer-bottom .copyright {
@@ -122,16 +119,13 @@ footer .section ul li a {
     color: #bbb;
     text-decoration: none;
     font-size: 14px;
-    margin-right: 5px; 
+    margin-right: 5px;
 }
 
 .footer-bottom .footer-links .separator {
     color: #bbb;
     margin: 0 10px;
 }
-
-
-
 
 footer p {
     text-align: center;
@@ -141,8 +135,6 @@ footer p {
 }
 
 /* Styles for Related Products Section */
-
-
 .related-products h2 {
     font-size: 22px;
     margin-bottom: 20px;
@@ -157,7 +149,6 @@ footer p {
     gap: 100px;
 }
 
-/* Individual Product Cards */
 .related-products .product-card {
     width: 200px;
     border: 1px solid #ddd;
@@ -174,14 +165,11 @@ footer p {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Placeholder for Image */
 .related-products .product-card .product-image-placeholder {
     width: 100%;
     height: 150px;
     background-color: #e0e0e0;
     border: 3px solid #ddd;
-   
-  
 }
 
 .related-products .product-card .product-title {
@@ -199,22 +187,18 @@ footer p {
 }
 
 hr.strong-line {
-border: none;         
-height: 3px;           
-background-color: #333; 
-        
+    border: none;
+    height: 3px;
+    background-color: #333;
 }
 
 .line {
-    text-align: center; 
-    
+    text-align: center;
 }
 
 hr.weak-line {
     border: none;
     height: 1px;
     background-color: white;
-    width: 90%;    
+    width: 100%;
 }
-
-

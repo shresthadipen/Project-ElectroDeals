@@ -1,13 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product Page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-{% extends 'base.html' %} 
-
-{% block content %}
-    <main class="main-section">
-        <div class="text-content">
-            <h1>SUDIO</h1>
-            <h2 class="decleration">EASY V3 BTN</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis gravida turpis, id iaculis libero sollicitudin vel.</p>
-            <div class="buttons">
+<link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="../static/css/base.css">
+    
+</head>
+<body>
+    <div class="front-container">
+        
+        <header class="navbar">
+            <div class="logo">ElectroDeals</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Product</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <i class="fa fa-search"></i>
+                <i class="fa fa-cart-shopping"></i>
+                <i class="fa-regular fa-user"></i>
+                <i class="fa-solid fa-bars"></i>
+            </div>  
+        </header>
+        <main class="main-section">
+            <div class="text-content">
+                <h1>SUDIO</h1>
+                <h2 class="decleration">EASY V3 BTN</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis gravida turpis, id iaculis libero sollicitudin vel.</p>
+                <div class="buttons">
                 <a href="#" class="learn-btn">Learn more</a>
                 <a href="#" class="buy-btn">Buy Now</a>
             </div>
@@ -17,12 +49,12 @@
         </div>
     </main>
 <br>
-    <div class="front-product-container">
-        <div class="front-product">
-            <div class="circle-background">
-                <img src="#" alt="Product 1">
-            </div>
+<div class="front-product-container">
+    <div class="front-product">
+        <div class="circle-background">
+            <img src="#" alt="Product 1">
         </div>
+    </div>
         <div class="front-product">
             <div class="rounded-square-background" >
                 <img src="#" alt="Product 2">
@@ -33,6 +65,7 @@
                 <img src="#" alt="product 3">
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -63,7 +96,7 @@
     </section>
 
     <div class="related-products">
-        <h2>Latest Products</h2>
+        <p>Latest Products</p>
     
         <div class="products-grid">
             <div class="product-card">
@@ -99,5 +132,57 @@
         </div>
     </div>
 
+    </div>
 
-{% endblock %}
+    <footer>
+        <div class="container">
+            <div class="section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="#">Call Us</a></li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">Phones</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Payments</h3>
+                <ul>
+                    <li><a href="#">Credit Cards</a></li>
+                    <li><a href="#">PayPal</a></li>
+                    <li><a href="#">Bank Transfer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="line">
+        <hr class="weak-line">
+
+        </div>
+        <div class="footer-bottom">
+            
+            <p class="copyright">© 2024 ElectroDeals. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="#">Terms</a>
+                <span class="separator">|</span>
+                <a href="#">Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
