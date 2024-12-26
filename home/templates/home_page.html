@@ -1,39 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-{% load static %}
-    <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
-    <!-- <link rel="stylesheet" href="../static/css/home_page.css"> -->
+{% extends 'base.html' %} 
 
-</head>
-<body>
-    <div class="front-container">
-
-        <header class="navbar">
-            <div class="logo">ElectroDeals</div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Product</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </nav>
-            <div class="icons">
-                <i class="fa fa-search"></i>
-                <i class="fa fa-cart-shopping"></i>
-                <i class="fa-regular fa-user"></i>
-                <i class="fa-solid fa-bars"></i>
-            </div>
-    </header>
-    
+{% block content %}
     <main class="main-section">
         <div class="text-content">
             <h1>SUDIO</h1>
@@ -130,56 +98,6 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="container">
-            <div class="section">
-                <h3>Contact Info</h3>
-                <ul>
-                    <li><a href="#">Email Us</a></li>
-                    <li><a href="#">Call Us</a></li>
-                </ul>
-            </div>
-            <div class="section">
-                <h3>Categories</h3>
-                <ul>
-                    <li><a href="#">Laptops</a></li>
-                    <li><a href="#">Phones</a></li>
-                    <li><a href="#">Accessories</a></li>
-                </ul>
-            </div>
-            <div class="section">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Help Center</a></li>
-                </ul>
-            </div>
-            <div class="section">
-                <h3>Payments</h3>
-                <ul>
-                    <li><a href="#">Credit Cards</a></li>
-                    <li><a href="#">PayPal</a></li>
-                    <li><a href="#">Bank Transfer</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="line">
-        <hr class="weak-line">
 
-        </div>
-        <div class="footer-bottom">
-            
-            <p class="copyright">© 2024 ElectroDeals. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <span class="separator">|</span>
-                <a href="#">Terms</a>
-                <span class="separator">|</span>
-                <a href="#">Support</a>
-            </div>
-        </div>
-    </footer>
 
-</div>
-</body>
-</htm>
+{% endblock %}
