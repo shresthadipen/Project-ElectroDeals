@@ -1,29 +1,66 @@
-from django.shortcuts import render
-from .models import Signup
-from django.views import View
-from django.views.generic import TemplateView
-# Create your views here.
+from django.shortcuts import render, redirect, HttpResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib import messages  
 
-# Login view
-class LoginView(TemplateView):
-    template_name = "login.html"
 
-# Signup view
-class SignupView(View):
-    template_name = "signup.html"
+def login_view(request):
+    return render(request, 'login.html')
 
-    def get(self, request):
-        return render(request, self.template_name)
+def signup_view(request):
+    if request.method == 'POST':
+        signup_username = request.POST.get('signup-username')
+        signup_email = request.POST.get('signup-email')
+        signup_password = request.POST.get('signup-password')
 
-    def post(self, request):
-        data = request.POST
-        signup_username = data.get('signup-username')
-        signup_email = data.get('signup-email')
-        signup_password = data.get('signup-password')
+        myuser = User.objects.create_user(signup_username, signup_email, signup_password)
+        myuser.save()
 
-        Signup.objects.create(
-            signup_username=signup_username,
-            signup_email=signup_email,
-            signup_password=signup_password
-        )
+        messages.success(request, "Succesful account")
         return redirect('login')
+
+    return render(request, 'signup.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #     try:
+    #         if User.objects.filter(username=signup_username).exists():
+    #             messages.error(request, "Username already exists.")
+    #             return redirect('signup')
+    #         if User.objects.filter(email=signup_email).exists():
+    #             messages.error(request, "Email is already registered.")
+    #             return redirect('signup')
+
+    #         User.objects.create_user(
+    #             username=signup_username,
+    #             email=signup_email,
+    #             password=signup_password
+    #         )
+    #         return redirect('login')
+    #     except Exception as e:
+    #         messages.error(request, f"An error occurred: {str(e)}")
+    #         return redirect('signup')
+
+    # return render(request, 'signup.html')
