@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signup_page.css' %}">
 </head>
 <body>
     <div class="wrapper">
@@ -28,15 +28,15 @@
                 <div class="input-box">
                     <input type="password" name="signup-confirm-password" placeholder="Confirm Password" required>
                 </div>
-                <br>
+                
                 <div class="agreement">
                     <label>
                         <input type="checkbox" required> I agree with the <a href="#">Privacy Policy</a> and <a href="#">Terms of Condition</a>
                     </label>
                 </div>
-                <br>
+                
                 <button type="submit" class="btn">Sign Up</button>
-                <br>
+    
                 <div class="login-link">Already have an account? <a href="{% url 'login' %}">Login</a></div>
             </form>
         </div>

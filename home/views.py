@@ -1,11 +1,8 @@
-from django.shortcuts import redirect , render
-from django.views import View
-from django.views.generic import TemplateView
+from django.shortcuts import render
 
-# Home view
-class HomeView(TemplateView):
-    template_name = "home_page.html"
 
-# Product view
-class ProductView(TemplateView):
-    template_name = "product.html"
+def home(request):
+    return render(request, "home_page.html")
+
+def product(request):
+    return render(request, "product.html")

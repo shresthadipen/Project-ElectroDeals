@@ -82,8 +82,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 35px;
-    margin-right: 55px;
+    margin: 20px 55px 0 35px;
     font-size: 14px;
 }
 
@@ -97,8 +96,8 @@ h1 {
 }
 
 .btn {
-    width: 87%; 
-    margin: 35px; 
+    width: 82%; 
+    margin: 25px 55px 0 35px; 
     padding: 12px;
     background-color: black;
     border: none;

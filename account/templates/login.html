@@ -13,18 +13,19 @@
             <img src="{% static 'img/apple.jpg' %}" alt="Sign Up Image">
         </div>
 
-        <form action="" class="form-section">
 
+        <form method="POST" enctype="multipart/form-data" class="form-section">
+            {% csrf_token %}
             <h1>Login</h1>
             
             <div class="input-box">
-                <input type="text" placeholder="Username" required>
+                <input type="text" placeholder="Username" name = "login-username" required>
             </div>
             <br>
             <div class="input-box">
-                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Password" name = "login-password" required>
             </div>
-            <br>
+            
             <div class="remember-forgot">
                 <label for="Remember me">
                     <input type="checkbox"> Remember me

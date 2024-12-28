@@ -4,16 +4,27 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages  
 
 
-def login_view(request):
-    return render(request, 'login.html')
 
 def signup_view(request):
     if request.method == 'POST':
-        signup_username = request.POST.get('signup-username')
-        signup_email = request.POST.get('signup-email')
-        signup_password = request.POST.get('signup-password')
+        username = request.POST.get('signup-username')
+        email = request.POST.get('signup-email')
+        password = request.POST.get('signup-password')
+        confirm_password = request.POST.get('signup-confirm-password')
 
-        myuser = User.objects.create_user(signup_username, signup_email, signup_password)
+        if password != confirm_password:
+            messages.error(request, "Passwords do not match.")
+            return redirect('signup')
+        
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists.")
+            return redirect('signup')
+        
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email already registered.")
+            return redirect('signup')
+
+        myuser = User.objects.create_user(username, email, password)
         myuser.save()
 
         messages.success(request, "Succesful account")
@@ -22,6 +33,21 @@ def signup_view(request):
     return render(request, 'signup.html')
 
 
+def login_view(request):
+
+    if request.method == "POST":
+        username = request.POST.get('login-username')
+        password = request.POST.get('login-password')
+
+        user = authenticate(username = username, password = password )
+
+        if user is not None:
+            login(request, user)
+            return redirect("home")
+
+        else:
+            messages.error(request, "Invalid Username or Password")
+    return render(request, 'login.html')
 
 
 
