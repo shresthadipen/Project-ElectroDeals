@@ -6,16 +6,16 @@
     <title>Document</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/product.css' %}">
-    <link rel="stylesheet" href="../static/css/product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
 </head>
 <body>
     <header>
         <div class="container">
-            <h1 class="logo">ElectroDeals</h1>
+            <p class="logo">ElectroDeals</p>
             <div class="search-bar">
                 <input type="text" placeholder="Search Product">
-                <button class="search-button">Search</button>
+                <button class="search-button"><i class="fa-solid fa-magnifying-glass fa-2xl"></i></button>
             </div>
             <div class="actions">
                 <a href="#" class="btn">Sign In</a>
@@ -23,7 +23,8 @@
         </div>
     </header>
 
-    <main class="container">
+<main>
+    <div class="container">
         <div class="product-page">
             <div class="product-image"></div>
 
@@ -48,9 +49,11 @@
                 <a href="#" class="btn">Buy Now</a>
             </div>
         </div>
-
-        <<div class="related-products">
-            <h2>Related Products</h2>
+</main>
+    
+    <div class="related-info">
+        <div class="related-products">
+            <p>Related Products</p>
             <hr class="strong-line">
             <div class="products-grid">
                 <div class="product-card">
@@ -85,8 +88,10 @@
                 </div>
             </div>
         </div>
+    </div>
         
-    </main>
+    
+        
 
     <footer>
         <div class="container">
