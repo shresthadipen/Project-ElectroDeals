@@ -28,12 +28,27 @@
                 </ul>
             </nav>
             <div class="icons">
-                <i class="fa fa-search"></i>
-                <i class="fa fa-cart-shopping"></i>
-                <i class="fa-regular fa-user"></i>
+                <i class="fa fa-search" id="ic"></i>
+                <i class="fa fa-cart-shopping"id="ic"></i>
+                
+                {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <i class="fa-regular fa-user" id="user-icon" style="cursor: pointer;"></i>
+                        <div class="dropdown-content">
+                            <a href="#">{{ user.username }}</a>  
+                            <button type="submit" class="logout"><a href="/logout/">Logout</a></button>
+                        </div>
+                     </div>
+                {% else %}
+                    <button type="submit" class="auth-btn"><a href="/signup/">Signup</a></button>
+                    <button type="submit"class="auth-btn"><a href="/login/">Login</a></button>
+                {% endif %}
+
                 <i class="fa-solid fa-bars"></i>
             </div>  
         </header>
+
+        
         <main class="main-section">
             <div class="text-content">
                 <h1>SUDIO</h1>
@@ -73,23 +88,23 @@
         <h2>Categories</h2>
         <div class="category-container">
             <div class="category">
-                <div class="icon" style="background-color: #eae9e5;"><img src="#" alt="Category"></div>
+                <div class="category-icon" style="background-color: #eae9e5;"><img src="#" alt="Category"></div>
                 <p>Category</p>
             </div>
             <div class="category">
-                <div class="icon" style="background-color: #d6cfe7;"><img src="#" alt="Category"></div>
+                <div class="category-icon" style="background-color: #d6cfe7;"><img src="#" alt="Category"></div>
                 <p>Category</p>
             </div>
             <div class="category">
-                <div class="icon" style="background-color: #b2dbf0;"><img src="#" alt="Category"></div>
+                <div class="category-icon" style="background-color: #b2dbf0;"><img src="#" alt="Category"></div>
                 <p>Category</p>
             </div>
             <div class="category">
-                <div class="icon" style="background-color: #ffeda6;"><img src="#" alt="Category"></div>
+                <div class="category-icon" style="background-color: #ffeda6;"><img src="#" alt="Category"></div>
                 <p>Category</p>
             </div>
             <div class="category">
-                <div class="icon" style="background-color: #f2f2f2;"><img src="#" alt="Category"></div>
+                <div class="category-icon" style="background-color: #f2f2f2;"><img src="#" alt="Category"></div>
                 <p>Cover</p>
             </div>
         </div>
@@ -179,6 +194,6 @@
             </div>
         </div>
     </footer>
-
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

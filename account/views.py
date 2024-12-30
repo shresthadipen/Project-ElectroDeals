@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages  
 
 
@@ -43,17 +43,18 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return redirect("home")
+            uname = user.username
+            return render(request, "home_page.html", {'uname' : uname})
 
         else:
             messages.error(request, "Invalid Username or Password")
     return render(request, 'login.html')
 
 
-
-
-
-
+def logout_view(request):
+    logout(request) 
+    messages.success(request, "Logged out successfully.")
+    return redirect('home')
 
 
 

@@ -14,8 +14,14 @@ body {
 
 
 .icons {
+    font-size: 18px;
+}
+
+.icons #ic {
+    margin-right: 20px;
+}
+.dropdown i {
     display: flex;
-    gap: 30px;
     font-size: 18px;
 }
 
@@ -207,6 +213,21 @@ hr.weak-line {
     color: #fff;
 }
 
+.auth-btn a {
+    text-decoration: none;
+    padding: 10px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #7e7a72;
+}
+.auth-btn {
+    background: transparent;
+    border: 1px solid #7e7a72;
+    border-radius: 5px;
+    height: 30px;
+    margin-right: 20px;
+}
+
 .image-content img {
     max-width: 100%;
     border-radius: 10px;
@@ -281,7 +302,7 @@ hr.weak-line {
 }
 
 
-.icon {
+.category-icon {
     width: 200px;
     height: 200px;
     display: flex;
@@ -370,4 +391,40 @@ hr.weak-line {
     color: #333;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 10px 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown when it is active */
+.dropdown.show .dropdown-content {
+    display: block;
+}
+
+.dropdown #user-icon{
+    margin-right: 20px;
 }
