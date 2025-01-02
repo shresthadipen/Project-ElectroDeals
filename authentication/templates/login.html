@@ -25,6 +25,15 @@
             <div class="input-box">
                 <input type="password" placeholder="Password" name = "login-password" required>
             </div>
+
+            <div class="error-message">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p style="color: red;">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
             
             <div class="remember-forgot">
                 <label for="Remember me">

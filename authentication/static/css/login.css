@@ -130,3 +130,8 @@ h1 {
 .register-link a:hover {
     text-decoration: underline;
 }
+
+.error-message{
+    width: 90%; 
+    margin-left: 35px;
+}
