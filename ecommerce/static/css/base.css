@@ -1,0 +1,175 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f5ef;
+    color: #7e7a72;
+    line-height: 1.6;
+}
+
+
+.icons {
+    font-size: 18px;
+}
+
+.icons #ic {
+    margin-right: 20px;
+}
+.dropdown i {
+    display: flex;
+    font-size: 18px;
+}
+
+/* .front-container {
+    padding: 20px 60px 0px 60px;
+    height: 875px;
+    background-color: #ddd8d3;
+} */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px 0px 60px;
+    background: #ddd8d3;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 80px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #7e7a72;
+    font-size: 20px;
+    font-family: "MuseoModerno", sans-serif;
+}
+
+.navbar .icons {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+
+
+footer {
+    background-color: #353535;
+    color: #fff;
+    padding: 40px 0;
+    /* width: 100%; */
+}
+
+
+footer .container {
+    padding: 5px 80px 30px 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+footer .section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+footer .section ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .section ul li {
+    margin: 5px 0;
+}
+
+footer .section ul li a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    font-size: 14px;
+    color: #bbb;
+    background-color: #353535;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+.footer-bottom .copyright {
+    margin: 0;
+}
+
+.footer-bottom .footer-links {
+    display: flex;
+    align-items: center;
+}
+
+.footer-bottom .footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.footer-bottom .footer-links .separator {
+    color: #bbb;
+    margin: 0 10px;
+}
+
+footer p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #bbb;
+}
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 10px 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown when it is active */
+.dropdown.show .dropdown-content {
+    display: block;
+}
+
+.dropdown #user-icon{
+    margin-right: 20px;
+}
