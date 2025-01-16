@@ -68,7 +68,7 @@ footer {
 
 
 footer .container {
-    padding: 5px 80px 30px 60px;
+    padding: 5px 60px 30px 60px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
