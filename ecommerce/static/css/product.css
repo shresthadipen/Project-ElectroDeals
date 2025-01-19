@@ -126,12 +126,21 @@ main{
 }
 
 .related-info-product .product-card .product-image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 150px;
     background-color: #e0e0e0;
-    border: 3px solid #ddd;
-   
-  
+    
+    overflow: hidden;
+    
+}
+.product-image-placeholder img {
+    max-width: auto;
+    height: auto;
+    display: block;
+    
 }
 
 .related-info-product .product-card .product-title {
