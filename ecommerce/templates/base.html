@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 <link rel="stylesheet" href="../static/css/base.css">
 <link rel="stylesheet" href="{% static 'css/product.css' %}">
+<link rel="stylesheet" href="{% static 'css/about_us.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     
@@ -59,8 +60,8 @@
                 <div class="section">
                     <h3>Contact Info</h3>
                     <ul>
-                        <li><a href="#">Email Us</a></li>
-                        <li><a href="#">Call Us</a></li>
+                        <li><a href="{% url 'about_us' %}">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="section">
