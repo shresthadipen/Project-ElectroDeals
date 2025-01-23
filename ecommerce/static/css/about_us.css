@@ -1,61 +1,76 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: rgb(221, 216, 211);
-    color: #333;
-    line-height: 1.6;
-    font-size: larger;
-  }
+/* Specific styles for the About Us page */
+.about-us-page{
+    background-color: rgb(221, 216, 211);
+}
 
-
-  .about_us-container {
-    max-width: 70%;
+.about-us-page-container {
+    max-width: 80%;
     margin: 3% auto;
     padding: 2%;
     background: rgb(247, 245, 239);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-
-  section {
+  
+  .about-us-section {
     margin-bottom: 2rem;
   }
-
-  section h2 {
+  
+  .about-us-section h2 {
     color: #2e3b4e;
     font-size: 40px;
     border-bottom: 2px solid #ff9800;
     display: inline-block;
     margin-bottom: 1rem;
   }
-
-  section p {
+  
+  .about-us-section p {
     margin: 0.5rem 0;
   }
-
+  
+  .about-us-section ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  
+  .about-us-section ul li {
+    margin: 0.5rem 0;
+  }
+  
   .team {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
   }
-
+  
   .team-member {
-    flex: 1 1 calc(33.333% - 1rem);
+    flex: 1 1 calc(50% - 1rem);
     background: #f9f9f9;
     border-radius: 8px;
     text-align: center;
     padding: 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
-
+  
   .team-member img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     margin-bottom: 1rem;
   }
-
+  
+  .team-member h3 {
+    margin: 0.5rem 0 0.2rem;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .team-member p {
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+  }
+  
   .cta-button {
     display: inline-block;
     margin-top: 2rem;
@@ -68,8 +83,8 @@ body {
     border-radius: 4px;
     transition: background 0.3s;
   }
-
+  
   .cta-button:hover {
     background: #e68900;
   }
-
+  

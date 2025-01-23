@@ -2,17 +2,18 @@
 {% block title %}
     About Us Page
 {% endblock %} 
+
 {% block content %}
-<body>
-  <div class="about_us-container">
+<body class="about-us-page">
+  <div class="about-us-page-container">
     <!-- Our Mission Section -->
-    <section>
+    <div class="about-us-section">
       <h2>Our Mission</h2>
       <p>At Electrodeals, we strive to provide our customers with high-quality electronic products at affordable prices. Our mission is to simplify technology and make it accessible to everyone by creating a platform that’s user-friendly, reliable, and secure.</p>
-    </section>
+    </div>
 
     <!-- Why Choose Us Section -->
-    <section>
+    <div class="about-us-section">
       <h2>Why Choose Us?</h2>
       <p>Electrodeals is more than just a store. It’s a community of tech enthusiasts and professionals dedicated to enhancing your digital lifestyle. Here’s why we stand out:</p>
       <ul>
@@ -21,10 +22,10 @@
         <li>✅ <strong>Customer-Centric</strong>: 24/7 support and hassle-free returns.</li>
         <li>✅ <strong>Real-Time Inventory</strong>: Always know what’s in stock and ready to ship.</li>
       </ul>
-    </section>
+    </div>
 
     <!-- Meet the Team Section -->
-    <section>
+    <div class="about-us-section">
       <h2>Meet Our Team</h2>
       <div class="team">
         <div class="team-member">
@@ -37,13 +38,11 @@
           <h3>Pratik Baidya</h3>
           <p>Developer</p>
         </div>
-        
       </div>
-    </section>
+    </div>
 
     <!-- Call to Action -->
     <a href="/contact" class="cta-button">Contact Us</a>
   </div>
-
-  
+</body>
 {% endblock %}
