@@ -19,51 +19,40 @@
         </div>
     </main>
 <br>
-<div class="front-product-container">
-    <div class="front-product">
-        <div class="circle-background">
-            <img src="#" alt="Product 1">
-        </div>
-    </div>
-        <div class="front-product">
-            <div class="rounded-square-background" >
-                <img src="#" alt="Product 2">
+
+<section class="front-brands">
+    <h2>Brands</h2>
+    <div class="brands">
+
+        {% for brand in brand %}
+        
+        <div class="brand-container">
+            <div class="brand">
+                <div class="brand-icon" style="background-color: white;"><img src="{{brand.image.url}}" alt="{{brand.name}} logo"></div>
+                <p>{{brand.name}}</p>
             </div>
         </div>
-        <div class="front-product">
-            <div class="rounded-square-background dark">
-                <img src="#" alt="product 3">
-            </div>
-        </div>
+        {% endfor %}
     </div>
-    </div>
+</section>
 
 
-    <section class="categories">
-        <h2>Categories</h2>
+
+<section class="front-categories">
+    <h2>Categories</h2>
+    
+        <div class="categories">
+        
+            {% for category in category %}       
         <div class="category-container">
             <div class="category">
-                <div class="category-icon" style="background-color: #eae9e5;"><img src="#" alt="Category"></div>
-                <p>Category</p>
-            </div>
-            <div class="category">
-                <div class="category-icon" style="background-color: #d6cfe7;"><img src="#" alt="Category"></div>
-                <p>Category</p>
-            </div>
-            <div class="category">
-                <div class="category-icon" style="background-color: #b2dbf0;"><img src="#" alt="Category"></div>
-                <p>Category</p>
-            </div>
-            <div class="category">
-                <div class="category-icon" style="background-color: #ffeda6;"><img src="#" alt="Category"></div>
-                <p>Category</p>
-            </div>
-            <div class="category">
-                <div class="category-icon" style="background-color: #f2f2f2;"><img src="#" alt="Category"></div>
-                <p>Cover</p>
+                <div class="category-icon" style="background-color: #eae9e5;"><img src="{{category.image.url}}" alt="{{category.name}}"></div>
+                <p>{{category.name}}</p>
             </div>
         </div>
-    </section>
+        {% endfor %}
+    </div>
+</section>
 
     <div class="related-products-home">
         <p>Latest Products</p>

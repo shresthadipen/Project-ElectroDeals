@@ -1,8 +1,11 @@
 from django.shortcuts import render
-
+from .models import Brand, Category
 
 def home(request):
-    return render(request, "home_page.html")
+    brands = Brand.get_all_brand()[:6]
+    category = Category.get_all_category()
+
+    return render(request, "home_page.html", {'brand' : brands, 'category' : category})
 
 def product(request):
     return render(request, "product.html")

@@ -95,54 +95,67 @@ hr.weak-line {
     border-radius: 10px;
 }
 
-.front-product-container {
-    margin: 30px 60px 20px 60px;    
+.front-brands{
+    text-align: start;
+    padding: 20px;
+    margin-top: 180px;
+    width: 95%; 
+    margin: 0 auto; 
+}
+.brands {
     display: flex;
-    gap: 50px;
+    justify-content: space-between;
+    text-align: center;
 }
 
-.front-product {
+.front-brands h2 {
+    font-size: 40px;
+    text-align: left;
+    margin-bottom: 20px;
+    color: black;
+}
+
+
+.brand-container {
+    display: flex; 
+    align-items: center;
+    flex-direction: row;
+    
+    
+}
+
+.brand {
+    text-align: center;
+}
+.brand-icon {
+    width: 200px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.circle-background,
-.rounded-square-background {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; 
-    background-color: #ece9e4;
-}
-
-.rounded-square-background {
-    border-radius: 16px; 
-}
-
-.rounded-square-background.dark {
-    background-color: #5d5b59; 
-}
-
-.circle-background img,
-.rounded-square-background img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
+.brand p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 
-.categories {
+.front-categories {
     text-align: center;
     padding: 20px;
     margin-top: 180px;
     width: 95%; 
     margin: 0 auto; 
 }
+.categories{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
 
-.categories h2 {
+.front-categories h2 {
     font-size: 40px;
     text-align: left;
     margin-bottom: 20px;
@@ -170,7 +183,6 @@ hr.weak-line {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 

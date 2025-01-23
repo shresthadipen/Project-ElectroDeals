@@ -5,6 +5,10 @@ class Brand(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to='upload/brand', null=True, blank=True)
 
+    @staticmethod
+    def get_all_brand():
+        return Brand.objects.all()
+
     def __str__(self):
         return self.name
     
@@ -12,6 +16,11 @@ class Brand(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length = 50)
     image = models.ImageField(upload_to='upload/category', default='')
+
+    @staticmethod
+    def get_all_category():
+        return Category.objects.all()
+    
     def __str__(self):
         return self.name
     
