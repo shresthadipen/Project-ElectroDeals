@@ -12,8 +12,8 @@ let currentIndex = 0;
         // Prevent the index from going out of bounds
         if (currentIndex < 0) {
             currentIndex = 0;
-        } else if (currentIndex >= totalBrands - 3) {  // Adjust this number based on how many brands to show at once
-            currentIndex = totalBrands - 3;
+        } else if (currentIndex >= totalBrands) {  // Adjust this number based on how many brands to show at once
+            currentIndex = totalBrands;
         }
 
         // Move the brands container based on the index
