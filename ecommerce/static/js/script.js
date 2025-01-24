@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Close the dropdown if the user clicks outside of it
     window.addEventListener("click", function(event) {
         if (!dropdown.contains(event.target)) {
-            dropdown.classList.remove("show"); // Hide the dropdown if the click is outside
+            dropdown.classList.remove("show"); 
         }
     });
 });

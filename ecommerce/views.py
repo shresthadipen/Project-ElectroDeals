@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Brand, Category
 
 def home(request):
-    brands = Brand.get_all_brand()[:6]
+    brands = Brand.get_all_brand()
     category = Category.get_all_category()
 
     return render(request, "home_page.html", {'brand' : brands, 'category' : category})
