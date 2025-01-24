@@ -119,10 +119,10 @@ hr.weak-line {
 .brand-container {
     display: flex; 
     align-items: center;
-    flex-direction: row;
-    
-    
+    flex-direction: row;   
 }
+
+
 
 .brand {
     text-align: center;
@@ -133,6 +133,15 @@ hr.weak-line {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
+
+    
+}
+
+.brand-icon img{
+    max-width: 100%;
+    max-height: auto;
+    border-radius: 50%;
 }
 
 .brand p {
@@ -184,6 +193,12 @@ hr.weak-line {
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10%;
+}
+.category-icon img{
+    max-height: auto;
+    max-width: 100%;
+    border-radius: 10%;
 }
 
 .icon img {
