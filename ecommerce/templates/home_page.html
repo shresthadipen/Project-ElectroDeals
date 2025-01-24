@@ -23,7 +23,7 @@
 <section class="front-brands">
     <h2>Brands</h2>
     <div class="slider-container">
-        <button class="slider-btn prev-btn" onclick="moveSlider(-1)">&#10094;</button>
+        <button class="slider-btn prev-btn" onclick="goPrev()">&#10094;</button>
         <div class="brands">
             {% for brand in brand %}
             <div class="brand-container">
@@ -36,7 +36,7 @@
             </div>
             {% endfor %}
         </div>
-        <button class="slider-btn next-btn" onclick="moveSlider(1)">&#10095;</button>
+        <button class="slider-btn next-btn" onclick="goNext()">&#10095;</button>
     </div>
 </section>
 

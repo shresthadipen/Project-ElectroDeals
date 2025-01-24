@@ -106,8 +106,7 @@ hr.weak-line {
     display: flex;
     justify-content: space-between;
     text-align: center;
-    gap: 180px;
-    transition: transform 500ms ease;
+    transition: transform 500ms ease-in-out;
     margin-left: 10px;
 }
 
