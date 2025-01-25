@@ -108,6 +108,7 @@ hr.weak-line {
     text-align: center;
     transition: transform 500ms ease-in-out;
     margin-left: 10px;
+    gap: 180px;
 }
 
 .front-brands h2 {
