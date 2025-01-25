@@ -7,8 +7,8 @@ html {
 *{
   font-size: large;
 }
-.about-us-page{
-    background-color: rgb(221, 216, 211);
+body{
+    background-color:rgb(221, 216, 211);
 }
 h2 {
   color: #2e3b4e;
@@ -114,8 +114,8 @@ h2 {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    width: 80%;
+    width: 39%;
+    height: auto;
 }
 .contact-form h2 {
     margin-bottom: 15px;
@@ -161,4 +161,11 @@ h2 {
 .form {
   display: flex;
   justify-content: center;
+  gap: 2%;
+  padding: 30px 0;
+}
+
+iframe{
+  width: 39%;
+  height: auto;
 }
