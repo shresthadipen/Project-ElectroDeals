@@ -19,10 +19,11 @@
         </div>
     </main>
 <br>
+<div class="front">
 
-<section class="front-brands">
-    <h2>Brands</h2>
-    <div class="slider-container">
+    <section class="front-brands">
+        <h2>Brands</h2>
+        <div class="slider-container">
         <button class="slider-btn prev-btn" onclick="goPrev()">&#10094;</button>
         <div class="brands">
             {% for brand in brand %}
@@ -40,13 +41,10 @@
     </div>
 </section>
 
-
-
-
 <section class="front-categories">
     <h2>Categories</h2>
     
-        <div class="categories">
+    <div class="categories">
         
             {% for category in category %}       
         <div class="category-container">
@@ -73,5 +71,6 @@
         </div>
         {% endfor %}
     </div>
+</div>
 </div>
 {% endblock %}

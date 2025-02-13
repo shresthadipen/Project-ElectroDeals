@@ -1,5 +1,5 @@
 /* Specific styles for the About Us page */
-
+/* 
 html {
   scroll-behavior: smooth;
 }
@@ -7,16 +7,16 @@ html {
 *{
   font-size: large;
 }
-body{
-    background-color:rgb(221, 216, 211);
-}
 h2 {
   color: #2e3b4e;
-    font-size: 40px;
-    border-bottom: 2px solid #ff9800;
-    display: inline-block;
-    margin-bottom: 1rem;
-}
+  font-size: 40px;
+  border-bottom: 2px solid #ff9800;
+  display: inline-block;
+  margin-bottom: 1rem;
+  } */
+  .body{
+      background-color:rgb(221, 216, 211);
+  }
 
 .about-us-page-container {
     max-width: 80%;
