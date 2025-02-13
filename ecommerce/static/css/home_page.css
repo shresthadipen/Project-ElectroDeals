@@ -284,6 +284,8 @@ hr.weak-line {
 }
 
 .related-products-home .product-card {
+    display: flex;
+    flex-direction: column;
     width: 200px;
     border: 1px solid #ddd;
     border-radius: 5px;

@@ -4,10 +4,10 @@ from .models import Brand, Category, Product
 def home(request):
     brands = Brand.get_all_brand()[:8]
     category = Category.get_all_category()
-    product = Product.get_all_product()[:5]
+    products = Product.get_all_product()[:5]
 
 
-    return render(request, "home_page.html", {'brand' : brands, 'category' : category, 'product' : product})
+    return render(request, "home_page.html", {'brand' : brands, 'category' : category, 'products' : products})
 
 def product(request):
     return render(request, "product.html")
