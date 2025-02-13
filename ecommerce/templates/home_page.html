@@ -60,16 +60,18 @@
     <div class="related-products-home">
         <p>Latest Products</p>
 
-        {% for product in product %}       
+           
         
         <div class="products-grid">
+            {% for product in product %}   
             <div class="product-card">
                 <div class="product-image-placeholder"><img src="{{product.image.url}}" alt="{{product.name}}"></div>
                 <div class="product-title">{{product.name}}</div>
                 <div class="price">{{product.price}}</div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        
     </div>
 </div>
 </div>
