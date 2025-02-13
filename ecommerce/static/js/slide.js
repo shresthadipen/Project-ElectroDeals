@@ -1,26 +1,29 @@
-const slides = document.querySelectorAll(".brand-container");
-let counter = 0;
+const brandsContainer = document.querySelector(".brands");
+const brandSlides = document.querySelectorAll(".brand-container");
 
-slides.forEach((slide, index) => {
-    slide.style.left = `${index * 100}%`; 
-});
+let counter = 0;
+let totalSlides = brandSlides.length;
+
+const updateSlides = () => {
+    totalSlides = document.querySelectorAll(".brand-container").length; // Ensure correct count
+};
 
 const goNext = () => {
-    if(counter < slides.length){
+    updateSlides();
+    if (counter < totalSlides - 1) {
         counter++;
         slideIndex();
     }
 };
 
 const goPrev = () => {
-    if (counter > 0) { 
+    updateSlides();
+    if (counter > 0) {
         counter--;
         slideIndex();
     }
 };
 
 const slideIndex = () => {
-    slides.forEach((slide) => {
-        slide.style.transform = `translateX(-${counter * 103}%)`; 
-    });
+    brandsContainer.style.transform = `translateY(-${counter * 100}%)`; 
 };

@@ -61,38 +61,17 @@
 
     <div class="related-products-home">
         <p>Latest Products</p>
-    
+
+        {% for product in product %}       
+        
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-image-placeholder"></div>
-                <div class="product-title">ROG Zephyrus G14</div>
-                <div class="price">$1,899.99</div>
+                <div class="product-image-placeholder"><img src="{{product.image.url}}" alt="{{product.name}}"></div>
+                <div class="product-title">{{product.name}}</div>
+                <div class="price">{{product.price}}</div>
             </div>
-            <div class="product-card">
-                <div class="product-image-placeholder"></div>
-                <div class="product-title">Alienware m15 R7</div>
-                <div class="price">$2,499.99</div>
-            </div>
-            <div class="product-card">
-                <div class="product-image-placeholder"></div>
-                <div class="product-title">MSI Stealth 15M</div>
-                <div class="price">$1,699.99</div>
-            </div>
-            <div class="product-card">
-                <div class="product-image-placeholder"></div>
-                <div class="product-title">MSI Stealth 15M</div>
-                <div class="price">$1,938.99</div>
-            </div>
-            <div class="product-card">
-                <div class="product-image-placeholder"></div>
-                <div class="product-title">HP Omen 16</div>
-                <div class="price">$1,299.99</div>
-            </div>
-        
         </div>
+        {% endfor %}
     </div>
-
-    </div>
-
-    
+</div>
 {% endblock %}
