@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Brand, Category, Product
 
 def home(request):
-    brands = Brand.get_all_brand()[:8]
+    brands = Brand.get_all_brand()[:10]
     category = Category.get_all_category()
     products = Product.get_all_product()[:5]
 
