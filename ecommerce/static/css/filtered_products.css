@@ -1,27 +1,86 @@
-.container {
+.product-container {
     display: flex;
 }
 
-.sidebar {
-    width: 20%;
+.product-sidebar {
+    width: 10%;
     background: #DDD8D3;
     padding: 15px;
 }
 
-.brands, .categories {
+.product-brands, .product-categories {
     margin-bottom: 20px;
 }
 
-.products {
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+.product-list-container {
+    text-align: center;
+    padding: 20px;
+    margin-top: 180px;
+    width: 85%;
+    margin: 0 auto;
 }
 
-.product-card {
-    width: 30%;
-    background: #F7F5EF;
-    padding: 10px;
+.product-list-container p {
+    font-size: 40px;
+    text-align: left;
+    margin-bottom: 10px;
+    color: black;
+    font-weight: bold;
+}
+
+.product-list-container .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 40px;
+}
+
+.product-list-container .product-item {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
     text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-list-container .product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-list-container .product-item .product-image-placeholder {
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+
+.product-list-container .product-item .product-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #555;
+}
+
+.product-list-container .product-item .price {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-brands a, .product-categories a {
+    text-decoration: none; 
+    color: black;
+    font-size: 20px;
+}
+
+.product-brands a:hover, .product-categories a:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.product-brands h3 , .product-categories h3 {
+    font-size: 40px;
+    color: black;
 }
