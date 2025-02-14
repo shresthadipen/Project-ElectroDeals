@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 20%;
+    background: #DDD8D3;
+    padding: 15px;
+}
+
+.brands, .categories {
+    margin-bottom: 20px;
+}
+
+.products {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-card {
+    width: 30%;
+    background: #F7F5EF;
+    padding: 10px;
+    text-align: center;
+}
