@@ -1,29 +1,22 @@
 const brandsContainer = document.querySelector(".brands");
-const brandSlides = document.querySelectorAll(".brand-container");
-
+const slides = document.querySelectorAll(".brand-container");
 let counter = 0;
-let totalSlides = brandSlides.length;
-
-const updateSlides = () => {
-    totalSlides = document.querySelectorAll(".brand-container").length; // Ensure correct count
-};
+const slideHeight = slides[0].clientHeight;
 
 const goNext = () => {
-    updateSlides();
-    if (counter < totalSlides - 1) {
+    if (counter < slides.length - 1) { 
         counter++;
         slideIndex();
     }
 };
 
 const goPrev = () => {
-    updateSlides();
-    if (counter > 0) {
+    if (counter > 0) { 
         counter--;
         slideIndex();
     }
 };
 
 const slideIndex = () => {
-    brandsContainer.style.transform = `translateY(-${counter * 100}%)`; 
+    brandsContainer.style.transform = `translateX(-${counter * slideHeight}px)`; 
 };

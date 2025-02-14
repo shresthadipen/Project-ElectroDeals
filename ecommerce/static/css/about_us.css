@@ -11,9 +11,9 @@
   display: inline-block;
   margin-bottom: 1rem;
   } */
-  html {
+  /* html {
     scroll-behavior: smooth;
-  }
+  } */
 
 .body {
   background-color: rgb(221, 216, 211);
