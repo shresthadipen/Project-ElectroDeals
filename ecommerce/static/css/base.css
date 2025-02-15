@@ -32,7 +32,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 60px;
+    padding: 20px 60px;
     background: #ddd8d3;
 }
 
@@ -59,7 +59,20 @@ body {
     font-size: 18px;
 }
 
-
+.auth-btn a {
+    text-decoration: none;
+    padding: 10px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #7e7a72;
+}
+.auth-btn {
+    background: transparent;
+    border: 1px solid #7e7a72;
+    border-radius: 5px;
+    height: 30px;
+    margin-right: 20px;
+}
 
 footer {
     background-color: #353535;
