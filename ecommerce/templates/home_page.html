@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
+{% load static %} 
 {% block title %}
     ElectroDeals
-{% endblock %}  
+{% endblock %} 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+{% endblock %}
+
 
 {% block content %}
         <main class="main-section">

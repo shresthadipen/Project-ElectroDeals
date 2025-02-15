@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
+{% load static %} 
 {% block title %}
     Products Page
 {% endblock %} 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/filtered_products.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="dispay">

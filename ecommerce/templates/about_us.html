@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
+{% load static %} 
 {% block title %}
     About Us Page
 {% endblock %} 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about_us.css' %}">
+{% endblock %}
+
 
 {% block content %}
 <body class="body">
