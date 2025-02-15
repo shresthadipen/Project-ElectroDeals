@@ -2,7 +2,6 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 
@@ -30,7 +29,7 @@ hr.weak-line {
     justify-content: space-between;
     align-items: center;
     padding: 200px 60px 200px 60px;
-    background-color: rgb(221, 216, 211);
+    background-color: rgb(221, 216, 211)
 }
 
 .text-content {
@@ -76,20 +75,7 @@ hr.weak-line {
     color: #fff;
 }
 
-.auth-btn a {
-    text-decoration: none;
-    padding: 10px 10px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #7e7a72;
-}
-.auth-btn {
-    background: transparent;
-    border: 1px solid #7e7a72;
-    border-radius: 5px;
-    height: 30px;
-    margin-right: 20px;
-}
+
 
 .image-content img {
     max-width: 100%;
