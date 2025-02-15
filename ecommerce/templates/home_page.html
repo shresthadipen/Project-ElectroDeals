@@ -63,7 +63,7 @@
            
         
         <div class="products-grid">
-            {% for product in product %}   
+            {% for product in products %}   
             <div class="product-card">
                 <div class="product-image-placeholder"><img src="{{product.image.url}}" alt="{{product.name}}"></div>
                 <div class="product-title">{{product.name}}</div>
@@ -71,7 +71,6 @@
             </div>
             {% endfor %}
         </div>
-        
     </div>
 </div>
 </div>
