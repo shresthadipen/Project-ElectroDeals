@@ -68,7 +68,7 @@
 }
 
 .product-list-container .product-item {
-    /* width: 200px; */
+    
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;
@@ -112,8 +112,10 @@
     border-radius: 5px;
     margin: 8px;
     transition: background-color 0.3s;
+    width: 92%;
 }
 
 .product-list-container .product-item .add-to-cart-btn:hover {
     background-color: #5e5a52; /* Darker shade for hover */
 }
+

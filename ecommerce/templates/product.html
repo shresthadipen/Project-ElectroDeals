@@ -4,6 +4,7 @@
 {% block title %}
     Product Page
 {% endblock %}  
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/product.css' %}">
 {% endblock %}
@@ -13,18 +14,18 @@
 <main class="main">
     <div class="product-container-main">
         <div class="product-page">
-            <div class="product-image"></div>
+            <div class="product-image">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
 
             <div class="product-details">
-                <div class="product-title">NexSUS ROCK Strix Scar 17 Gaming Laptop</div>
-                <div class="price">$2,999.99 <span class="old-price">$3,299.99</span></div>
+                <div class="product-title">{{ product.name }}</div>
+                <div class="price">Rs {{ product.price }}</div>
                 <div class="specs">
                     <ul>
-                        <li><span>Brand</span> <span>Lorem ipsum</span></li>
-                        <li><span>Processor</span> <span>Lorem ipsum</span></li>
-                        <li><span>Memory</span> <span>Lorem ipsum</span></li>
-                        <li><span>Storage</span> <span>Lorem ipsum</span></li>
-                        <li><span>Battery</span> <span>Lorem ipsum</span></li>
+                        <li><span>Brand</span> <span>{{ product.brand.name }}</span></li>
+                        <li><span>Category</span> <span>{{ product.category.name }}</span></li>
+                        <li><span>Description</span> <span>{{ product.description }}</span></li>
                     </ul>
                 </div>
 
@@ -32,47 +33,27 @@
                     <label for="quantity">Quantity:</label>
                     <input type="number" id="quantity" value="1" min="1">
                 </div>
-                
+                <a href="#" class="btn-add">Add to Cart</a>
                 <a href="#" class="btn-buy">Buy Now</a>
+                
             </div>
         </div>
+    </div>
 </main>
     
 <div class="related-info-product">
-    <p>Related Product</p>
+    <p>Related Products</p>
 
     <div class="products-grid">
+        {% for related_product in related_products %}
         <div class="product-card">
-            <div class="product-image-placeholder"><img src="../static/test_img/download.jpeg" alt="haha"></div>
-            <div class="product-title">ROG Zephyrus G14</div>
-            <div class="price">$1,899.99</div>
+            <div class="product-image-placeholder">
+                <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}">
+            </div>
+            <div class="product-title">{{ related_product.name }}</div>
+            <div class="price">Rs {{ related_product.price }}</div>
         </div>
-        <div class="product-card">
-            <div class="product-image-placeholder"><img src="../static/test_img/haha.jpeg" alt="haha"></div>
-            <div class="product-title">Alienware m15 R7</div>
-            <div class="price">$2,499.99</div>
-        </div>
-        <div class="product-card">
-            <div class="product-image-placeholder"></div>
-            <div class="product-title">MSI Stealth 15M</div>
-            <div class="price">$1,699.99</div>
-        </div>
-        <div class="product-card">
-            <div class="product-image-placeholder"></div>
-            <div class="product-title">MSI Stealth 15M</div>
-            <div class="price">$1,938.99</div>
-        </div>
-        <div class="product-card">
-            <div class="product-image-placeholder"></div>
-            <div class="product-title">HP Omen 16</div>
-            <div class="price">$1,299.99</div>
-        </div>
-        <div class="product-card">
-            <div class="product-image-placeholder"></div>
-            <div class="product-title">HP Omen 16</div>
-            <div class="price">$1,299.99</div>
-        </div>
-    
+        {% endfor %}
     </div>
 </div>
      

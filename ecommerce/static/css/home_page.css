@@ -137,9 +137,7 @@ hr.weak-line {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    
-    
+    border-radius: 50%;   
 }
 
 .brand-icon img{
@@ -152,6 +150,8 @@ hr.weak-line {
     margin-top: 10px;
     font-size: 16px;
     font-weight: bold;
+    text-decoration: none;
+    color: rgb(126, 122, 114);
 }
 
 .slider-container {
@@ -222,6 +222,10 @@ hr.weak-line {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+.categories p{
+    text-decoration: none;
+    color: rgb(126, 122, 114);
 }
 
 

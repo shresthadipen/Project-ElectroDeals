@@ -26,56 +26,64 @@
     </main>
 <br>
 <div class="front">
-
     <section class="front-brands">
         <h2>Brands</h2>
         <div class="slider-container">
-        <button class="slider-btn prev-btn" onclick="goPrev()">&#10094;</button>
-        <div class="brands">
-            {% for brand in brand %}
-            <div class="brand-container">
-                <div class="brand">
-                    <div class="brand-icon" style="background-color: white;">
-                        <img src="{{brand.image.url}}" alt="{{brand.name}} logo">
+            <button class="slider-btn prev-btn" onclick="goPrev()">&#10094;</button>
+            <div class="brands">
+                {% for brand in brand %}
+                <a href="{% url 'product_list' %}?brand={{ brand.name }}" class="brand-link">
+                    <div class="brand-container">
+                        <div class="brand">
+                            <div class="brand-icon" style="background-color: white;">
+                                <img src="{{ brand.image.url }}" alt="{{ brand.name }} logo">
+                            </div>
+                            <p>{{ brand.name }}</p>
+                        </div>
                     </div>
-                    <p>{{brand.name}}</p>
-                </div>
+                </a>
+                {% endfor %}
             </div>
+            <button class="slider-btn next-btn" onclick="goNext()">&#10095;</button>
+        </div>
+    </section>
+    
+    <section class="front-categories">
+        <h2>Categories</h2>
+        <div class="categories">
+            {% for category in category %}
+            <a href="{% url 'product_list' %}?category={{ category.name }}" class="category-link">
+                <div class="category-container">
+                    <div class="category">
+                        <div class="category-icon" style="background-color: #eae9e5;">
+                            <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                        </div>
+                        <p>{{ category.name }}</p>
+                    </div>
+                </div>
+            </a>
             {% endfor %}
         </div>
-        <button class="slider-btn next-btn" onclick="goNext()">&#10095;</button>
-    </div>
-</section>
-
-<section class="front-categories">
-    <h2>Categories</h2>
+    </section>
     
-    <div class="categories">
-        
-            {% for category in category %}       
-        <div class="category-container">
-            <div class="category">
-                <div class="category-icon" style="background-color: #eae9e5;"><img src="{{category.image.url}}" alt="{{category.name}}"></div>
-                <p>{{category.name}}</p>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
+    
 
     <div class="related-products-home">
         <p>Latest Products</p>
         <div class="products-grid">
-            {% for product in products %}   
-            <div class="product-card">
-                <div class="product-image-placeholder"><img src="{{product.image.url}}" alt="{{product.name}}"></div>
-                <div class="product-title">{{product.name}}</div>
-                <div class="price">Rs {{product.price}}</div>
-                <button class="add-to-cart-btn">Add to Cart</button>
-            </div>
+            {% for product in products %}
+            <a href="{% url 'product' product_id=product.id %}" class="product-link">
+                <div class="product-card">
+                    <div class="product-image-placeholder"><img src="{{ product.image.url }}" alt="{{ product.name }}"></div>
+                    <div class="product-title">{{ product.name }}</div>
+                    <div class="price">Rs {{ product.price }}</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </a>
             {% endfor %}
         </div>
     </div>
+    
 </div>
 </div>
 {% endblock %}

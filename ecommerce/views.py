@@ -1,22 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Brand, Category, Product
 
 def home(request):
     brands = Brand.get_all_brand()[:10]
     category = Category.get_all_category()
     products = Product.get_all_product()[:5]
+    return render(request, "home_page.html", {'brand': brands, 'category': category, 'products': products})
 
-
-    return render(request, "home_page.html", {'brand' : brands, 'category' : category, 'products' : products})
-
-def product(request):
-    return render(request, "product.html")
+def product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    
+    related_products = Product.objects.exclude(id=product_id) 
+    
+    return render(request, "product.html", {'product': product, 'related_products': related_products})
 
 def base(request):
     return render(request, "base.html")
 
 def about(request):
-    return render(request,"about_us.html")
+    return render(request, "about_us.html")
 
 def product_list(request):
     brand_filter = request.GET.get('brand')
@@ -31,9 +33,8 @@ def product_list(request):
     if category_filter:
         products = products.filter(category__name=category_filter)
 
-    return render(request, 'filtered_products.html', { 
+    return render(request, 'filtered_products.html', {
         'products': products,
         'brands': brands,
         'categories': categories,
     })
-
