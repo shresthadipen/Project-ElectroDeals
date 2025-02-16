@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Brand, Category, Product
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 def home(request):
     brands = Brand.get_all_brand()[:10]
@@ -38,3 +41,18 @@ def product_list(request):
         'brands': brands,
         'categories': categories,
     })
+
+
+@csrf_exempt
+def updateItem(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        productId = data['productId']
+        action = data['action']
+
+        # Add your logic to update the cart here
+        print('Product ID:', productId, 'Action:', action)
+
+        return JsonResponse({'message': 'Item updated successfully'}, status=200)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=400)

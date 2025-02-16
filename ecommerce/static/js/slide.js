@@ -20,3 +20,4 @@ const goPrev = () => {
 const slideIndex = () => {
     brandsContainer.style.transform = `translateX(-${counter * slideHeight}px)`; 
 };
+

@@ -1,109 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}My Blog{% endblock %}</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}My Blog{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-<link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
-{% block extra_css %}
-{% endblock %}   
-</head>
-<body>
-        <header class="navbar">
-            <div class="logo">ElectroDeals</div>
-            <nav>
-                <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'product_list' %}">Product</a></li>
-                    <li><a href="{% url 'about_us' %}">About Us</a></li>
-                </ul>
-            </nav>
-            <div class="icons">
-                <i class="fa fa-search" id="ic"></i>
-                <i class="fa fa-cart-shopping"id="ic"></i>
-                
-                {% if user.is_authenticated %}
-                    <div class="dropdown">
-                        <i class="fa-regular fa-user" id="user-icon" style="cursor: pointer;"></i>
-                        <div class="dropdown-content">
-                            <a href="#">{{ user.username }}</a> 
-                            <a href="/logout/">Logout</a>
-                        </div>
-                     </div>
-                {% else %}
-                    <button type="submit" class="auth-btn"><a href="/signup/">Signup</a></button>
-                    <button type="submit"class="auth-btn"><a href="/login/">Login</a></button>
-                {% endif %}
+    <link
+      href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-                <i class="fa-solid fa-bars"></i>
-            </div>  
-        </header>
+    <script type="text/javascript">
+      var user = "{{request.user}}";
+      
+    </script>
+    {% block extra_css %} {% endblock %}
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">ElectroDeals</div>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'product_list' %}">Product</a></li>
+          <li><a href="{% url 'about_us' %}">About Us</a></li>
+        </ul>
+      </nav>
+      <div class="icons">
+        <i class="fa fa-search" id="ic"></i>
+        <i class="fa fa-cart-shopping" id="ic"></i>
 
-        {% block content %}
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+          <i
+            class="fa-regular fa-user"
+            id="user-icon"
+            style="cursor: pointer"
+          ></i>
+          <div class="dropdown-content">
+            <a href="#">{{ user.username }}</a>
+            <a href="/logout/">Logout</a>
+          </div>
+        </div>
+        {% else %}
+        <button type="submit" class="auth-btn">
+          <a href="/signup/">Signup</a>
+        </button>
+        <button type="submit" class="auth-btn">
+          <a href="/login/">Login</a>
+        </button>
+        {% endif %}
 
-        
-        {% endblock %}
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </header>
 
-        <footer>
-            <div class="container">
-                <div class="section">
-                    <h3>Contact Info</h3>
-                    <ul>
-                        <li><a href="{% url 'about_us' %}">About Us</a></li>
-                        <li><a href="{% url 'about_us' %}#contact-us-form">
-                            Contact Us
-                        </a></li>
-                    </ul>
-                </div>
-                <div class="section">
-                    <h3>Categories</h3>
-                    <ul>
-                        <li><a href="#">Laptops</a></li>
-                        <li><a href="#">Phones</a></li>
-                        <li><a href="#">Accessories</a></li>
-                    </ul>
-                </div>
-                <div class="section">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Help Center</a></li>
-                    </ul>
-                </div>
-                <div class="section">
-                    <h3>Payments</h3>
-                    <ul>
-                        <li><a href="#">Credit Cards</a></li>
-                        <li><a href="#">PayPal</a></li>
-                        <li><a href="#">Bank Transfer</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="line">
-            <hr class="weak-line">
-    
-            </div>
-            <div class="footer-bottom">
-                
-                <p class="copyright">© 2024 ElectroDeals. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <span class="separator">|</span>
-                    <a href="#">Terms</a>
-                    <span class="separator">|</span>
-                    <a href="#">Support</a>
-                </div>
-            </div>
-        </footer>
+    {% block content %} {% endblock %}
+
+    <footer>
+      <div class="container">
+        <div class="section">
+          <h3>Contact Info</h3>
+          <ul>
+            <li><a href="{% url 'about_us' %}">About Us</a></li>
+            <li>
+              <a href="{% url 'about_us' %}#contact-us-form"> Contact Us </a>
+            </li>
+          </ul>
+        </div>
+        <div class="section">
+          <h3>Categories</h3>
+          <ul>
+            <li><a href="#">Laptops</a></li>
+            <li><a href="#">Phones</a></li>
+            <li><a href="#">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="section">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Help Center</a></li>
+          </ul>
+        </div>
+        <div class="section">
+          <h3>Payments</h3>
+          <ul>
+            <li><a href="#">Credit Cards</a></li>
+            <li><a href="#">PayPal</a></li>
+            <li><a href="#">Bank Transfer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="line">
+        <hr class="weak-line" />
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">© 2024 ElectroDeals. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <span class="separator">|</span>
+          <a href="#">Terms</a>
+          <span class="separator">|</span>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </footer>
     <script src="{% static 'js/script.js' %}"></script>
-    <script src="{% static 'js/slide.js' %}"></script>
-
-    </body>
-    </html>
+    {% block extra_js %} {% endblock %}
+  </body>
+</html>
