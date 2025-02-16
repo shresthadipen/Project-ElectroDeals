@@ -1,5 +1,4 @@
-
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -67,12 +66,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
-    /* justify-content: space-between; */
-    /* margin: 20px 0 30px; */
 }
 
 .product-list-container .product-item {
-    width: 200px;
+    /* width: 200px; */
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;
@@ -102,6 +99,22 @@
     font-size: 18px;
     color: #333;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
+/* Add to Cart Button Styles */
+.product-list-container .product-item .add-to-cart-btn {
+    background-color: #7e7a72; 
+    font-weight: bold;
+    color: white; 
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 8px;
+    transition: background-color 0.3s;
+}
+
+.product-list-container .product-item .add-to-cart-btn:hover {
+    background-color: #5e5a52; /* Darker shade for hover */
+}
