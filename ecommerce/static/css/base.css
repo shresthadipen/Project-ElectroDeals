@@ -34,6 +34,7 @@ body {
     align-items: center;
     padding: 20px 60px;
     background: #ddd8d3;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .logo {
