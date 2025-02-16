@@ -16,9 +16,10 @@ addToCartButtons.forEach(button => {
 
         if (user === "AnonymousUser") {
             console.log('Not Logged in');
+            // You can implement local storage for anonymous users here
         } else {
             console.log("Sending data");
-            updateUserOrder(productId, action); 
+            updateUserOrder(productId, action);  // Call function here
         }
     });
 });

@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %} 
-
 {% block title %}
     ElectroDeals
 {% endblock %} 
@@ -9,21 +8,22 @@
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
 {% endblock %}
 
+
 {% block content %}
-<main class="main-section">
-    <div class="text-content">
-        <h1>SUDIO</h1>
-        <h2 class="decleration">EASY V3 BTN</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis gravida turpis, id iaculis libero sollicitudin vel.</p>
-        <div class="buttons">
-            <a href="#" class="learn-btn">Learn more</a>
-            <a href="#" class="buy-btn">Buy Now</a>
+        <main class="main-section">
+            <div class="text-content">
+                <h1>SUDIO</h1>
+                <h2 class="decleration">EASY V3 BTN</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis gravida turpis, id iaculis libero sollicitudin vel.</p>
+                <div class="buttons">
+                <a href="#" class="learn-btn">Learn more</a>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
         </div>
-    </div>
-    <div class="image-content">
-        <img src="" alt="Product">
-    </div>
-</main>
+        <div class="image-content">
+            <img src="" alt="Product">
+        </div>
+    </main>
 <br>
 <div class="front">
     <section class="front-brands">
@@ -32,7 +32,6 @@
             <button class="slider-btn prev-btn" onclick="goPrev()">&#10094;</button>
             <div class="brands">
                 {% for brand in brand %}
-<<<<<<< HEAD
                 <a href="{% url 'product_list' %}?brand={{ brand.name }}" class="brand-link">
                     <div class="brand-container">
                         <div class="brand">
@@ -44,31 +43,6 @@
                     </div>
                 </a>
                 {% endfor %}
-=======
-                <div class="brand-container">
-                    <div class="brand">
-                        <div class="brand-icon" style="background-color: white;">
-                            <img src="{{brand.image.url}}" alt="{{brand.name}} logo">
-                        </div>
-                        <p>{{brand.name}}</p>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <button class="slider-btn next-btn" onclick="goNext()">&#10095;</button>
-        </div>
-    </section>
-
-    <section class="front-categories">
-        <h2>Categories</h2>
-        <div class="categories">
-            {% for category in category %}       
-            <div class="category-container">
-                <div class="category">
-                    <div class="category-icon" style="background-color: #eae9e5;"><img src="{{category.image.url}}" alt="{{category.name}}"></div>
-                    <p>{{category.name}}</p>
-                </div>
->>>>>>> c16ba94 (add to cart)
             </div>
             <button class="slider-btn next-btn" onclick="goNext()">&#10095;</button>
         </div>
@@ -91,42 +65,31 @@
             {% endfor %}
         </div>
     </section>
-<<<<<<< HEAD
     
     
-=======
->>>>>>> c16ba94 (add to cart)
 
     <div class="related-products-home">
         <p>Latest Products</p>
         <div class="products-grid">
-<<<<<<< HEAD
             {% for product in products %}
-            <a href="{% url 'product' product_id=product.id %}" class="product-link">
-                <div class="product-card">
+            <div class="product-card">
+                    <a href="{% url 'product' product_id=product.id %}" class="product-link">
                     <div class="product-image-placeholder"><img src="{{ product.image.url }}" alt="{{ product.name }}"></div>
                     <div class="product-title">{{ product.name }}</div>
                     <div class="price">Rs {{ product.price }}</div>
-                    <button class="add-to-cart-btn">Add to Cart</button>
+                    </a>
+                    <button data-product={{product.id}} data-action="add" class="add-to-cart-btn update-cart">Add to Cart</button>
                 </div>
-            </a>
-=======
-            {% for product in products %}   
-            <div class="product-card">
-                <div class="product-image-placeholder"><img src="{{product.image.url}}" alt="{{product.name}}"></div>
-                <div class="product-title">{{product.name}}</div>
-                <div class="price">Rs {{product.price}}</div>
-                <button data-product="{{product.id}}" data-action="add" class="add-to-cart-btn update-cart">Add to Cart</button>
-            </div>
->>>>>>> c16ba94 (add to cart)
             {% endfor %}
         </div>
     </div>
     
 </div>
+</div>
 {% endblock %}
 
-{% block extra_js %}
+{% block extra_js %} 
 <script src="{% static 'js/slide.js' %}"></script>
 <script src="{% static 'js/add_to_cart.js' %}"></script>
+
 {% endblock %}
