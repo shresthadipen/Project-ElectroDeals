@@ -121,8 +121,8 @@
 .related-info-product .products-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     margin: 20px 0 40px;
+    gap: 40px;
 }
 
 .related-info-product .product-card {
@@ -133,6 +133,7 @@
     background-color: #fff;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    
 }
 
 .related-info-product .product-card:hover {
