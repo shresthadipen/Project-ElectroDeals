@@ -170,3 +170,22 @@
     color: #333;
     font-weight: bold;
 }
+
+.add-to-cart-btn {
+    background-color: #7e7a72;
+    font-weight: bold;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 8px;
+    width: 100%;
+    transition: background-color 0.3s;
+    width: 93%;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #5e5a52;
+}

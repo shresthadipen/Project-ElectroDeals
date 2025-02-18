@@ -47,14 +47,19 @@
     <div class="products-grid">
         {% for related_product in related_products %}
         <div class="product-card">
-            <div class="product-image-placeholder">
-                <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}">
-            </div>
-            <div class="product-title">{{ related_product.name }}</div>
-            <div class="price">Rs {{ related_product.price }}</div>
+            <a href="{% url 'product' product_id=related_product.id %}" class="product-link">
+                <div class="product-image-placeholder">
+                    <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}">
+                </div>
+                <div class="product-title">{{ related_product.name }}</div>
+                <div class="price">Rs {{ related_product.price }}</div>
+            </a>
+            <button data-product={{product.id}} data-action="add" class="add-to-cart-btn update-cart">Add to Cart</button>
+
         </div>
         {% endfor %}
     </div>
 </div>
+
      
 {% endblock %}
