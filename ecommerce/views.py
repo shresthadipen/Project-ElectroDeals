@@ -1,13 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import (
-    Brand,
-    Category,
-    Product,
-    Customer,
-    Order,
-    OrderItem,
-    ShippingAddress,
-)
+from .models import Brand, Category, Product, Order, OrderItem, Customer, ShippingAddress
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -16,7 +8,7 @@ import json
 def home(request):
     brands = Brand.get_all_brand()[:10]
     category = Category.get_all_category()
-    products = Product.get_all_product()[:5]
+    products = Product.get_all_product()[:7]
     cartItem = cart_items(request)
 
     return render(
@@ -84,8 +76,8 @@ def product_list(request):
 
 
 def cart(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
+    customer = get_customer(request)
+    if customer:
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
     else:
@@ -94,9 +86,7 @@ def cart(request):
 
     cartItem = cart_items(request)
     return render(
-        request,
-        "cart.html",
-        {"items": items, "order": order, "cartItems": cartItem["cartItems"]},
+        request, "cart.html", {"items": items, "order": order, "cartItems": cartItem["cartItems"]}
     )
 
 
@@ -134,7 +124,6 @@ def updateItem(request):
                     orderItem.quantity += 1
                 elif action == 'remove':
                     orderItem.quantity -= 1
-                print("Okk")
                 orderItem.save()
 
                 if orderItem.quantity <= 0:
@@ -159,3 +148,10 @@ def cart_items(request):
         # For anonymous users, we can store the cart items in the session
         cartItems = request.session.get("cart_items", 0)
     return {"cartItems": cartItems}
+
+
+def get_customer(request):
+    if request.user.is_authenticated:
+        customer, created = Customer.objects.get_or_create(user=request.user)
+        return customer
+    return None

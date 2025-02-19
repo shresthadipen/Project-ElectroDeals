@@ -23,7 +23,7 @@
 
             <div class="product-details">
                 <div class="product-title">{{ product.name }}</div>
-                <div class="price">Rs {{ product.price }}</div>
+                <div class="price"><strong>Rs {{ product.price }}</strong></div>
                 <div class="specs">
                     <ul>
                         <li><span>Brand</span> <span>{{ product.brand.name }}</span></li>
@@ -50,7 +50,7 @@
     <div class="products-grid">
         {% for related_product in related_products %}
         <div class="product-card">
-            <a href="{% url 'product' product_id=related_product.id %}" class="product-link">
+            <a href="{% url 'product' product_id=related_product.id %}" class="product-link" style="text-decoration: none;">
                 <div class="product-image-placeholder">
                     <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}">
                 </div>
