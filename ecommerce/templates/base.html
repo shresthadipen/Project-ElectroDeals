@@ -18,6 +18,8 @@
       href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+
+    
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <link
@@ -45,7 +47,10 @@
       </nav>
       <div class="icons">
         <i class="fa fa-search" id="ic"></i>
-        <i class="fa fa-cart-shopping" id="ic"></i>
+        <a href="{% url 'cart' %}"class="cart">
+          <i class="fa fa-cart-shopping" style="color: #7e7a72;" id="ic"></i>
+          <span class="cart-counter">{{ cartItems }}</span>
+        </a>
 
         {% if user.is_authenticated %}
         <div class="dropdown">

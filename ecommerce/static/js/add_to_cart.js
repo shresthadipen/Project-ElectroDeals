@@ -1,33 +1,22 @@
-const addToCartButtons = document.querySelectorAll('.update-cart');
-
-addToCartButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const productId = this.dataset.product; 
-        const action = this.dataset.action;
-
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('update-cart')) {
+        const productId = event.target.dataset.product; 
+        const action = event.target.dataset.action;
         console.log('Product ID:', productId, 'Action:', action);
-
-        if (typeof user === 'undefined') {
-            console.error('User variable is not defined.');
-            return;
-        }
-
-        console.log('User:', user);
 
         if (user === "AnonymousUser") {
             console.log('Not Logged in');
-            // You can implement local storage for anonymous users here
         } else {
-            console.log("Sending data");
-            updateUserOrder(productId, action);  // Call function here
+            updateUserOrder(productId, action);
         }
-    });
+    }
 });
+
 
 function updateUserOrder(productId, action) {
     console.log('Sending data...');
 
-    const url = '/update_item/';
+    var url = '/update_item/';
 
     fetch(url, {
         method: 'POST',
@@ -43,13 +32,13 @@ function updateUserOrder(productId, action) {
     .then(response => response.json())
     .then(data => {
         console.log('Response:', data);
+        location.reload()
     })
-    .catch(error => console.error('Error:', error));
 }
 
 function getToken(name) {
     let cookieValue = null;
-    if (document.cookie && document.cookie !== "") {
+    if (document.cookie) {
         document.cookie.split(";").forEach(cookie => {
             cookie = cookie.trim();
             if (cookie.startsWith(name + "=")) {
@@ -60,4 +49,20 @@ function getToken(name) {
     return cookieValue;
 }
 
+
 const csrftoken = getToken("csrftoken");
+
+function getCookie(name) {
+    var cookieArr = document.cookie.split(";");
+
+    for(var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+        if(name == cookiePair[0].trim()) {
+
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+
+    return null;
+}
+var cart = JSON.parse(getCookie('cart'))

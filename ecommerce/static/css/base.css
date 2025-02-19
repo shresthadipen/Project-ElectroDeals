@@ -1,5 +1,4 @@
 
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f5ef;
@@ -17,6 +16,33 @@ body {
 .icons #ic {
     margin-right: 20px;
 }
+
+/* Style for the cart icon container */
+.cart {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Style for the cart icon */
+  .fa-cart-shopping {
+    font-size: 24px; /* Adjust the size as needed */
+    color: #7e7a72; /* Ensure the color is applied */
+  }
+  
+  /* Style for the circular counter */
+  .cart-counter {
+    position: absolute;
+    top: 45%; /* Adjust the position as needed */
+    right: 2px; /* Adjust the position as needed */
+    background-color: #7e7a72; 
+    color: white; /* Text color */
+    border-radius: 50%; /* Makes it circular */
+    padding: 7px 10px; /* Adjust padding to control the size of the circle */
+    font-size: 12px; /* Adjust the font size as needed */
+    /* min-width: 20px; */
+    text-align: center;
+    line-height: 1; 
+  }
 .dropdown i {
     display: flex;
     font-size: 18px;
@@ -58,6 +84,12 @@ body {
 .navbar .icons {
     margin-left: 10px;
     font-size: 18px;
+
+
+}
+
+.navbar .icons a{
+    columns: #7e7a72;
 }
 
 .auth-btn a {
@@ -81,6 +113,7 @@ footer {
     color: #fff;
     padding: 40px 0;
     /* width: 100%; */
+    margin-top: auto;
 }
 
 

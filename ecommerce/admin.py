@@ -7,13 +7,22 @@ class AdminProduct(admin.ModelAdmin):
 class AdminBrand(admin.ModelAdmin):
     list_display = ['id', 'name', 'image']
 
+class AdminCustomer(admin.ModelAdmin):
+    list_display = ['user', 'name', 'email']
+
+class AdminOrder(admin.ModelAdmin):
+    list_display = ['customer', 'complete', 'transaction_id', 'date_ordered']
+
+
+class AdminOrderItem(admin.ModelAdmin):
+    list_display = ['product', 'order', 'quantity', 'date_added']
 
 admin.site.register(Brand, AdminBrand)
 admin.site.register(Category)
 admin.site.register(Product, AdminProduct)
-admin.site.register(Customer)
-admin.site.register(Order)
-admin.site.register(OrderItem)
+admin.site.register(Customer, AdminCustomer)
+admin.site.register(Order, AdminOrder)
+admin.site.register(OrderItem, AdminOrderItem)
 admin.site.register(ShippingAddress)
 
 
