@@ -9,6 +9,13 @@ urlpatterns = [
     path('about/', about, name='about_us'),
     path('product_list/', product_list, name='product_list'),
     path('update_item/', updateItem, name='update_item'),
+<<<<<<< HEAD
     path('cart/', login_required(cart, login_url='/login/'), name='cart'),
     path('checkout/', login_required(checkout, login_url='/login/'), name='checkout'),
+=======
+    path('cart/', cart, name='cart'),
+    path('checkout/', checkout, name="checkout"),
+
+
+>>>>>>> 715b448 (Cart)
 ]

@@ -1,17 +1,28 @@
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('update-cart')) {
-        const productId = event.target.dataset.product; 
-        const action = event.target.dataset.action;
+const addToCartButtons = document.querySelectorAll('.update-cart');
+
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const productId = this.dataset.product; 
+        const action = this.dataset.action;
+
         console.log('Product ID:', productId, 'Action:', action);
+
+        if (typeof user === 'undefined') {
+            console.error('User variable is not defined.');
+            return;
+        }
+
+        console.log('User:', user);
 
         if (user === "AnonymousUser") {
             console.log('Not Logged in');
+           
         } else {
-            updateUserOrder(productId, action);
+            console.log("Sending data");
+            updateUserOrder(productId, action); 
         }
-    }
+    });
 });
-
 
 function updateUserOrder(productId, action) {
     console.log('Sending data...');
@@ -32,13 +43,13 @@ function updateUserOrder(productId, action) {
     .then(response => response.json())
     .then(data => {
         console.log('Response:', data);
-        location.reload()
+        location.reload();
     })
 }
 
 function getToken(name) {
     let cookieValue = null;
-    if (document.cookie) {
+    if (document.cookie && document.cookie !== "") {
         document.cookie.split(";").forEach(cookie => {
             cookie = cookie.trim();
             if (cookie.startsWith(name + "=")) {
@@ -49,20 +60,4 @@ function getToken(name) {
     return cookieValue;
 }
 
-
 const csrftoken = getToken("csrftoken");
-
-function getCookie(name) {
-    var cookieArr = document.cookie.split(";");
-
-    for(var i = 0; i < cookieArr.length; i++) {
-        var cookiePair = cookieArr[i].split("=");
-        if(name == cookiePair[0].trim()) {
-
-            return decodeURIComponent(cookiePair[1]);
-        }
-    }
-
-    return null;
-}
-var cart = JSON.parse(getCookie('cart'))

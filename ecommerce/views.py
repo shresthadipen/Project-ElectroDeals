@@ -116,61 +116,38 @@ def checkout(request):
         {"items": items, "order": order, "cartItems": cartItem["cartItems"]},
     )
 
-
 @csrf_exempt
 def updateItem(request):
-    if request.method == "POST":
-        data = json.loads(request.body)
-        productId = data["productId"]
-        action = data["action"]
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            productId = data.get('productId')
+            action = data.get('action')
 
-        # Handle for authenticated user
-        if request.user.is_authenticated:
-            customer = request.user.customer
-            product = Product.objects.get(id=productId)
-            order, created = Order.objects.get_or_create(
-                customer=customer, complete=False
-            )
+            if request.user.is_authenticated:
+                customer = request.user.customer
+                product = Product.objects.get(id=productId)
+                order, created = Order.objects.get_or_create(customer=customer, complete=False)
+                orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
-            orderItem, created = OrderItem.objects.get_or_create(
-                order=order, product=product
-            )
+                if action == 'add':
+                    orderItem.quantity += 1
+                elif action == 'remove':
+                    orderItem.quantity -= 1
+                print("Okk")
+                orderItem.save()
 
-            if action == "add":
-                orderItem.quantity += 1
-            elif action == "remove":
-                orderItem.quantity -= 1
+                if orderItem.quantity <= 0:
+                    orderItem.delete()
 
-            orderItem.save()
+                return JsonResponse({'message': 'Item updated successfully', 'quantity': orderItem.quantity}, safe=False)
 
-            if orderItem.quantity <= 0:
-                orderItem.delete()
+            return JsonResponse({'error': 'User not authenticated'}, status=401)
 
-            return JsonResponse({"message": "Item updated successfully"}, safe=False)
-
-        # Handle for anonymous users (session-based cart)
-        else:
-            cart = request.session.get("cart", {})
-            productId = str(productId)
-            if productId in cart:
-                if action == "add":
-                    cart[productId]["quantity"] += 1
-                elif action == "remove" and cart[productId]["quantity"] > 1:
-                    cart[productId]["quantity"] -= 1
-                elif action == "remove" and cart[productId]["quantity"] <= 1:
-                    del cart[productId]
-
-            request.session["cart"] = cart
-            return JsonResponse(
-                {
-                    "message": "Item updated successfully",
-                    "cartItems": order.get_cart_items,
-                    "itemQuantity": orderItem.quantity if orderItem else 0,
-                },
-                safe=False,
-            )
-    else:
-        return JsonResponse({"error": "Invalid request method"}, status=400)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+    
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
 
 
 def cart_items(request):

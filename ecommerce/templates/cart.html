@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 {% endblock %}
 
+<script type="text/javascript">
+	var user = "{{request.user}}";
+  </script>
+
 {% block content %}
 <div class="body">
 
@@ -48,7 +52,7 @@
 					<div style="flex:1">
 						<p class="quantity">{{item.quantity}}</p>
 						<div class="quantity">
-							<img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="{% static  'img/arrow-up.png' %}">
+							<img data-product="{{item.product.id}}" data-action="add"  class="chg-quantity update-cart" src="{% static  'img/arrow-up.png' %}">
 							<img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{% static  'img/arrow-down.png' %}">
 						</div>
 					</div>
@@ -59,5 +63,9 @@
 		</div>
 	</div>
 </div>
+
 {% endblock %}
 
+{% block extra_js %} 
+<script src="{% static 'js/add_to_cart.js' %}"></script>
+{% endblock %}

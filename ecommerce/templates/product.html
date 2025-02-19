@@ -8,6 +8,9 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/product.css' %}">
 {% endblock %}
+<script type="text/javascript">
+    var user = "{{request.user}}";
+  </script>
 
 {% block content %} 
 
@@ -33,7 +36,7 @@
                     <label for="quantity">Quantity:</label>
                     <input type="number" id="quantity" value="1" min="1">
                 </div>
-                <a href="#" class="btn-add">Add to Cart</a>
+                <a data-product="{{ product.id }}" data-action="add" class="btn-add update-cart">Add to Cart</a>
                 <a href="#" class="btn-buy">Buy Now</a>
                 
             </div>
@@ -62,4 +65,9 @@
 </div>
 
      
+{% endblock %}
+
+{% block extra_js %} 
+<script src="{% static 'js/add_to_cart.js' %}"></script>
+
 {% endblock %}
