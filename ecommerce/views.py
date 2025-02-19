@@ -33,15 +33,6 @@ def home(request):
 
 def product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-<<<<<<< HEAD
-
-    related_products = Product.objects.filter(category=product.category).exclude(id=product.id)
-
-    return render(request, "product.html", {
-        'product': product,
-        'related_products': related_products
-    })
-=======
     cartItem = cart_items(request)
     related_products = Product.objects.exclude(id=product_id)
 
@@ -55,7 +46,6 @@ def product(request, product_id):
         },
     )
 
->>>>>>> 3455b9f (add to cart 80% work done)
 
 def base(request):
     cartItem = cart_items(request)

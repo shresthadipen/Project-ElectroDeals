@@ -93,10 +93,11 @@
         <div class="section">
           <h3>Categories</h3>
           <ul>
-            <li><a href="#">Laptops</a></li>
-            <li><a href="#">Phones</a></li>
-            <li><a href="#">Accessories</a></li>
-          </ul>
+            <li><a href="{% url 'product_list' %}?category=Laptops">Laptops</a></li>
+            <li><a href="{% url 'product_list' %}?category=Smartphones">Smartphones</a></li>
+            <li><a href="{% url 'product_list' %}?category=Earbuds">Earbuds</a></li>
+        </ul>
+        
         </div>
         <div class="section">
           <h3>Support</h3>
