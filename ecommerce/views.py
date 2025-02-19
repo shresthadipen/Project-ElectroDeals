@@ -26,7 +26,7 @@ def home(request):
 def product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     cartItem = cart_items(request)
-    related_products = Product.objects.exclude(id=product_id)
+    related_products = Product.objects.filter(category=product.category).exclude(id=product_id)
 
     return render(
         request,
