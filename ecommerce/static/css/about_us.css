@@ -90,7 +90,7 @@
   font-size: 1rem;
   font-weight: bold;
   border-radius: 4px;
-  transition: background 0.3s;
+  transition: 0.3s;
 }
 
 .cta-button:hover {

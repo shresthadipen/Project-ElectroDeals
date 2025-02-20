@@ -19,7 +19,6 @@
       rel="stylesheet"
     />
 
-    
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
 
@@ -30,7 +29,9 @@
   </head>
   <body>
     <header class="navbar">
-      <a href="{% url 'home' %}" style="text-decoration: none; color: #7e7a72;"><div class="logo">ElectroDeals</div></a>
+      <a href="{% url 'home' %}" style="text-decoration: none; color: #7e7a72"
+        ><div class="logo">ElectroDeals</div></a
+      >
       <nav>
         <ul>
           <li><a href="{% url 'home' %}">Home</a></li>
@@ -40,8 +41,8 @@
       </nav>
       <div class="icons">
         <i class="fa fa-search" id="ic"></i>
-        <a href="{% url 'cart' %}"class="cart">
-          <i class="fa fa-cart-shopping" style="color: #7e7a72;" id="ic"></i>
+        <a href="{% url 'cart' %}" class="cart">
+          <i class="fa fa-cart-shopping" style="color: #7e7a72" id="ic"></i>
           <span class="cart-counter">{{ cartItems }}</span>
         </a>
 
@@ -86,11 +87,18 @@
         <div class="section">
           <h3>Categories</h3>
           <ul>
-            <li><a href="{% url 'product_list' %}?category=Laptops">Laptops</a></li>
-            <li><a href="{% url 'product_list' %}?category=Smartphones">Smartphones</a></li>
-            <li><a href="{% url 'product_list' %}?category=Earbuds">Earbuds</a></li>
-        </ul>
-        
+            <li>
+              <a href="{% url 'product_list' %}?category=Laptops">Laptops</a>
+            </li>
+            <li>
+              <a href="{% url 'product_list' %}?category=Smartphones"
+                >Smartphones</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'product_list' %}?category=Earbuds">Earbuds</a>
+            </li>
+          </ul>
         </div>
         <div class="section">
           <h3>Support</h3>

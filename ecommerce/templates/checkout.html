@@ -14,67 +14,67 @@
 
 {% block content %}
 <div class="body">
-
-    
     <div class="container">
         <div class="box-element">
-          <a href="{% url 'cart' %}"class="btn-back">&#x2190; Back to Cart</a>
-          <hr class="hr-line">
-          <h3>Order Summary</h3>
-          <hr class="hr-line">
-    
-          {% for item in items %}
-            <div class="cart-row">
-              <div><img class="row-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}"></div>
-              <div><p>{{ item.product.name }}</p></div>
-              <div><p>Rs {{ item.product.price|floatformat:2 }}</p></div>
-              <div><p>x{{ item.quantity }}</p></div>
-            </div>
-          {% endfor %}
-          
-          <div class="summary">
-            <p>Items: {{ order.get_cart_items }}</p>
-            <p class="total">Total: Rs {{ order.get_cart_total|floatformat:2 }}</p>
-          </div>
+            <a href="{% url 'home' %}" class="btn-back">&#x2190; Back</a>
+            <hr class="hr-line">
+            <h3>Order Summary</h3>
+            <hr class="hr-line">
+
+            {% if request.session.buy_now_product %}
+                <!-- Show only Buy Now product -->
+                <div class="cart-row">
+                    <div><img class="row-image" src="{{ request.session.buy_now_product.image }}" alt="{{ request.session.buy_now_product.name }}"></div>
+                    <div><p>{{ request.session.buy_now_product.name }}</p></div>
+                    <div><p>Rs {{ request.session.buy_now_product.price|floatformat:2 }}</p></div>
+                    <div><p>x1</p></div>
+                </div>
+                <div class="summary">
+                    <p>Items: 1</p>
+                    <p class="total">Total: Rs {{ request.session.buy_now_product.price|floatformat:2 }}</p>
+                </div>
+            {% else %}
+                <!-- Show cart items -->
+                {% for item in items %}
+                    <div class="cart-row">
+                        <div><img class="row-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}"></div>
+                        <div><p>{{ item.product.name }}</p></div>
+                        <div><p>Rs {{ item.product.price|floatformat:2 }}</p></div>
+                        <div><p>x{{ item.quantity }}</p></div>
+                    </div>
+                {% endfor %}
+                <div class="summary">
+                    <p>Items: {{ order.get_cart_items }}</p>
+                    <p class="total">Total: Rs {{ order.get_cart_total|floatformat:2 }}</p>
+                </div>
+            {% endif %}
         </div>
-    
+
         <!-- Shipping Form -->
         <div class="box-element">
-          <div class="form-container">
-            <h4>Shipping Information</h4>
-            <form action="/shipping" method="POST">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" required placeholder="Enter your full name">
-              
-              <label for="address">Address</label>
-              <input type="text" id="address" name="address" required placeholder="Enter your address">
-    
-              <label for="city">City</label>
-              <input type="text" id="city" name="city" required placeholder="Enter your city">
-    
-              <label for="zip">Zip Code</label>
-              <input type="text" id="zip" name="zip" required placeholder="Enter your zip code">
-    
-              <label for="phone">Phone Number</label>
-              <input type="text" id="phone" name="phone" required placeholder="Enter your phone number">
-    
-              <label for="country">Country</label>
-    
-              <input type="submit" value="Proceed to Payment">
-            </form>
-          </div>
+            <div class="form-container">
+                <h4>Shipping Information</h4>
+                <form action="/shipping" method="POST">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required placeholder="Enter your address">
+
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required placeholder="Enter your city">
+
+                    <label for="zip">Zip Code</label>
+                    <input type="text" id="zip" name="zip" required placeholder="Enter your zip code">
+
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" name="phone" required placeholder="Enter your phone number">
+
+                    <label for="country">Country</label>
+                    <input type="submit" value="Proceed to Payment">
+                </form>
+            </div>
         </div>
-    
-        <!-- Continue Button to Mobile Banking Payment
-        <div class="box-element">
-          <form action="/mobile-banking" method="POST">
-            <button type="submit" class="continue-btn">Continue</button>
-          </form>
-        </div> -->
-    
     </div>
 </div>
-{% endblock content %}
-
-
- 
+{% endblock %}

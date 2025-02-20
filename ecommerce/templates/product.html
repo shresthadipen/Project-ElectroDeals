@@ -36,7 +36,7 @@
                 <button data-product="{{ product.id }}" data-action="add" class="btn-add update-cart">
                     Add to Cart
                 </button>
-                <a href="#" class="btn-buy">Buy Now</a>
+                <a href="{% url 'buy_now' product.id %}" class="btn-buy">Buy Now</a>
                 
             </div>
         </div>
@@ -55,7 +55,6 @@
                 <div class="product-title">{{ related_product.name }}</div>
                 <div class="price">Rs {{ related_product.price }}</div>
             </a>
-            <!-- Corrected data-product value -->
             <button data-product="{{ related_product.id }}" data-action="add" class="add-to-cart-btn update-cart">
                 Add to Cart
             </button>

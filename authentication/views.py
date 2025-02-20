@@ -56,38 +56,3 @@ def logout_view(request):
     messages.success(request, "Logged out successfully.")
     return redirect('home')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #     try:
-    #         if User.objects.filter(username=signup_username).exists():
-    #             messages.error(request, "Username already exists.")
-    #             return redirect('signup')
-    #         if User.objects.filter(email=signup_email).exists():
-    #             messages.error(request, "Email is already registered.")
-    #             return redirect('signup')
-
-    #         User.objects.create_user(
-    #             username=signup_username,
-    #             email=signup_email,
-    #             password=signup_password
-    #         )
-    #         return redirect('login')
-    #     except Exception as e:
-    #         messages.error(request, f"An error occurred: {str(e)}")
-    #         return redirect('signup')
-
-    # return render(request, 'signup.html')
