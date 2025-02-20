@@ -11,9 +11,14 @@ body {
   font-size: 18px;
 }
 
-.icons #ic {
+
+.icon {
+  width: 25px; 
+  height: 25px;
   margin-right: 20px;
+  
 }
+
 
 .cart {
   position: relative;

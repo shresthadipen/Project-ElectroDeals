@@ -40,19 +40,18 @@
         </ul>
       </nav>
       <div class="icons">
-        <i class="fa fa-search" id="ic"></i>
+        <a href="#">
+          <img src="{% static 'img/search.png' %}" alt="search-icon" class="icon">
+        </a>
         <a href="{% url 'cart' %}" class="cart">
-          <i class="fa fa-cart-shopping" style="color: #7e7a72" id="ic"></i>
+          <img src="{% static 'img/cart.png' %}" alt="cart-icon" class="icon">
           <span class="cart-counter">{{ cartItems }}</span>
         </a>
 
         {% if user.is_authenticated %}
         <div class="dropdown">
-          <i
-            class="fa-regular fa-user"
-            id="user-icon"
-            style="cursor: pointer"
-          ></i>
+          <img src="{% static 'img/user.png' %}" alt="user-icon" class="icon">
+          
           <div class="dropdown-content">
             <a href="#">{{ user.username }}</a>
             <a href="/logout/">Logout</a>
@@ -66,8 +65,7 @@
           <a href="/login/">Login</a>
         </button>
         {% endif %}
-
-        <i class="fa-solid fa-bars"></i>
+          
       </div>
     </header>
 
