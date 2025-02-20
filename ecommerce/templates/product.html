@@ -26,9 +26,9 @@
                 <div class="price"><strong>Rs {{ product.price }}</strong></div>
                 <div class="specs">
                     <ul>
-                        <li><span>Brand</span> <span>{{ product.brand.name }}</span></li>
-                        <li><span>Category</span> <span>{{ product.category.name }}</span></li>
-                        <li><span>Description</span> <span>{{ product.description }}</span></li>
+                        <li><strong>Brand :</strong> <span> {{ product.brand.name }}</span></li>
+                        <li><strong>Category :</strong> <span>{{ product.category.name }}</span></li>
+                        <li><strong>Description :</strong> <span>{{ product.description }}</span></li>
                     </ul>
                 </div>
 
@@ -42,14 +42,13 @@
         </div>
     </div>
 </main>
-    
-<div class="related-info-product">
-    <p>Related Products</p>
 
+<div class="related-products-home">
+    <p>Related Products</p>
     <div class="products-grid">
         {% for related_product in related_products %}
         <div class="product-card">
-            <a href="{% url 'product' product_id=related_product.id %}" class="product-link">
+            <a href="{% url 'product' product_id=related_product.id %}" class="product-link" style="text-decoration: none;">
                 <div class="product-image-placeholder">
                     <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}">
                 </div>

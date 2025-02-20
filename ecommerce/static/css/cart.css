@@ -1,13 +1,13 @@
-
-*{
+* {
     margin: 0;
     padding: 0;
 }
+
 .body {
     font-family: Arial, sans-serif;
-    /* background-color: #faf9f8; */
     color: #333;
 }
+
 
 
 .box-element {
@@ -15,7 +15,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin: 40px 60px 40px 60px;
+    margin: 40px 60px;
 }
 
 .btn {
@@ -26,23 +26,23 @@
     transition: background-color 0.3s ease;
 }
 
-.btn-outline-dark {
+.continue-btn {
     border: 1px solid #343a40;
     color: #343a40;
 }
 
-.btn-outline-dark:hover {
+.continue-btn:hover {
     background-color: #343a40;
     color: #fff;
 }
 
-.btn-success {
+.checkout-btn {
     background-color: #28a745;
     color: #fff;
     border: none;
 }
 
-.btn-success:hover {
+.checkout-btn:hover {
     background-color: #218838;
 }
 
@@ -73,11 +73,12 @@
     padding: 0 10px;
 }
 
-.cart-row .row-image {
+.row-image {
     width: 60px;
     height: 60px;
     border-radius: 4px;
 }
+
 .quantity p {
     margin: 0;
     font-size: 16px;
@@ -86,12 +87,21 @@
 
 .quantity {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
 }
 
 .quantity img {
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+    size: 10px;
+}
+.chg-quantity {
+    width: 18px;
+    height: 18px;
+}
+.delete-btn{
+    height: 25px;
+    width: 25px;
 }
 
 div[style="flex:1"] {
@@ -106,8 +116,7 @@ div[style="flex:1"] {
     height: 12px;
     cursor: pointer;
 }
-
-/* Responsive Styles */
+ 
 @media (max-width: 768px) {
     .cart-row {
         flex-direction: column;

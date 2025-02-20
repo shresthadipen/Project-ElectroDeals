@@ -17,7 +17,7 @@
 <div class="body">
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="box-container">
 			<div class="box-element">
 				<div class="cart-row">
 					<div style="flex:1"><strong>Image</strong></div>
@@ -35,8 +35,9 @@
 						<p class="quantity">{{item.quantity}}</p>
 						<div class="quantity">
 							<img data-product="{{item.product.id}}" data-action="add"  class="chg-quantity update-cart" src="{% static  'img/arrow-up.png' %}">
-							<img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{% static  'img/arrow-down.png' %}">
+							<img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity  update-cart" src="{% static  'img/arrow-down.png' %}">
 						</div>
+							<img data-product="{{item.product.id}}" data-action="delete"  class="delete-btn update-cart" src="{% static  'img/delete.png' %}" alt="Delete">
 					</div>
 					<div style="flex:1"><p>Rs {{item.get_total|floatformat:2}}</p></div>
 				</div>
@@ -47,7 +48,7 @@
 
 			<div class="box-element">
 				
-				<a  class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Continue Shopping</a>
+				<a  class="btn continue-btn" href="{% url 'home' %}">&#x2190; Continue Shopping</a>
 		
 				<br>
 				<br>
@@ -56,7 +57,7 @@
 						<th><h3>Total Products:<strong>{{order.get_cart_items}}</strong></h5></th>
 						<th><h3>Total:<strong> Rs {{order.get_cart_total|floatformat:2}}</strong></h5></th>
 						<th>
-							<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+							<a id="checkout-btn" style="float:right; margin:5px;" class="btn checkout-btn" href="{% url 'checkout' %}">Checkout</a>
 						</th>
 					</tr>
 				</table>
@@ -70,4 +71,18 @@
 
 {% block extra_js %} 
 <script src="{% static 'js/add_to_cart.js' %}"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+  let checkoutBtn = document.getElementById("checkout-btn");
+  let totalProducts = parseInt("{{ order.get_cart_items }}");
+
+  checkoutBtn.addEventListener("click", function (event) {
+    if (totalProducts === 0) {
+      event.preventDefault(); 
+      alert("No items in the cart!");
+    }
+  });
+});
+
+</script>
 {% endblock %}

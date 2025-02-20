@@ -130,6 +130,9 @@ def updateItem(request):
                 if orderItem.quantity <= 0:
                     orderItem.delete()
 
+                if action == 'delete':
+                    orderItem.delete()
+
                 return JsonResponse({'message': 'Item updated successfully', 'quantity': orderItem.quantity}, safe=False)
 
             return JsonResponse({'error': 'User not authenticated'}, status=401)
