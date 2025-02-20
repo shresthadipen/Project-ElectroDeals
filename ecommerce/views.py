@@ -8,7 +8,7 @@ import json
 def home(request):
     brands = Brand.get_all_brand()[:10]
     category = Category.get_all_category()
-    products = Product.get_all_product()[:7]
+    products = Product.objects.all().order_by('-id')[:7]  
     cartItem = cart_items(request)
 
     return render(
@@ -21,6 +21,7 @@ def home(request):
             "cartItems": cartItem["cartItems"],
         },
     )
+
 
 
 def product(request, product_id):
