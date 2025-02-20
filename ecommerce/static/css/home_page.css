@@ -262,7 +262,6 @@ hr.weak-line {
 }
 
 
-/* Latest Product Section  */
 .related-products-home {
     text-align: center;
     padding: 20px;
@@ -337,5 +336,5 @@ hr.weak-line {
 }
 
 .related-products-home .product-card .add-to-cart-btn:hover {
-    background-color:  #5e5a52; /* Darker blue on hover */
+    background-color:  #5e5a52;
 }

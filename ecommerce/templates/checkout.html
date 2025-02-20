@@ -22,7 +22,7 @@
             <hr class="hr-line">
 
             {% if request.session.buy_now_product %}
-                <!-- Show only "Buy Now" product -->
+                <!-- Show only Buy Now product -->
                 <div class="cart-row">
                     <div><img class="row-image" src="{{ request.session.buy_now_product.image }}" alt="{{ request.session.buy_now_product.name }}"></div>
                     <div><p>{{ request.session.buy_now_product.name }}</p></div>

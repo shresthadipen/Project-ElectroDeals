@@ -99,7 +99,6 @@
     font-weight: bold;
 }
 
-/* Add to Cart Button Styles */
 .product-list-container .product-item .add-to-cart-btn {
     background-color: #7e7a72; 
     font-weight: bold;
@@ -115,6 +114,6 @@
 }
 
 .product-list-container .product-item .add-to-cart-btn:hover {
-    background-color: #5e5a52; /* Darker shade for hover */
+    background-color: #5e5a52; 
 }
 
