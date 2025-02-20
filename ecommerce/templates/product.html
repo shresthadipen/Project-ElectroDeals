@@ -32,11 +32,10 @@
                     </ul>
                 </div>
 
-                <div class="quantity">
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" id="quantity" value="1" min="1">
-                </div>
-                <a data-product="{{ product.id }}" data-action="add" class="btn-add update-cart">Add to Cart</a>
+                
+                <button data-product="{{ product.id }}" data-action="add" class="btn-add update-cart">
+                    Add to Cart
+                </button>
                 <a href="#" class="btn-buy">Buy Now</a>
                 
             </div>
