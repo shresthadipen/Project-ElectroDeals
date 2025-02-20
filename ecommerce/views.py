@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Brand, Category, Product, Order, OrderItem, Customer, ShippingAddress
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -159,3 +159,16 @@ def get_customer(request):
         customer, created = Customer.objects.get_or_create(user=request.user)
         return customer
     return None
+
+
+def buy_now(request, product_id):
+    product = Product.objects.get(id=product_id)
+    
+    request.session['buy_now_product'] = {
+        'id': product.id,
+        'name': product.name,
+        'price': product.price,
+        'image': product.image.url
+    }
+    
+    return redirect('checkout')
