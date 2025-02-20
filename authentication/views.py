@@ -44,7 +44,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             uname = user.username
-            return render(request, "home_page.html", {'uname' : uname})
+            return redirect('home')
 
         else:
             messages.error(request, "Invalid Username or Password")
