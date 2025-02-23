@@ -176,8 +176,6 @@ def buy_now(request, product_id):
     return redirect('checkout')
 
 
-<<<<<<< HEAD
-=======
 def search_products(request):
     query = request.GET.get('query', '').strip()  
     
@@ -189,7 +187,6 @@ def search_products(request):
         return JsonResponse({"suggestions": results})
     
     return JsonResponse({"suggestions": []})
->>>>>>> 552dea05ff3c91792d910b47f2e96a89dd8bfd8b
 
 @login_required
 def order_history(request):
@@ -251,3 +248,8 @@ def process_order(request):
         
     
     return redirect('checkout')
+
+
+def product_detail(request):
+    product = get_object_or_404(Product, name="S25 Ultra")  
+    return render(request, 'product_detail.html', {'product': product})

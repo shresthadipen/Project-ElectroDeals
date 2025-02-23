@@ -16,9 +16,9 @@
 {% block content %}
         <main class="main-section">
             <div class="text-content">
-                <h1>SAMSUNG</h1>
-                <h2 class="decleration">S25 ULTRA</h2>
-                <p>The Samsung Galaxy S25 Ultra features a stunning 6.9-inch Dynamic AMOLED 2X display with a 120Hz refresh rate and a powerful Snapdragon 8 Elite processor. Its advanced quad-camera system, including a 200MP main sensor, ensures top-tier photography and videography.</p>
+                <h1>{{ product.brand.name }}</h1>  <!-- Brand Name -->
+                <h2 class="declaration">{{ product.name }}</h2>  <!-- Product Name -->
+                <p>{{ product.description }}</p> 
                 <div class="buttons">
                 <a href="#" class="learn-btn">Learn more</a>
                 <a href="#" class="buy-btn">Buy Now</a>
