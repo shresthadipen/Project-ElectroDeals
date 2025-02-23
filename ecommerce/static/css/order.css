@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f5ef;
+    margin: 0;
+    padding: 0;
+}
+
+.order-history-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.order-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.order-history-table th, .order-history-table td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.order-history-table th {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.order-history-table td {
+    border-top: 1px solid #ddd;
+}
+
+.order-row:hover {
+    background-color: #f9f9f9;
+}
+
+.order-id, .transaction-id, .date-ordered, .total-items, .total-price, .payment-method, .order-status, .delivery-status {
+    text-align: center;
+}
+
+.order-items ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.order-items li {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.status-completed {
+    color: green;
+}
+
+.status-pending {
+    color: red;
+}
+
+.status-delivered {
+    color: green;
+}
+
+.status-in-progress {
+    color: red;
+}
+
+@media (max-width: 768px) {
+    .order-history-table th, .order-history-table td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}

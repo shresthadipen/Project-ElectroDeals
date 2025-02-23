@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Order History
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/order.css' %}">
+{% endblock %}
+
+<script type="text/javascript">
+    var user = "{{request.user}}";
+</script>
+
+
+{% block content %}
+<div class="order-history-container">
+    <table class="order-history-table">
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Date Ordered</th>
+                <th>Total Items</th>
+                <th>Total Price (Rs)</th>
+                <th>Payment Method</th>
+                <th>Status</th>
+                <th>Delivery</th>
+                <th>Items</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr class="order-row">
+                <td class="transaction-id">{{ order.transaction_id }}</td>
+                <td class="date-ordered">{{ order.date_ordered }}</td>
+                <td class="total-items">{{ order.get_cart_items }}</td>
+                <td class="total-price">{{ order.get_cart_total|floatformat:2 }}</td>
+                <td class="payment-method">{{ order.payment_method }}</td>
+                <td class="order-status">
+                    {% if order.complete %}
+                        <span class="status-completed">Completed</span>
+                    {% else %}
+                        <span class="status-pending">Pending</span>
+                    {% endif %}
+                </td>
+                <td class="delivery-status">
+                    {% if order.delivered %}
+                        <span class="status-delivered">Delivered</span>
+                    {% else %}
+                        <span class="status-in-progress">In Progress</span>
+                    {% endif %}
+                </td>
+                <td class="order-items">
+                    <ul>
+                        {% for item in order.orderitem_set.all %}
+                            <li>{{ item.product.name }} (x{{ item.quantity }}) - Rs {{ item.get_total|floatformat:2 }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

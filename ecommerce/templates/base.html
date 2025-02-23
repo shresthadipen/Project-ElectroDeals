@@ -25,7 +25,10 @@
     <script type="text/javascript">
       var user = "{{request.user}}";
     </script>
-    {% block extra_css %} {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
   </head>
   <body>
     <header class="navbar">
@@ -53,7 +56,8 @@
           <img src="{% static 'img/user.png' %}" alt="user-icon" class="icon">
           
           <div class="dropdown-content">
-            <a href="#">{{ user.username }}</a>
+            <a href="{% url 'profile' %}">{{ user.username }}</a>
+            <a href="{% url 'order_history' %}">Orders</a>
             <a href="/logout/">Logout</a>
           </div>
         </div>
