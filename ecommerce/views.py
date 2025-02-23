@@ -176,7 +176,6 @@ def buy_now(request, product_id):
     return redirect('checkout')
 
 
-<<<<<<< HEAD
 def search_products(request):
     query = request.GET.get('query', '').strip()  
     
@@ -188,7 +187,6 @@ def search_products(request):
         return JsonResponse({"suggestions": results})
     
     return JsonResponse({"suggestions": []})
-=======
 
 @login_required
 def order_history(request):
@@ -250,4 +248,3 @@ def process_order(request):
         
     
     return redirect('checkout')
->>>>>>> 203f78e666da1d930ed0d34d3b17f2cd616d2573
