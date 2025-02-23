@@ -1,7 +1,10 @@
+from django.utils import timezone
+from datetime import timedelta
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Brand, Category, Product, Order, OrderItem, Customer, ShippingAddress
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt 
+from django.contrib.auth.decorators import login_required
 import json
 
 
@@ -149,7 +152,6 @@ def cart_items(request):
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         cartItems = order.get_cart_items
     else:
-        # For anonymous users, we can store the cart items in the session
         cartItems = request.session.get("cart_items", 0)
     return {"cartItems": cartItems}
 
@@ -174,6 +176,7 @@ def buy_now(request, product_id):
     return redirect('checkout')
 
 
+<<<<<<< HEAD
 def search_products(request):
     query = request.GET.get('query', '').strip()  
     
@@ -185,3 +188,66 @@ def search_products(request):
         return JsonResponse({"suggestions": results})
     
     return JsonResponse({"suggestions": []})
+=======
+
+@login_required
+def order_history(request):
+    customer = request.user.customer
+    orders = Order.objects.filter(customer=customer, complete=True).order_by("-date_ordered")
+    cartItem = cart_items(request)  
+
+    return render(request, "order.html", {"orders": orders, "cartItems": cartItem.get("cartItems", 0)})
+
+
+def payment(request):
+    cartItem = cart_items(request)
+    return render(request, "payment.html", {"cartItems": cartItem["cartItems"]})
+
+def profile(request):
+    cartItem = cart_items(request)
+    return render(request, "profile.html", {"cartItems": cartItem["cartItems"]})
+
+def process_order(request):
+    if request.method == 'POST':
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+        order.transaction_id = Order.get_next_transaction_id()  
+
+        name = request.POST['name']
+        address = request.POST['address']
+        city = request.POST['city']
+        zip_code = request.POST['zip']
+        phone = request.POST['phone']
+        payment_method = request.POST['payment_method']
+
+        shipping_address = ShippingAddress(
+            customer=customer,
+            order=order,
+            address=address,
+            city=city,
+            state='',  
+            zipcode=zip_code
+        )
+        shipping_address.save()
+
+        order.payment_method = payment_method
+        if payment_method == "Cash on Delivery":
+            order.complete = True 
+            order.delivered = False  
+            order.save()
+            return redirect('order_history') 
+        elif payment_method == "Esewa":
+            order.complete = True 
+            order.delivered = False  
+            order.save()
+            return redirect('order_history')
+            # return redirect('payment')
+        else:
+            order.complete = True  
+            order.delivered = False 
+            return redirect('order_history') 
+        
+    
+    return redirect('checkout')
+>>>>>>> 203f78e666da1d930ed0d34d3b17f2cd616d2573
