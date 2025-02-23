@@ -25,12 +25,22 @@
                 <div class="product-title">{{ product.name }}</div>
                 <div class="price"><strong>Rs {{ product.price }}</strong></div>
                 <div class="specs">
-                    <ul>
-                        <li><strong>Brand :</strong> <span> {{ product.brand.name }}</span></li>
-                        <li><strong>Category :</strong> <span>{{ product.category.name }}</span></li>
-                        <li><strong>Description :</strong> <span>{{ product.description }}</span></li>
-                    </ul>
+                    <table>
+                        <tr>
+                            <td style="padding-right: 10px;"><strong>Brand :</strong></td>
+                            <td>{{ product.brand.name }}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 10px;"><strong>Category :</strong></td>
+                            <td>{{ product.category.name }}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 10px;"><strong>Description :</strong></td>
+                            <td>{{ product.description }}</td>
+                        </tr>
+                    </table>
                 </div>
+                
 
                 
                 <button data-product="{{ product.id }}" data-action="add" class="btn-add update-cart">

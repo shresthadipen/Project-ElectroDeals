@@ -25,6 +25,8 @@
     <script type="text/javascript">
       var user = "{{request.user}}";
     </script>
+    <script src="{% static 'js/search.js' %}"></script>
+
     {% block extra_css %} {% endblock %}
   </head>
   <body>
@@ -40,9 +42,14 @@
         </ul>
       </nav>
       <div class="icons">
-        <a href="#">
-          <img src="{% static 'img/search.png' %}" alt="search-icon" class="icon">
-        </a>
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search..." autocomplete="on" onkeyup="showSuggestions()" />
+          <button type="submit" class="search-btn">
+              <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+          </button>
+          <div class="suggestions" id="suggestions-list"></div>
+      </div>
+      
         <a href="{% url 'cart' %}" class="cart">
           <img src="{% static 'img/cart.png' %}" alt="cart-icon" class="icon">
           <span class="cart-counter">{{ cartItems }}</span>
@@ -129,6 +136,7 @@
       </div>
     </footer>
     <script src="{% static 'js/script.js' %}"></script>
+
     {% block extra_js %} {% endblock %}
   </body>
 </html>

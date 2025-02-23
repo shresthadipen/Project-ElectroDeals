@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from .views import home, product, base, about, product_list, updateItem, cart, checkout, buy_now
+from .views import home, product, base, about, product_list, updateItem, cart, checkout, buy_now,search_products
 
 urlpatterns = [
     path('', home, name='home'),
@@ -12,4 +12,5 @@ urlpatterns = [
     path('cart/', cart, name='cart'),
     path('checkout/', checkout, name="checkout"),
     path('buy-now/<int:product_id>/', buy_now, name='buy_now'),
+    path('search/', search_products, name='search_products'),
 ]
