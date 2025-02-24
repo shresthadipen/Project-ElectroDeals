@@ -197,8 +197,8 @@ def payment(request):
 def profile(request):
     username = request.user.username
     email = request.user.email
-    return render(request, "profile.html", {"username": username, "email": email})
-
+    cartItem = cart_items(request)
+    return render(request, "profile.html", {"username": username, "email": email, 'cartItems': cartItem["cartItems"]})
 
 
 def process_order(request):
@@ -251,13 +251,16 @@ def change_password(request):
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             user = form.save()
-            update_session_auth_hash(request, user)  # Keeps the user logged in after password change
+            update_session_auth_hash(request, user)  
             messages.success(request, 'Your password has been successfully updated!')
-            return redirect('profile')  # Redirect to the profile page after password change
+            return redirect('profile') 
     else:
         form = PasswordChangeForm(request.user)
+
+    cartItem = cart_items(request)
     
-    return render(request, 'change_password.html', {'form': form})
+    
+    return render(request, 'change_password.html', {'form': form, 'cartItems': cartItem["cartItems"]})
 
 def search_products(request):
     query = request.GET.get('query', '')
