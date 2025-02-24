@@ -1,8 +1,23 @@
 {% extends 'base.html' %}
-{% block title %}Order History{% endblock %}
-<script type="text/javascript">
-    var user = "{{request.user}}";
-  </script>
-{% block content %}
+{% load static %} 
+{% block title %}Profile{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+<script type="text/javascript">
+    var user = "{{ request.user.username }}";
+</script>
+
+{% block content %}
+<div class="profile-container">
+    <h2>Profile Information</h2>
+    <div class="profile-info">
+        <p><strong>Username:</strong> {{ username }}</p>
+        <p><strong>Email:</strong> {{ email }}</p>
+    </div>
+    <div class="change-password">
+        <a href="{% url 'change_password' %}" class="btn">Change Password</a>
+    </div>
+</div>
 {% endblock %}

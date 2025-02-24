@@ -5,7 +5,11 @@ from .models import Brand, Category, Product, Order, OrderItem, Customer, Shippi
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
 import json
+
 
 
 def home(request):
@@ -13,7 +17,7 @@ def home(request):
     category = Category.get_all_category()
     products = Product.objects.all().order_by('-id')[:7]  
     cartItem = cart_items(request)
-
+    product = Product.objects.filter(name='Galaxy S24 Ultra').first()
     return render(
         request,
         "home_page.html",
@@ -22,6 +26,7 @@ def home(request):
             "category": category,
             "products": products,
             "cartItems": cartItem["cartItems"],
+            'product': product,
         },
     )
 
@@ -202,8 +207,11 @@ def payment(request):
     return render(request, "payment.html", {"cartItems": cartItem["cartItems"]})
 
 def profile(request):
-    cartItem = cart_items(request)
-    return render(request, "profile.html", {"cartItems": cartItem["cartItems"]})
+    username = request.user.username
+    email = request.user.email
+    return render(request, "profile.html", {"username": username, "email": email})
+
+
 
 def process_order(request):
     if request.method == 'POST':
@@ -250,6 +258,15 @@ def process_order(request):
     return redirect('checkout')
 
 
-def product_detail(request):
-    product = get_object_or_404(Product, name="S25 Ultra")  
-    return render(request, 'product_detail.html', {'product': product})
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Keeps the user logged in after password change
+            messages.success(request, 'Your password has been successfully updated!')
+            return redirect('profile')  # Redirect to the profile page after password change
+    else:
+        form = PasswordChangeForm(request.user)
+    
+    return render(request, 'change_password.html', {'form': form})

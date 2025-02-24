@@ -32,8 +32,8 @@
   <body>
     <header class="navbar">
       <a href="{% url 'home' %}" style="text-decoration: none; color: #7e7a72"
-        ><div class="logo">ElectroDeals</div></a
-      >
+        ><div class="logo">ElectroDeals</div>
+      </a>
       <nav>
         <ul>
           <li><a href="{% url 'home' %}">Home</a></li>
@@ -60,7 +60,7 @@
           <img src="{% static 'img/user.png' %}" alt="user-icon" class="icon">
           
           <div class="dropdown-content">
-              <a href="{% url 'profile' %}">{{ user.username }}</a>
+              <a href="{% url 'profile' %}">{{ user.username|capfirst }}</a>
               <a href="{% url 'order_history' %}">Orders</a>
               <a href="/logout/">Logout</a>
           </div>
@@ -77,8 +77,10 @@
           
       </div>
     </header>
-
-    {% block content %} {% endblock %}
+    <main>
+      {% block content %} {% endblock %}
+    </main>
+    
 
     <footer>
       <div class="container">

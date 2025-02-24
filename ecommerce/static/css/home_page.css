@@ -30,10 +30,11 @@ hr.weak-line {
     align-items: center;
     padding: 200px 60px 200px 60px;
     background-color: rgb(221, 216, 211)
+    
 }
 
 .text-content {
-    max-width: 750px;
+    width: 30%;
 }
 
 .text-content h1 {
@@ -43,7 +44,7 @@ hr.weak-line {
 }
 
 .text-content h2 {
-    font-size: 110px;
+    font-size: 60px;
     color: #5d564e;
 }
 
@@ -90,9 +91,13 @@ hr.weak-line {
     margin-right: 20px;
 }
 
+.image-content{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .image-content img {
-    max-width: 100%;
-    border-radius: 10px;
+    width: 70%;
 }
 
 .front-brands{
