@@ -23,28 +23,20 @@ main {
   flex: 1; /* Pushes footer to the bottom */
 }
 
-footer {
-  background-color: #353535;
-  color: #fff;
-  padding: 40px 0;
-  margin-top: auto; /* Ensures footer stays at the bottom */
-  width: 100%;
-}
 
 
 
 .icon {
-  width: 25px; 
-  height: 25px;
-  margin-right: 20px;
+  width: 24px; 
+  height: 24px;
   filter: invert(40%) sepia(11%) saturate(280%) hue-rotate(15deg) brightness(85%) contrast(90%);
   
 }
 
-
 .cart {
   position: relative;
   display: inline-block;
+  margin-right: 10px ;
 }
 
 .fa-cart-shopping {
@@ -54,8 +46,8 @@ footer {
 
 .cart-counter {
   position: absolute;
-  top: 45%;
-  right: 2px;
+  top: 50%;
+  right: -15px;
   background-color: #7e7a72;
   color: white;
   border-radius: 50%;
@@ -131,13 +123,17 @@ footer {
 .navbar .icons {
   margin-left: 10px;
   font-size: 18px;
+  gap: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar .icons a {
   columns: #7e7a72;
 }
 
-.auth-btn a {
+.auth-btn-home a {
   text-decoration: none;
   padding: 10px 10px;
   font-size: 14px;
@@ -148,23 +144,23 @@ footer {
 
 .navbar nav ul li a:hover {
   transform: translateY(-10px);
-  color: #5a544c; /* Slightly darker shade for hover effect */
+  color: #5a544c;
 }
 
-.auth-btn {
+.auth-btn-home {
   background: transparent;
   border: 1px solid #7e7a72;
   border-radius: 5px;
-  height: 30px;
-  margin-right: 20px;
+  height: 35px;
+  width: 80px;
 }
 
 footer {
   background-color: #353535;
   color: #fff;
   padding: 40px 0;
-  /* width: 100%; */
   margin-top: auto;
+  width: 100%;
 }
 
 footer .container {
@@ -273,100 +269,42 @@ footer p {
 
 
 
-
 .search-box {
-  position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  border: 2px solid #907c72;
-  border-radius: 20px;
-  background: #f7f5ef;
   width: 300px;
-  overflow: hidden;
+  height: 35px;
+  background-color: #f1f1f1;
+  border-radius: 25px;
+  padding: 5px;
 }
 
-.search-box input {
-  flex: 1;
-  padding: 10px;
-  padding-right: 40px; /* Space for the icon */
+.search-box form {
+  display: flex;
+  width: 100%;
+}
+
+#search-input {
+  flex-grow: 1;
   border: none;
   outline: none;
-  background: transparent;
-  font-size: 16px;
-}
-
-.search-box .search-icon {
-  position: absolute;
-  right: 10px;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+  font-size: 14px;
 }
 
 .search-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
-}
-
-/* Suggestions Box */
-.suggestions {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: white;
-  border: 1px solid #907c72;
-  border-top: none;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: none; /* Hidden by default */
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 1000;
-  border-radius: 0 0 10px 10px; /* Rounded corners at the bottom */
-}
-
-/* Style for each suggestion */
-.suggestions .suggestion-item {
+  padding: 5px;
   display: flex;
   align-items: center;
-  padding: 10px;
-  cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  justify-content: center;
 }
 
-.suggestions .suggestion-item:hover {
-  background: #f7f5ef;
-}
-
-/* Product Image */
-.suggestions .suggestion-item img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-/* Product Name & Price */
-.suggestions .suggestion-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.suggestions .suggestion-name {
-  font-size: 14px;
-  font-weight: bold;
-  color: #333;
-}
-
-.suggestions .suggestion-price {
-  font-size: 12px;
-  color: #907c72;
+.search-icon {
+  width: 18px;
+  height: 18px;
 }

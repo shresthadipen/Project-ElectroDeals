@@ -258,3 +258,15 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
     
     return render(request, 'change_password.html', {'form': form})
+
+def search_products(request):
+    query = request.GET.get('query', '')
+    products = Product.objects.filter(name__icontains=query) | Product.objects.filter(brand__name__icontains=query) | Product.objects.filter(category__name__icontains=query)
+    products = products.distinct()  # To ensure we don't have duplicate results
+    
+    cartItem = cart_items(request)
+
+    return render(request, 'search.html', {
+        'products': products,
+        'cartItems': cartItem["cartItems"]
+    })
