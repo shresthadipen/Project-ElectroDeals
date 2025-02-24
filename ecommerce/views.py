@@ -17,7 +17,7 @@ def home(request):
     category = Category.get_all_category()
     products = Product.objects.all().order_by('-id')[:7]  
     cartItem = cart_items(request)
-    product = Product.objects.filter(name='Galaxy S24 Ultra').first()
+    product = Product.objects.filter(name='Galaxy s25 Ultra').first()
     return render(
         request,
         "home_page.html",
