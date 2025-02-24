@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% load static %} 
+{% load static %}
 {% block title %}
-    ElectroDeals
-{% endblock %} 
+ElectroDeals
+{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
@@ -10,25 +10,31 @@
 
 <script type="text/javascript">
     var user = "{{request.user}}";
-  </script>
+</script>
 
 
 {% block content %}
-        <main class="main-section">
-            <div class="text-content">
-                <h1>{{ product.brand }}</h1>  
-                <h2 class="declaration">{{ product.name }}</h2>  
-                <p>{{ product.description }}</p>
-                <div class="buttons">
-                    <a href="{% url 'product' product.id %}" class="learn-btn">Learn more</a>
-                    <a href="{% url 'buy_now' product.id %}" class="buy-btn">Buy Now</a>
-                </div>
-                
+<main class="main-section">
+    <div class="text-content">
+        <h1>{{ product.brand }}</h1>
+        <h2 class="declaration">{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <div class="buttons">
+            <a href="{% url 'product' product.id %}" class="learn-btn">Learn more</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'buy_now' product.id %}" class="buy-btn">Buy Now</a>
+            {% else %}
+            <a href="{% url 'login' %}?next={{ request.path }}" class="buy-btn alert-buy">
+                Buy Now
+            </a>
+            {% endif %}
         </div>
-        <div class="image-content">
-            <img src="{% static 'img/samsung.png' %}" alt="Product">
-        </div>
-    </main>
+
+    </div>
+    <div class="image-content">
+        <img src="{% static 'img/samsung.png' %}" alt="Product">
+    </div>
+</main>
 <br>
 <div class="front">
     <section class="front-brands">
@@ -37,7 +43,8 @@
             <button class="slider-btn prev-btn" onclick="goPrev()">&#10094;</button>
             <div class="brands">
                 {% for brand in brand %}
-                <a href="{% url 'product_list' %}?brand={{ brand.name }}" class="brand-link" style="text-decoration: none;">
+                <a href="{% url 'product_list' %}?brand={{ brand.name }}" class="brand-link"
+                    style="text-decoration: none;">
                     <div class="brand-container">
                         <div class="brand">
                             <div class="brand-icon" style="background-color: white;">
@@ -52,12 +59,13 @@
             <button class="slider-btn next-btn" onclick="goNext()">&#10095;</button>
         </div>
     </section>
-    
+
     <section class="front-categories">
         <h2>Categories</h2>
         <div class="categories">
             {% for category in category %}
-            <a href="{% url 'product_list' %}?category={{ category.name }}" class="category-link" style="text-decoration: none;">
+            <a href="{% url 'product_list' %}?category={{ category.name }}" class="category-link"
+                style="text-decoration: none;">
                 <div class="category-container">
                     <div class="category">
                         <div class="category-icon" style="background-color: #eae9e5;">
@@ -70,31 +78,43 @@
             {% endfor %}
         </div>
     </section>
-    
-    
+
+
 
     <div class="related-products-home">
         <p>Latest Products</p>
         <div class="products-grid">
             {% for product in products %}
             <div class="product-card">
-                    <a href="{% url 'product' product_id=product.id %}" class="product-link" style="text-decoration: none;">
-                    <div class="product-image-placeholder"><img src="{{ product.image.url }}" alt="{{ product.name }}"></div>
+                <a href="{% url 'product' product_id=product.id %}" class="product-link" style="text-decoration: none;">
+                    <div class="product-image-placeholder"><img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </div>
                     <div class="product-title">{{ product.name }}</div>
                     <div class="price">Rs {{ product.price }}</div>
-                    </a>
-                    <button data-product={{product.id}} data-action="add" class="add-to-cart-btn update-cart">Add to Cart</button>
-                </div>
+                </a>
+                {% if user.is_authenticated %}
+                <button data-product="{{ product.id }}" data-action="add" class="add-to-cart-btn update-cart" style="text-decoration: none;">
+                    Add to Cart
+                </button>
+                {% else %}
+                <a class="add-to-cart-btn alert-cart" style="text-decoration: none;">
+                    Add to Cart
+                </a>
+                {% endif %}
+
+            </div>
             {% endfor %}
         </div>
     </div>
-    
+
 </div>
 </div>
 {% endblock %}
 
-{% block extra_js %} 
+{% block extra_js %}
 <script src="{% static 'js/slide.js' %}"></script>
 <script src="{% static 'js/add_to_cart.js' %}"></script>
+<script src="{% static 'js/auth.js' %}"></script>
+
 
 {% endblock %}

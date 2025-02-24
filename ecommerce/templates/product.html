@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
-{% load static %} 
+{% load static %}
 
 {% block title %}
-    Product Page
-{% endblock %}  
+Product Page
+{%endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/product.css' %}">
+<link rel="stylesheet" href="{% static 'css/product.css' %}" />
 {% endblock %}
 <script type="text/javascript">
     var user = "{{request.user}}";
-  </script>
+</script>
 
-{% block content %} 
+{% block content %}
 
 <main class="main">
     <div class="product-container-main">
         <div class="product-page">
             <div class="product-image">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" />
             </div>
 
             <div class="product-details">
@@ -27,27 +27,40 @@
                 <div class="specs">
                     <table>
                         <tr>
-                            <td style="padding-right: 10px;"><strong>Brand :</strong></td>
+                            <td style="padding-right: 10px"><strong>Brand :</strong></td>
                             <td>{{ product.brand.name }}</td>
                         </tr>
                         <tr>
-                            <td style="padding-right: 10px;"><strong>Category :</strong></td>
+                            <td style="padding-right: 10px"><strong>Category :</strong></td>
                             <td>{{ product.category.name }}</td>
                         </tr>
                         <tr>
-                            <td style="padding-right: 10px;"><strong>Description :</strong></td>
+                            <td style="padding-right: 10px">
+                                <strong>Description :</strong>
+                            </td>
                             <td>{{ product.description }}</td>
                         </tr>
                     </table>
                 </div>
-                
 
-                
-                <button data-product="{{ product.id }}" data-action="add" class="btn-add update-cart">
+                {% if user.is_authenticated %}
+                <button data-product="{{ product.id }}" data-action="add" class="btn-add update-cart" style="cursor: pointer;">
                     Add to Cart
                 </button>
-                <a href="{% url 'buy_now' product.id %}" class="btn-buy">Buy Now</a>
-                
+                {% else %}
+                <a class="btn-add alert-cart" style="cursor: pointer;">
+                    Add to Cart
+                </a>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                <a class="btn-buy alert-buy" style="cursor: pointer;">Buy Now</a>
+                {% else %}
+                <a class="btn-buy alert-buy" style="cursor: pointer;">
+                    Buy Now
+                </a>
+                {% endif %}
+
             </div>
         </div>
     </div>
@@ -58,9 +71,10 @@
     <div class="products-grid">
         {% for related_product in related_products %}
         <div class="product-card">
-            <a href="{% url 'product' product_id=related_product.id %}" class="product-link" style="text-decoration: none;">
+            <a href="{% url 'product' product_id=related_product.id %}" class="product-link"
+                style="text-decoration: none">
                 <div class="product-image-placeholder">
-                    <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}">
+                    <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}" />
                 </div>
                 <div class="product-title">{{ related_product.name }}</div>
                 <div class="price">Rs {{ related_product.price }}</div>
@@ -73,11 +87,8 @@
     </div>
 </div>
 
-
-     
-{% endblock %}
-
-{% block extra_js %} 
+{% endblock %} {% block extra_js %}
 <script src="{% static 'js/add_to_cart.js' %}"></script>
+<script src="{% static 'js/auth.js' %}"></script>
 
 {% endblock %}

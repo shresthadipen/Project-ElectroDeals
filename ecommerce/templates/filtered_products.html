@@ -51,9 +51,15 @@
                     <div class="product-title">{{ product.name }}</div>
                     <div class="price">Rs {{ product.price }}</div>
                 </a>
-                <button data-product="{{ product.id }}" data-action="add" class="add-to-cart-btn update-cart">
+
+                {% if user.is_authenticated %}
+                <button data-product="{{ product.id }}" data-action="add" class="add-to-cart-btn update-cart" style="text-decoration: none;">
                     Add to Cart
                 </button>
+                {% else %}
+                <button class="add-to-cart-btn alert-cart">Add to cart</button>
+                {% endif %}
+
             </div>
             {% empty %}
                 <p>No products found</p>
@@ -61,12 +67,12 @@
         </div>
     </div>
     
-    
-</div>
 
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script src="{% static 'js/add_to_cart.js' %}"></script>
+<script src="{% static 'js/auth.js' %}"></script>
+
 {% endblock %}

@@ -11,13 +11,17 @@
 
 {% block content %}
 <div class="profile-container">
-    <h2>Profile Information</h2>
-    <div class="profile-info">
-        <p><strong>Username:</strong> {{ username }}</p>
-        <p><strong>Email:</strong> {{ email }}</p>
-    </div>
-    <div class="change-password">
-        <a href="{% url 'change_password' %}" class="btn">Change Password</a>
+    <div class="profile-header">
+        <div class="profile-image">
+            <img src="{% static 'img/user.jpeg' %}" alt="Profile Picture">
+        </div>
+        <div class="profile-info">
+            <h2><strong>{{ username }}</strong></h2>
+            <p>Email: {{ email }}</p>
+            <p>Phone: 9812345678</p>
+            <p>Address: 123 Main Street, Kathmandu, Nepal</p>
+            <a href="{% url 'change_password' %}" class="btn">Change Password</a>
+        </div>
     </div>
 </div>
 {% endblock %}
