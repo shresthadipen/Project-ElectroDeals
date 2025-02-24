@@ -181,18 +181,6 @@ def buy_now(request, product_id):
     return redirect('checkout')
 
 
-def search_products(request):
-    query = request.GET.get('query', '').strip()  
-    
-    if query:
-        products = Product.objects.filter(name__icontains=query)[:5]  
-        results = [
-            {"name": p.name, "price": p.price, "image": p.image.url} for p in products
-        ]
-        return JsonResponse({"suggestions": results})
-    
-    return JsonResponse({"suggestions": []})
-
 @login_required
 def order_history(request):
     customer = request.user.customer
