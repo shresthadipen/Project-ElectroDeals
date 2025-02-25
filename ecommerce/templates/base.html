@@ -60,9 +60,9 @@
           <img src="{% static 'img/user.png' %}" alt="user-icon" class="icon">
           
           <div class="dropdown-content">
-              <a href="{% url 'profile' %}">{{ user.username|capfirst }}</a>
-              <a href="{% url 'order_history' %}">Orders</a>
-              <a href="/logout/">Logout</a>
+              <a href="{% url 'profile' %}" style="text-decoration: none;">{{ user.username|capfirst }}</a>
+              <a href="{% url 'order_history' %}" style="text-decoration: none;">Orders</a>
+              <a href="/logout/" style="text-decoration: none;">Logout</a>
           </div>
         </div>
       

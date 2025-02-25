@@ -44,7 +44,8 @@ Product Page
                 </div>
 
                 {% if user.is_authenticated %}
-                <button data-product="{{ product.id }}" data-action="add" class="btn-add update-cart" style="cursor: pointer;">
+                <button data-product="{{ product.id }}" data-action="add" class="btn-add update-cart"
+                    style="cursor: pointer;">
                     Add to Cart
                 </button>
                 {% else %}
@@ -54,7 +55,7 @@ Product Page
                 {% endif %}
 
                 {% if user.is_authenticated %}
-                <a class="btn-buy alert-buy" style="cursor: pointer;">Buy Now</a>
+                <a href="{% url 'buy_now' product.id %}" class="btn-buy">Buy Now</a>
                 {% else %}
                 <a class="btn-buy alert-buy" style="cursor: pointer;">
                     Buy Now
