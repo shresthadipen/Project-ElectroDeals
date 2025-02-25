@@ -142,8 +142,8 @@ main {
 }
 
 
-.navbar nav ul li a:hover {
-  transform: translateY(-10px);
+.navbar nav ul li:hover {
+  transform: translateY(-3px);
   color: #5a544c;
 }
 

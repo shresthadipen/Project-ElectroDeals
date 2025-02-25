@@ -83,7 +83,7 @@ def product_list(request):
         },
     )
 
-
+@login_required
 def cart(request):
     customer = get_customer(request)
     if customer:
