@@ -190,10 +190,6 @@ def order_history(request):
     return render(request, "order.html", {"orders": orders, "cartItems": cartItem.get("cartItems", 0)})
 
 
-def payment(request):
-    cartItem = cart_items(request)
-    return render(request, "payment.html", {"cartItems": cartItem["cartItems"]})
-
 def profile(request):
     username = request.user.username
     email = request.user.email
