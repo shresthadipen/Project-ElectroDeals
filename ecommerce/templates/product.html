@@ -80,9 +80,16 @@ Product Page
                 <div class="product-title">{{ related_product.name }}</div>
                 <div class="price">Rs {{ related_product.price }}</div>
             </a>
-            <button data-product="{{ related_product.id }}" data-action="add" class="add-to-cart-btn update-cart">
-                Add to Cart
-            </button>
+
+            {% if user.is_authenticated %}
+                <button data-product="{{ product.id }}" data-action="add" class="add-to-cart-btn update-cart" style="text-decoration: none;">
+                    Add to Cart
+                </button>
+                {% else %}
+                <a class="add-to-cart-btn alert-cart" style="text-decoration: none;">
+                    Add to Cart
+                </a>
+                {% endif %}
         </div>
         {% endfor %}
     </div>

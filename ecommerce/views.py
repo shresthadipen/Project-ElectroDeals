@@ -233,6 +233,13 @@ def process_order(request):
             order.save()
             return redirect('order_history')
             # return redirect('payment')
+
+        elif payment_method == "Credit Card":
+            order.complete = True 
+            order.delivered = False  
+            order.save()
+            return redirect('order_history')
+        
         else:
             order.complete = True  
             order.delivered = False 
