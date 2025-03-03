@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Category, Product, Brand, Customer, Order, OrderItem, ShippingAddress
+from .models import Category, Product, Brand, Customer, Order, OrderItem, ShippingAddress,ContactUs
 
 class AdminProduct(admin.ModelAdmin):
-    list_display = ['id', 'name', 'price', 'category', 'brand', 'description']
+    list_display = ['id', 'name', 'price', 'category', 'brand', 'description', 'ram', 'storage', 'battery', 'processor', 'camera','stock',]
 
 class AdminBrand(admin.ModelAdmin):
     list_display = ['id', 'name', 'image']
@@ -17,6 +17,11 @@ class AdminOrder(admin.ModelAdmin):
 class AdminOrderItem(admin.ModelAdmin):
     list_display = ['product', 'order', 'quantity', 'date_added']
 
+class ContactUsAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "message")
+    
+
+admin.site.register(ContactUs, ContactUsAdmin)
 admin.site.register(Brand, AdminBrand)
 admin.site.register(Category)
 admin.site.register(Product, AdminProduct)

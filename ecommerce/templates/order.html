@@ -13,7 +13,6 @@ Order History
     var user = "{{request.user}}";
 </script>
 
-
 {% block content %}
 <div class="order-history-container">
     <table class="order-history-table">
@@ -27,6 +26,7 @@ Order History
                 <th>Status</th>
                 <th>Delivery</th>
                 <th>Items</th>
+                <th>Invoice</th>  <!-- New Column for Downloading Invoice -->
             </tr>
         </thead>
         <tbody>
@@ -57,6 +57,13 @@ Order History
                             <li>{{ item.product.name }} (x{{ item.quantity }}) - Rs {{ item.get_total|floatformat:2 }}</li>
                         {% endfor %}
                     </ul>
+                </td>
+                <td class="invoice-download">
+                    {% if order.complete %}
+                        <a href="{% url 'generate_bill' order.id %}" class="btn btn-primary" style="color: green; text-decoration: none;">Download</a>
+                    {% else %}
+                        <span class="no-invoice">-</span>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}

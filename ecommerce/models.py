@@ -28,19 +28,36 @@ class Category(models.Model):
     
 
 class Product(models.Model):
-    name = models.CharField(max_length = 50)
-    price = models.IntegerField(default = 0)
-    category = models.ForeignKey(Category, on_delete = models.CASCADE)
+    name = models.CharField(max_length=50)
+    price = models.IntegerField(default=0)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True)
-    description = models.CharField(max_length = 200, default = '')
+    description = models.CharField(max_length=400, default='')
     image = models.ImageField(upload_to='upload/product/')
+    display = models.CharField(max_length=50, null=True, blank=True)  
+    ram = models.CharField(max_length=50, null=True, blank=True)  
+    storage = models.CharField(max_length=50, null=True, blank=True) 
+    battery = models.CharField(max_length=50, null=True, blank=True)  
+    processor = models.CharField(max_length=100, null=True, blank=True) 
+    camera = models.CharField(max_length=100, null=True, blank=True)  
+    stock = models.PositiveIntegerField(null=True, blank=True)
 
     @staticmethod
     def get_all_product():
         return Product.objects.all()
-    
+
+    def get_stock_status(self):
+        if self.stock is None or self.stock == 0:
+            return "Out of Stock"
+        elif self.stock < 20:
+            return "Limited Stock"
+        else:
+            return "In Stock"
+
     def __str__(self):
         return self.name
+
+
     
 
 class Customer(models.Model):
@@ -118,3 +135,15 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return f"{self.address}, {self.city}, {self.state} - {self.zipcode}"
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=50, null=False)
+    email = models.EmailField(max_length=100, null=False)
+    message = models.TextField(null=False)
+
+    @classmethod
+    def get_all_contacts(cls):
+        return cls.objects.all()
+
+    def __str__(self):
+        return f"{self.name} ({self.email})"

@@ -60,4 +60,3 @@ function getToken(name) {
 }
 
 const csrftoken = getToken("csrftoken");
-

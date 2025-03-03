@@ -3,17 +3,17 @@
 
 {% block title %}
 Product Page
-{%endblock %}
+{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/product.css' %}" />
 {% endblock %}
+
 <script type="text/javascript">
-    var user = "{{request.user}}";
+    var user = "{{ request.user }}";
 </script>
 
 {% block content %}
-
 <main class="main">
     <div class="product-container-main">
         <div class="product-page">
@@ -24,23 +24,61 @@ Product Page
             <div class="product-details">
                 <div class="product-title">{{ product.name }}</div>
                 <div class="price"><strong>Rs {{ product.price }}</strong></div>
+                <span><strong>{{ product.get_stock_status }}</strong></span>
+                {% if product.stock > 1 %}
+                    <span><strong>{{ product.stock }}</strong></span>
+                {% endif %}
+
+
                 <div class="specs">
                     <table>
                         <tr>
-                            <td style="padding-right: 10px"><strong>Brand :</strong></td>
+                            <td style="padding-right: 10px"><strong>Brand</strong></td>
+                            <td style="text-align: center;">:</td>
                             <td>{{ product.brand.name }}</td>
                         </tr>
                         <tr>
-                            <td style="padding-right: 10px"><strong>Category :</strong></td>
+                            <td style="padding-right: 10px"><strong>Category</strong></td>
+                            <td style="text-align: center;">:</td>
                             <td>{{ product.category.name }}</td>
                         </tr>
                         <tr>
-                            <td style="padding-right: 10px">
-                                <strong>Description :</strong>
-                            </td>
+                            <td style="padding-right: 10px"><strong>Display</strong></td>
+                            <td style="text-align: center;">:</td>
+                            <td>{{ product.display }}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 10px"><strong>RAM</strong></td>
+                            <td style="text-align: center;">:</td>
+                            <td>{{ product.ram }}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 10px"><strong>Storage</strong></td>
+                            <td style="text-align: center;">:</td>
+                            <td>{{ product.storage }}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 10px"><strong>Battery</strong></td>
+                            <td style="text-align: center;">:</td>
+                            <td>{{ product.battery }}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 10px"><strong>Processor</strong></td>
+                            <td style="text-align: center;">:</td>
+                            <td>{{ product.processor }}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 10px"><strong>Camera</strong></td>
+                            <td style="text-align: center;">:</td>
+                            <td>{{ product.camera }}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 10px;"><strong>Description</strong></td>
+                            <td style="text-align: center;">:</td>
                             <td>{{ product.description }}</td>
                         </tr>
                     </table>
+                    
                 </div>
 
                 {% if user.is_authenticated %}
@@ -61,7 +99,6 @@ Product Page
                     Buy Now
                 </a>
                 {% endif %}
-
             </div>
         </div>
     </div>
@@ -79,10 +116,11 @@ Product Page
                 </div>
                 <div class="product-title">{{ related_product.name }}</div>
                 <div class="price">Rs {{ related_product.price }}</div>
+                <div><strong>{{ related_product.get_stock_status }}</strong></div>
             </a>
 
             {% if user.is_authenticated %}
-                <button data-product="{{ product.id }}" data-action="add" class="add-to-cart-btn update-cart" style="text-decoration: none;">
+                <button data-product="{{ related_product.id }}" data-action="add" class="add-to-cart-btn update-cart" style="text-decoration: none;">
                     Add to Cart
                 </button>
                 {% else %}
@@ -95,8 +133,9 @@ Product Page
     </div>
 </div>
 
-{% endblock %} {% block extra_js %}
+{% endblock %} 
+
+{% block extra_js %}
 <script src="{% static 'js/add_to_cart.js' %}"></script>
 <script src="{% static 'js/auth.js' %}"></script>
-
 {% endblock %}

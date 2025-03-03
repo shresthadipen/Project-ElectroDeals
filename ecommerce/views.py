@@ -1,13 +1,16 @@
 from django.utils import timezone
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Brand, Category, Product, Order, OrderItem, Customer, ShippingAddress
+from .models import Brand, Category, Product, Order, OrderItem, Customer, ShippingAddress,ContactUs
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
 import json
 
 
@@ -53,10 +56,19 @@ def base(request):
     return render(request, "base.html", {"cartItems": cartItem["cartItems"]})
 
 
-def about(request):
-    cartItem = cart_items(request)
-    return render(request, "about_us.html", {"cartItems": cartItem["cartItems"]})
+def about(request):  
+    return render(request, "about_us.html",)
 
+def contact_us(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+
+        ContactUs.objects.create(name=name, email=email, message=message)
+        return redirect("contact")  # Redirect after form submission
+
+    return render(request, "about_us.html")
 
 def product_list(request):
     brand_filter = request.GET.get("brand")
@@ -130,10 +142,18 @@ def updateItem(request):
                 orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
                 if action == 'add':
-                    orderItem.quantity += 1
-                elif action == 'remove':
+                    if product.stock > 0:  
+                        orderItem.quantity += 1
+                        product.stock -= 1  
+                    else:
+                        return JsonResponse({'error': 'Out of stock'}, status=400)
+
+                elif action == 'remove' and orderItem.quantity > 0:
                     orderItem.quantity -= 1
+                    product.stock += 1  
+
                 orderItem.save()
+                product.save()
 
                 if orderItem.quantity <= 0:
                     orderItem.delete()
@@ -141,7 +161,7 @@ def updateItem(request):
                 if action == 'delete':
                     orderItem.delete()
 
-                return JsonResponse({'message': 'Item updated successfully', 'quantity': orderItem.quantity}, safe=False)
+                return JsonResponse({'message': 'Item updated successfully', 'quantity': orderItem.quantity, 'stock': product.stock}, safe=False)
 
             return JsonResponse({'error': 'User not authenticated'}, status=401)
 
@@ -149,6 +169,7 @@ def updateItem(request):
             return JsonResponse({'error': 'Invalid JSON data'}, status=400)
     
     return JsonResponse({'error': 'Invalid request method'}, status=400)
+
 
 
 def cart_items(request):
@@ -268,7 +289,7 @@ def change_password(request):
 def search_products(request):
     query = request.GET.get('query', '')
     products = Product.objects.filter(name__icontains=query) | Product.objects.filter(brand__name__icontains=query) | Product.objects.filter(category__name__icontains=query)
-    products = products.distinct()  # To ensure we don't have duplicate results
+    products = products.distinct()  
     
     cartItem = cart_items(request)
 
@@ -276,3 +297,53 @@ def search_products(request):
         'products': products,
         'cartItems': cartItem["cartItems"]
     })
+
+def generate_bill(request, order_id):
+    order = get_object_or_404(Order, id=order_id, customer=request.user.customer, complete=True)
+    order_items = OrderItem.objects.filter(order=order)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="invoice_{order_id}.pdf"'
+
+    
+    pdf = canvas.Canvas(response, pagesize=letter)
+    pdf.setTitle(f"Invoice #{order.id}")
+
+    
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawString(200, 750, "ElectroDeals Invoice")
+    
+    pdf.setFont("Helvetica", 12)
+    pdf.drawString(50, 720, f"Order ID: {order.id}")
+    pdf.drawString(50, 700, f"Customer: {request.user.username.capitalize()}")
+    
+    pdf.drawString(50, 670, "--------------------------------------------------------------------------------------------------------------------------")
+    
+    
+    y_position = 650
+    pdf.drawString(50, y_position, "Product")
+    pdf.drawString(250, y_position, "Quantity")
+    pdf.drawString(350, y_position, "Price")
+    pdf.drawString(450, y_position, "Total")
+    
+    y_position -= 20
+    pdf.drawString(50, y_position, "--------------------------------------------------------------------------------------------------------------------------")
+
+    
+    for item in order_items:
+        y_position -= 20
+        pdf.drawString(50, y_position, item.product.name)
+        pdf.drawString(250, y_position, str(item.quantity))
+        pdf.drawString(350, y_position, f"Rs {item.product.price}")
+        pdf.drawString(450, y_position, f"Rs {item.get_total}")
+
+    
+    y_position -= 40
+    pdf.setFont("Helvetica-Bold", 12)
+    pdf.drawString(50, y_position, f"Grand Total: Rs {order.get_cart_total}")
+
+    pdf.showPage()
+    pdf.save()
+
+    return response
+

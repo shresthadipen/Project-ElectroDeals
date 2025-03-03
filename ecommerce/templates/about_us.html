@@ -43,12 +43,10 @@
         <h2>Meet Our Team</h2>
         <div class="team">
           <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Team Member">
             <h3>Dipen Shrestha</h3>
             <p>Developer</p>
           </div>
           <div class="team-member">
-            <img src="https://via.placeholder.com/100" alt="Team Member">
             <h3>Pratik Baidya</h3>
             <p>Developer</p>
           </div>
@@ -57,9 +55,10 @@
     </div>
     <div class="form">
   
-      <form id="contact-us-form" class="contact-form">
+      <form id="contact-us-form" class="contact-form" method="POST" action="{% url 'contact' %}">
+        {% csrf_token %}
         <div class="title">
-          <h2>Contact Us</h2>
+            <h2>Contact Us</h2>
         </div>
         
         <div class="form-group">
