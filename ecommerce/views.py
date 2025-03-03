@@ -13,9 +13,6 @@ from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 import json
 
-def dashboard(request):
-    return render (request, "dashboard.html")
-
 def home(request):
     brands = Brand.get_all_brand()[:10]
     category = Category.get_all_category()
