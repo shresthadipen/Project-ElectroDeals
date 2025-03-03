@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from .views import home, product, base, about, product_list, updateItem, cart, checkout, buy_now, order_history, process_order,change_password, profile, search_products
+from .views import home, product, base, about, product_list, updateItem, cart, checkout, buy_now, order_history, process_order,change_password, profile, search_products, dashboard
 
 urlpatterns = [
     path('', home, name='home'),

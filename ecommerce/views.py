@@ -10,7 +10,8 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 import json
 
-
+def dashboard(request):
+    return render (request, "dashboard.html")
 
 def home(request):
     brands = Brand.get_all_brand()[:10]
