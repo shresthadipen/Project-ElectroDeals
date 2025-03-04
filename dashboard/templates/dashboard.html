@@ -50,7 +50,7 @@
                 <img src="{% static 'img/setting.svg' %}">
                 <h3>Settings</h3>
             </a>
-            <a href="#" class="icon logout" id="logout-link">
+            <a href="/logout/" class="icon logout" id="logout-link">
                 <img src="{% static 'img/logout.png' %}">
                 <h3>Logout</h3>
             </a>
@@ -116,379 +116,307 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Order Id</th>
-                            <th>Payment</th>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Order Date</th>
                             <th>Status</th>
+                            <th>Transaction Id</th>
+                            <th>Payment Method</th>
+
+
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
+                    <tbody>
+                        {% for order in orders %}
+                        {% if forloop.counter <= 7 %} <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.customer }}</td>
+                            <td>{{ order.date_ordered }}</td>
+                            <td>{{ order.complete }}</td>
+                            <td>{{ order.transaction_id }}</td>
+                            <td>{{ order.payment_method }}</td>
+                            <a href="#" style="text-decoration: none; cursor: pointer;">
+                                <td>Details</td>
+                            </a>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                    </tbody>
                     </tbody>
                 </table>
-                <a href="#">Show all</a>
+                <a href="#" id="orders-link">Show all</a>
             </div>
         </div>
 
         <div id="users-content" style="display: none;">
-            <h1 class="dash-tag">Users</h1>
+            <div class="header-container">
+                <h1 class="dash-tag">Users</h1>
+                <div class="search-add">
+
+                    <div class="search-container">
+                        <input type="text" id="product-search-bar" class="search-bar" placeholder="Search users...">
+                        <button type="submit" class="search-btn">
+                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div class="recent-orders">
-                <h2>Recent Orders</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Order Id</th>
-                            <th>Payment</th>
-                            <th>Status</th>
+                            <th>ID</th>
+                            <th>User Name</th>
+                            <th>Email</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                    <tbody>
+                        {% for customer in customers %}
                         <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
+                            <td>{{customer.id}}</td>
+                            <td>{{customer.name}}</td>
+                            <td>{{customer.email}}</td>
+
+                            <a href="#" style="text-decoration: none; cursor: pointer;">
+                                <td>Details</td>
+                            </a>
                         </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
+                        {% endfor %}
+                    </tbody>
                     </tbody>
                 </table>
-            </div>  
+            </div>
         </div>
 
         <div id="orders-content" style="display: none;">
-            <h1 class="dash-tag">Orders</h1>
+            <div class="header-container">
+                <h1 class="dash-tag">Orders</h1>
+                <div class="search-add">
+
+                    <div class="search-container">
+                        <input type="text" id="product-search-bar" class="search-bar" placeholder="Search Ordes...">
+                        <button type="submit" class="search-btn">
+                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div class="recent-orders">
-                <h2>Recent Orders</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Order Id</th>
-                            <th>Payment</th>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
                             <th>Status</th>
+                            <th>Transaction Id</th>
+                            <th>Payment Method</th>
+
+
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
+                    <tbody>
+                        {% for order in orders %}
+                        {% if forloop.counter <= 7 %} <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.customer }}</td>
+                            <td>{{ order.date_ordered }}</td>
+                            <td>{{ order.complete }}</td>
+                            <td>{{ order.transaction_id }}</td>
+                            <td>{{ order.payment_method }}</td>
+                            <a href="#" style="text-decoration: none; cursor: pointer;">
+                                <td>Details</td>
+                            </a>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                    </tbody>
                     </tbody>
                 </table>
-            </div>  
+            </div>
         </div>
 
         <div id="messages-content" style="display: none;">
-            <h1 class="dash-tag">Messages</h1>
-            <!-- Add your messages specific content here -->
+            <div class="header-container">
+                <h1 class="dash-tag">Messages</h1>
+                <div class="search-add">
+
+                    <div class="search-container">
+                        <input type="text" id="product-search-bar" class="search-bar" placeholder="Search Messages...">
+                        <button type="submit" class="search-btn">
+                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="recent-orders">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Message</th>
+
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tbody>
+                        {% for message in messages %}
+                        <tr>
+                            <td>{{message.id}}</td>
+                            <td>{{message.name}}</td>
+                            <td>{{message.email}}</td>
+                            <td>{{message.message}}</td>
+
+                            <a href="#" style="text-decoration: none; cursor: pointer;">
+                                <td>Details</td>
+                            </a>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </tbody>
+                </table>
+                </table>
+                </div>  
         </div>
 
         <div id="products-content" style="display: none;">
-            <h1 class="dash-tag">Products</h1>
+            <div class="header-container">
+                <h1 class="dash-tag">Products</h1>
+                <div class="search-add">
+
+                    <div class="search-container">
+                        <input type="text" id="product-search-bar" class="search-bar" placeholder="Search Products...">
+                        <button type="submit" class="search-btn">
+                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                        </button>
+                    </div>
+                    <button class="add"><strong>Add products</strong></button>
+                </div>
+            </div>
             <div class="recent-orders">
-                <h2>Recent Orders</h2>
                 <table>
                     <thead>
                         <!-- 'id', 'name', 'price', 'category', 'brand', 'description' -->
                         <tr>
-                            <th>Image</th>
                             <th>Id</th>
-                            <th>Name</th>
+                            <th>Product Name</th>
                             <th>Category</th>
                             <th>Brand</th>
-                            <th>price</th>
-                            <th>Ram</th>
-                            <th>Storage</th>
-                            <th>Display</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for product in products %}
                         <tr>
-                            <td></td>
-                            <td class="primary">Details</td>
+                            <td>{{product.id}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.category}}</td>
+                            <td>{{product.brand}}</td>
+                            <td>{{product.price}}</td>
+                            <td>{{product.stock}}</td>
+                            <a href="#" style="text-decoration: none; cursor: pointer;">
+                                <td>Details</td>
+                            </a>
                         </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
-            </div>  
+            </div>
         </div>
 
         <div id="brands-content" style="display: none;">
-            <h1 class="dash-tag">Brands</h1>
+            <div class="header-container">
+                <h1 class="dash-tag">Brands</h1>
+                <div class="search-add">
+
+                    <div class="search-container">
+                        <input type="text" id="product-search-bar" class="search-bar" placeholder="Search Brands...">
+                        <button type="submit" class="search-btn">
+                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                        </button>
+                    </div>
+                    <button class="add"><strong>Add Brands</strong></button>
+                </div>
+            </div>
             <div class="recent-orders">
-                <h2>Recent Orders</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Order Id</th>
-                            <th>Payment</th>
-                            <th>Status</th>
+                            <th>ID</th>
+                            <th>Brand Name</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                    <tbody>
+                        {% for brand in brand %}
                         <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
+                            <td>{{brand.id}}</td>
+                            <td>{{brand.name}}</td>
+                            <a href="#" style="text-decoration: none; cursor: pointer;">
+                                <td>Details</td>
+                            </a>
                         </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
+                        {% endfor %}
+                    </tbody>
                     </tbody>
                 </table>
-            </div>  
+            </div>
         </div>
 
+
         <div id="categories-content" style="display: none;">
-            <h1 class="dash-tag">Categories</h1>
+            <div class="header-container">
+                <h1 class="dash-tag">Categories</h1>
+                
+                <div class="search-add">
+                    <div class="search-container">
+                        <input type="text" id="category-search-bar" class="search-bar" placeholder="Search Categories...">
+                        <button type="submit" class="search-btn">
+                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                        </button>
+                    </div>
+        
+                    <button class="add"><strong>Add Category</strong></button>
+                </div>
+            </div>
+        
             <div class="recent-orders">
-                <h2>Recent Orders</h2>
-                <table>
+                <table id="categories-table">
                     <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Order Id</th>
-                            <th>Payment</th>
-                            <th>Status</th>
+                            <th>ID</th>
+                            <th>Category</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for category in category %}
                         <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
+                            <td>{{category.id}}</td>
+                            <td>{{category.name}}</td>
+                            <a href="#" style="text-decoration: none; cursor: pointer;">
+                                <td>Details</td>
+                            </a>
                         </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
-                        <tr>
-                            <td>Foldable Mini Drone</td>
-                            <td>85631</td>
-                            <td>Due</td>
-                            <td class="warning">Pending</td>
-                            <td class="primary">Details</td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
-            </div>  
+            </div>
         </div>
+        
 
         <div id="settings-content" style="display: none;">
             <h1 class="dash-tag">Settings</h1>
@@ -501,7 +429,7 @@
     <div class="right">
         <div class="profile">
             <div class="info">
-                <p>Hey, <b>Dipen</b></p>
+                <p>Hey, <b>{{ user.username|capfirst }}</b></p>
                 <small class="text-muted">Admin</small>
             </div>
         </div>
@@ -509,39 +437,23 @@
 
         <div class="recent-updates">
             <h2>Messages</h2>
+            {% for message in messages %}
+            {% if forloop.counter <= 10 %}
             <div class="updates">
                 <div class="update">
                     <div class="message">
-                        <p><b>Che Neba</b> received his order of
-                            Night Lion tech GPS drone</p>
-                        <small class="text-muted">2 Minutes ago</small>
-                    </div>
-                </div>
-                <div class="update">
-                    <div class="message">
-                        <p><b>Che Neba</b> received his order of
-                            Night Lion tech GPS drone</p>
-                        <small class="text-muted">2 Minutes ago</small>
-                    </div>
-                </div>
-                <div class="update">
-                    <div class="message">
-                        <p><b>Che Neba</b> received his order of
-                            Night Lion tech GPS drone</p>
-                        <small class="text-muted">2 Minutes ago</small>
-                    </div>
-                </div>
-                <div class="update">
-                    <div class="message">
-                        <p><b>Che Neba</b> received his order of
-                            Night Lion tech GPS drone</p>
+                        <p><b>{{message.name}}</b> shared: 
+                            "{{message.message}}"</p>
                         <small class="text-muted">2 Minutes ago</small>
                     </div>
                 </div>
             </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
     </div>
     <script src="{% static 'js/dash_board.js' %}"></script>
 </body>
+
 </html>

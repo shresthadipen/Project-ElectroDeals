@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // sidebar click
     const dashboardLink = document.getElementById("dashboard-link");
     const usersLink = document.getElementById("users-link");
     const ordersLink = document.getElementById("orders-link");
@@ -8,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const categoriesLink = document.getElementById("categories-link");
     const settingsLink = document.getElementById("settings-link");
 
+    // display content of sidebar
     const dashboardContent = document.getElementById("dashboard-content");
     const usersContent = document.getElementById("users-content");
     const ordersContent = document.getElementById("orders-content");

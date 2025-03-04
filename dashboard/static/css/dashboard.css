@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 /* :root{
   --color-primary: #7380ec;
@@ -35,16 +34,14 @@
   --color-dark-variant:#a3bdcc;
   --color-light: rgba(0,0,0,0.4);
   --box-shadow: 0 2rem 3rem var(--color-light);
-} */ */
-
-
-* {
+} */
+*/ * {
   padding: 0;
   margin: 0;
 }
 
 body {
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   display: flex;
   height: 100vh;
   overflow: hidden;
@@ -89,7 +86,7 @@ body {
   filter: invert(1) brightness(100%) grayscale(0); /* Inverts colors to make the icon white */
 }
 
-a:hover{
+a:hover {
   color: #7380ec;
 }
 
@@ -100,10 +97,9 @@ main {
   overflow-y: auto;
 }
 
-main .dash-tag{
+main .dash-tag {
   font-size: 24px;
 }
-
 
 .right {
   display: flex;
@@ -122,7 +118,7 @@ main .dash-tag{
   margin-bottom: 30px;
 }
 
-main .calendar{
+main .calendar {
   display: inline-block;
   padding: 8px 10px;
   background-color: #363949;
@@ -131,18 +127,17 @@ main .calendar{
 
 main .insights {
   display: grid;
-   grid-template-columns: repeat(3,1fr);
-   gap: 1.6rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
 }
 
-main .calendar input{
+main .calendar input {
   background: transparent;
   border: none;
   color: aliceblue;
 }
 
-
-main .insights > div{
+main .insights > div {
   background: #202528;
   padding: 1.2rem;
   border-radius: 12px;
@@ -151,16 +146,83 @@ main .insights > div{
   gap: 20px;
 }
 
-main .insights > div:hover{
+main .insights > div:hover {
   box-shadow: 0 5px 20px rgba(115, 111, 172, 0.1);
-} 
+}
 
-
-main .recent-orders{
+main .recent-orders {
   margin-top: 20px;
 }
 
-main .recent-orders table{
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-container .add {
+  color: white;
+  background: #202528;
+  height: 45px;
+  width: 150px;
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Some padding for size */
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.header-container .add:hover{
+  box-shadow: 0 5px 20px rgba(115, 111, 172, 0.1);
+  color: #7380ec;
+}
+
+.header-container .search-add{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.search-container{
+  display: flex;
+  background-color: #f1f1f1;
+  align-items: center;
+  height: 45px;
+  border-radius: 5px;
+}
+
+.search-bar{
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  width: 300px;
+  padding: 8px 10px;
+  background-color: #f1f1f1;
+  font-size: 14px;
+}
+
+
+.search-container .search-btn {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  background-color: #202528;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  width: 50px;
+}
+
+.search-btn img{
+  height: 30px;
+  width: 30px;
+  filter: invert(1) brightness(100%) grayscale(0);
+}
+
+
+
+main .recent-orders table {
   background: #202528;
   width: 100%;
   border-radius: 12px;
@@ -169,19 +231,19 @@ main .recent-orders table{
   transition: all 300ms ease;
 }
 
-main .recent-orders table:hover{
+main .recent-orders table:hover {
   box-shadow: 0 5px 20px rgba(115, 111, 172, 0.1);
 }
 
-main table tbody td{
-  height:2.8rem ;
+main table tbody td {
+  height: 2.8rem;
   border-bottom: 1px solid #565858;
   color: #a3bdcc;
 }
-main table tbody tr:last-child td{
+main table tbody tr:last-child td {
   border: none;
 }
-main .recent-orders a{
+main .recent-orders a {
   text-align: center;
   display: block;
   margin: 1rem auto;
@@ -189,7 +251,7 @@ main .recent-orders a{
   text-decoration: none;
 }
 
-.right .profile{
+.right .profile {
   margin-top: 2rem;
   margin-right: 20px;
   display: flex;
@@ -199,6 +261,6 @@ main .recent-orders a{
   align-items: center;
 }
 
-.right .recent-updates{
+.right .recent-updates {
   margin-top: 1rem;
 }
