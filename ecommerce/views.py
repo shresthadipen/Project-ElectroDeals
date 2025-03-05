@@ -5,8 +5,8 @@ from .models import Brand, Category, Product, Order, OrderItem, Customer, Shippi
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
@@ -282,10 +282,8 @@ def change_password(request):
     else:
         form = PasswordChangeForm(request.user)
 
-    cartItem = cart_items(request)
-    
-    
-    return render(request, 'change_password.html', {'form': form, 'cartItems': cartItem["cartItems"]})
+    return render(request, 'change_password.html', {'form': form,})
+
 
 def search_products(request):
     query = request.GET.get('query', '')
