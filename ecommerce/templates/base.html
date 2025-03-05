@@ -41,14 +41,14 @@
         </ul>
       </nav>
       <div class="icons">
+        <form action="{% url 'search_products' %}" method="get">
         <div class="search-box">
-          <form action="{% url 'search_products' %}" method="get">
-            <input type="text" name="query" id="search-input" placeholder="Search..." autocomplete="on" value="{{ request.GET.query }}">
+          <input type="text" name="query" id="search-input" placeholder="Search..." autocomplete="on" value="{{ request.GET.query }}">
             <button type="submit" class="search-btn">
                 <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       
         <a href="{% url 'cart' %}" class="cart">
           <img src="{% static 'img/cart.png' %}" alt="cart-icon" class="icon">

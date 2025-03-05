@@ -1,0 +1,56 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div id="products-content" >
+    <div class="header-container">
+        <h1 class="dash-tag">Products</h1>
+        <div class="search-add">
+                <div class="search-container">
+                    <form action="{% url 'search_products_dash' %}" method="get">
+                    <input type="text" name="query" id="product-search-bar" class="search-bar" autocomplete="on" placeholder="Search Products..." value="{{ request.GET.query }}">
+                    <button type="submit" class="search-btn">
+                        <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                    </button>
+                    </form>
+                </div>
+            <button class="add"><strong>Add products</strong></button>
+        </div>
+    </div>
+
+    <div class="recent-orders" style="width: 100%;">
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category.name }}</td>
+                    <td>{{ product.brand.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.stock }}</td>
+                    <td>
+                        <a href="{% url 'product_detail' product.id %}" style="text-decoration: none; cursor: pointer; color: #a3bdcc">Details</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No products found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div id="orders-content">
+    <div class="header-container">
+        <h1 class="dash-tag">Orders</h1>
+        <div class="search-add">
+
+            <div class="search-container">
+                <form action="{% url 'search_order_dash' %}" method="get">
+                <input type="text" name="query"  id="order-search-bar" class="search-bar"  autocomplete="on" placeholder="Search Order..." value="{{ request.GET.query }}">
+                    
+                <button type="submit" class="search-btn">
+                    <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+    <div class="recent-orders">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Transaction Id</th>
+                    <th>Payment Method</th>
+
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tbody>
+                {% for order in orders %}
+                 <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.customer }}</td>
+                    <td>{{ order.date_ordered }}</td>
+                    <td>{{ order.complete }}</td>
+                    <td>{{ order.transaction_id }}</td>
+                    <td>{{ order.payment_method }}</td>
+                    <a href="#" style="text-decoration: none; cursor: pointer;">
+                        <td>Details</td>
+                    </a>
+                    </tr>
+                    {% empty %}
+                <tr>
+                    <td colspan="7">No Order found</td>
+                </tr>
+                    {% endfor %}
+            </tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

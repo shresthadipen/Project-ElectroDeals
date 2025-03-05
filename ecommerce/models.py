@@ -67,6 +67,12 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name if self.name else "Unnamed Customer"
+    
+    @classmethod
+    def get_total_user(cls):
+        total_user = cls.objects.count()
+        return total_user
+
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
@@ -113,6 +119,15 @@ class Order(models.Model):
         total = sum([item.quantity for item in orderitems])
         return total
 
+    @classmethod
+    def get_total_sales(cls):
+        total_sales = sum(order.get_cart_total for order in cls.objects.all())
+        return total_sales
+    
+    @classmethod
+    def get_total_orders(cls):
+        total_orders = cls.objects.count()
+        return total_orders
 
 
 class OrderItem(models.Model):

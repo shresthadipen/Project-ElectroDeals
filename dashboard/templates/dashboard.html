@@ -8,6 +8,7 @@
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    {% block extra_css %} {% endblock %}
 </head>
 
 <body>
@@ -17,40 +18,40 @@
             <div class="logo">
                 <p>ElectroDeals</p>
             </div>
-            <a href="#" class="icon" id="dashboard-link">
+            <a href="{% url 'dashboard' %}" class="icon">
                 <img src="{% static 'img/dashboard.svg' %}">
                 <h3>Dashboard</h3>
             </a>
-            <a href="#" class="icon" id="users-link">
+            <a href="{% url 'customer_dash' %}" class="icon">
                 <img src="{% static 'img/users.svg' %}">
                 <h3>Users</h3>
             </a>
-            <a href="#" class="icon" id="orders-link">
+            <a href="{% url 'order_dash' %}" class="icon" >
                 <img src="{% static 'img/order.png' %}">
                 <h3>Orders</h3>
             </a>
-            <a href="#" class="icon" id="messages-link">
+            <a href="{% url 'message_dash' %}" class="icon">
                 <img src="{% static 'img/message.svg' %}">
                 <h3>Messages</h3>
                 <span class="message-count">25</span>
             </a>
-            <a href="#" class="icon" id="products-link">
+            <a href="{% url 'product_dash' %}" class="icon">
                 <img src="{% static 'img/product.svg' %}">
                 <h3>Products</h3>
             </a>
-            <a href="#" class="icon" id="brands-link">
+            <a href="{% url 'brand_dash' %}" class="icon">
                 <img src="{% static 'img/brand.png' %}">
                 <h3>Brands</h3>
             </a>
-            <a href="#" class="icon" id="categories-link">
+            <a href="{% url 'category_dash' %}" class="icon">
                 <img src="{% static 'img/category.png' %}">
                 <h3>Categories</h3>
             </a>
-            <a href="#" class="icon" id="settings-link">
+            <a href="{% url 'setting_dash' %}" class="icon">
                 <img src="{% static 'img/setting.svg' %}">
                 <h3>Settings</h3>
             </a>
-            <a href="/logout/" class="icon logout" id="logout-link">
+            <a href="/logout/" class="icon logout">
                 <img src="{% static 'img/logout.png' %}">
                 <h3>Logout</h3>
             </a>
@@ -58,370 +59,9 @@
     </div>
 
     <main>
-        <div id="dashboard-content">
-            <h1 class="dash-tag">Dashboard</h1>
-            <div class="calendar">
-                <input type="date">
-            </div>
-            <div class="insights">
-                <div class="sales">
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total sales</h3>
-                            <h1>$25,000</h1>
-                            <div class="number">
-                                <p>81%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted">Last 24 hours</small>
-                </div>
-
-                <div class="expenses">
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total Users</h3>
-                            <h1>15,000</h1>
-                        </div>
-                        <div class="progress">
-                            <div class="number">
-                                <p>62%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted">Last 24 hours</small>
-                </div>
-
-
-                <div class="income">
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total Orders</h3>
-                            <h1>10,000</h1>
-                        </div>
-                        <div class="progress">
-
-                            <div class="number">
-                                <p>44%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted">Last 24 hours</small>
-                </div>
-
-            </div>
-
-            <div class="recent-orders">
-                <h2>Recent Orders</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Customer</th>
-                            <th>Order Date</th>
-                            <th>Status</th>
-                            <th>Transaction Id</th>
-                            <th>Payment Method</th>
-
-
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tbody>
-                        {% for order in orders %}
-                        {% if forloop.counter <= 7 %} <tr>
-                            <td>{{ order.id }}</td>
-                            <td>{{ order.customer }}</td>
-                            <td>{{ order.date_ordered }}</td>
-                            <td>{{ order.complete }}</td>
-                            <td>{{ order.transaction_id }}</td>
-                            <td>{{ order.payment_method }}</td>
-                            <a href="#" style="text-decoration: none; cursor: pointer;">
-                                <td>Details</td>
-                            </a>
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
-                    </tbody>
-                    </tbody>
-                </table>
-                <a href="#" id="orders-link">Show all</a>
-            </div>
-        </div>
-
-        <div id="users-content" style="display: none;">
-            <div class="header-container">
-                <h1 class="dash-tag">Users</h1>
-                <div class="search-add">
-
-                    <div class="search-container">
-                        <input type="text" id="product-search-bar" class="search-bar" placeholder="Search users...">
-                        <button type="submit" class="search-btn">
-                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="recent-orders">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>User Name</th>
-                            <th>Email</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tbody>
-                        {% for customer in customers %}
-                        <tr>
-                            <td>{{customer.id}}</td>
-                            <td>{{customer.name}}</td>
-                            <td>{{customer.email}}</td>
-
-                            <a href="#" style="text-decoration: none; cursor: pointer;">
-                                <td>Details</td>
-                            </a>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div id="orders-content" style="display: none;">
-            <div class="header-container">
-                <h1 class="dash-tag">Orders</h1>
-                <div class="search-add">
-
-                    <div class="search-container">
-                        <input type="text" id="product-search-bar" class="search-bar" placeholder="Search Ordes...">
-                        <button type="submit" class="search-btn">
-                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="recent-orders">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Customer</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Transaction Id</th>
-                            <th>Payment Method</th>
-
-
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tbody>
-                        {% for order in orders %}
-                        {% if forloop.counter <= 7 %} <tr>
-                            <td>{{ order.id }}</td>
-                            <td>{{ order.customer }}</td>
-                            <td>{{ order.date_ordered }}</td>
-                            <td>{{ order.complete }}</td>
-                            <td>{{ order.transaction_id }}</td>
-                            <td>{{ order.payment_method }}</td>
-                            <a href="#" style="text-decoration: none; cursor: pointer;">
-                                <td>Details</td>
-                            </a>
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
-                    </tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div id="messages-content" style="display: none;">
-            <div class="header-container">
-                <h1 class="dash-tag">Messages</h1>
-                <div class="search-add">
-
-                    <div class="search-container">
-                        <input type="text" id="product-search-bar" class="search-bar" placeholder="Search Messages...">
-                        <button type="submit" class="search-btn">
-                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="recent-orders">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Message</th>
-
-
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tbody>
-                        {% for message in messages %}
-                        <tr>
-                            <td>{{message.id}}</td>
-                            <td>{{message.name}}</td>
-                            <td>{{message.email}}</td>
-                            <td>{{message.message}}</td>
-
-                            <a href="#" style="text-decoration: none; cursor: pointer;">
-                                <td>Details</td>
-                            </a>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                    </tbody>
-                </table>
-                </table>
-                </div>  
-        </div>
-
-        <div id="products-content" style="display: none;">
-            <div class="header-container">
-                <h1 class="dash-tag">Products</h1>
-                <div class="search-add">
-
-                    <div class="search-container">
-                        <input type="text" id="product-search-bar" class="search-bar" placeholder="Search Products...">
-                        <button type="submit" class="search-btn">
-                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
-                        </button>
-                    </div>
-                    <button class="add"><strong>Add products</strong></button>
-                </div>
-            </div>
-            <div class="recent-orders">
-                <table>
-                    <thead>
-                        <!-- 'id', 'name', 'price', 'category', 'brand', 'description' -->
-                        <tr>
-                            <th>Id</th>
-                            <th>Product Name</th>
-                            <th>Category</th>
-                            <th>Brand</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for product in products %}
-                        <tr>
-                            <td>{{product.id}}</td>
-                            <td>{{product.name}}</td>
-                            <td>{{product.category}}</td>
-                            <td>{{product.brand}}</td>
-                            <td>{{product.price}}</td>
-                            <td>{{product.stock}}</td>
-                            <a href="#" style="text-decoration: none; cursor: pointer;">
-                                <td>Details</td>
-                            </a>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div id="brands-content" style="display: none;">
-            <div class="header-container">
-                <h1 class="dash-tag">Brands</h1>
-                <div class="search-add">
-
-                    <div class="search-container">
-                        <input type="text" id="product-search-bar" class="search-bar" placeholder="Search Brands...">
-                        <button type="submit" class="search-btn">
-                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
-                        </button>
-                    </div>
-                    <button class="add"><strong>Add Brands</strong></button>
-                </div>
-            </div>
-            <div class="recent-orders">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Brand Name</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tbody>
-                        {% for brand in brand %}
-                        <tr>
-                            <td>{{brand.id}}</td>
-                            <td>{{brand.name}}</td>
-                            <a href="#" style="text-decoration: none; cursor: pointer;">
-                                <td>Details</td>
-                            </a>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-        <div id="categories-content" style="display: none;">
-            <div class="header-container">
-                <h1 class="dash-tag">Categories</h1>
-                
-                <div class="search-add">
-                    <div class="search-container">
-                        <input type="text" id="category-search-bar" class="search-bar" placeholder="Search Categories...">
-                        <button type="submit" class="search-btn">
-                            <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
-                        </button>
-                    </div>
         
-                    <button class="add"><strong>Add Category</strong></button>
-                </div>
-            </div>
-        
-            <div class="recent-orders">
-                <table id="categories-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Category</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for category in category %}
-                        <tr>
-                            <td>{{category.id}}</td>
-                            <td>{{category.name}}</td>
-                            <a href="#" style="text-decoration: none; cursor: pointer;">
-                                <td>Details</td>
-                            </a>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-
-        <div id="settings-content" style="display: none;">
-            <h1 class="dash-tag">Settings</h1>
-            <!-- Add your settings specific content here -->
-        </div>
+        {% block content %} 
+      {% endblock %}
 
     </main>
 
@@ -453,7 +93,7 @@
         </div>
     </div>
     </div>
-    <script src="{% static 'js/dash_board.js' %}"></script>
+
 </body>
 
 </html>
