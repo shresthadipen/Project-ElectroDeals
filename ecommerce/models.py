@@ -77,6 +77,10 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order {self.id}"
+    
+    @staticmethod
+    def get_all_order():
+        return Order.objects.all()
 
     @classmethod
     def get_next_transaction_id(cls):

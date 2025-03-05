@@ -33,21 +33,28 @@ def signup_view(request):
     return render(request, 'signup.html')
 
 
-def login_view(request):
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
+def login_view(request):
     if request.method == "POST":
         username = request.POST.get('login-username')
         password = request.POST.get('login-password')
 
-        user = authenticate(username = username, password = password )
+        user = authenticate(username=username, password=password)
 
         if user is not None:
             login(request, user)
-            uname = user.username
-            return redirect('home')
+            
+            if user.is_superuser: 
+                return redirect('dashboard') 
+
+            return redirect('home')  
 
         else:
             messages.error(request, "Invalid Username or Password")
+
     return render(request, 'login.html')
 
 
