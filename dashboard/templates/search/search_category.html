@@ -1,0 +1,51 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div id="categories-content">
+    <div class="header-container">
+        <h1 class="dash-tag">Categories</h1>
+        
+        <div class="search-add">
+            <div class="search-container">
+                <form action="{% url 'search_category_dash' %}" method="get">
+
+                <input type="text" name="query"  id="category-search-bar" class="search-bar"  autocomplete="on" placeholder="Search Categories..." value="{{ request.GET.query }}">
+                <button type="submit" class="search-btn">
+                    <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                </button>
+            </form>
+            </div>
+
+            <button class="add"><strong>Add Category</strong></button>
+        </div>
+    </div>
+
+    <div class="recent-orders">
+        <table id="categories-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Category</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in category %}
+                <tr>
+                    <td>{{category.id}}</td>
+                    <td>{{category.name}}</td>
+                    <a href="#" style="text-decoration: none; cursor: pointer;">
+                        <td>Details</td>
+                    </a>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No Category found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

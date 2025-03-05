@@ -1,0 +1,54 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div id="users-content">
+    <div class="header-container">
+        <h1 class="dash-tag">Users</h1>
+        <div class="search-add">
+
+            <div class="search-container">
+                <form action="{% url 'search_customer_dash' %}" method="get">
+
+                <input type="text" name="query"  id="customer" class="search-bar"  autocomplete="on" placeholder="Search User..." value="{{ request.GET.query }}">
+                <button type="submit" class="search-btn">
+                    <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="recent-orders">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tbody>
+                {% for customer in customers %}
+                <tr>
+                    <td>{{customer.id}}</td>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.email}}</td>
+
+                    <a href="#" style="text-decoration: none; cursor: pointer;">
+                        <td>Details</td>
+                    </a>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No customer found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

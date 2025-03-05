@@ -1,0 +1,58 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div id="messages-content">
+    <div class="header-container">
+        <h1 class="dash-tag">Messages</h1>
+        <div class="search-add">
+
+            <div class="search-container">
+                <form action="{% url 'search_message_dash' %}" method="get">
+
+                    <input type="text" name="query"  id="message-search-bar" class="search-bar"  autocomplete="on" placeholder="Search Categories..." value="{{ request.GET.query }}">
+                <button type="submit" class="search-btn">
+                    <img src="{% static 'img/search.png' %}" alt="Search" class="search-icon" />
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="recent-orders">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tbody>
+                {% for message in message %}
+                <tr>
+                    <td>{{message.id}}</td>
+                    <td>{{message.name}}</td>
+                    <td>{{message.email}}</td>
+                    <td>{{message.message}}</td>
+
+                    <a href="#" style="text-decoration: none; cursor: pointer;">
+                        <td>Details</td>
+                    </a>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No Messages found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </tbody>
+        </table>
+        </table>
+        </div>  
+</div>
+{% endblock %}
