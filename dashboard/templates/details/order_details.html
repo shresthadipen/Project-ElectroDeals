@@ -1,0 +1,20 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+{% block content %}
+<div id="product-details-container">
+    <div class="product-details">
+
+        <h2><strong>Transaction Id : </strong>{{order.transaction_id}}</h2>
+        <p><strong>Customer :</strong> {{ order.customer.user.username }}</p>
+        {% for item in order.orderitem_set.all %}
+        <p><strong>Product :</strong> {{ item.product.name }}</p>
+        <p><strong>Quantity :</strong>{{ item.quantity }}</p>
+        <p><strong>Date:</strong> {{ item.date_added }}</p>
+        {% endfor %}
+        <p><strong>Status :</strong> {{ order.complete }}</p>
+        <p><strong>Payment Method :</strong> {{ order.payment_method }}</p>
+        <button>Close</button>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div id="product-details-container">
+    <div class="product-details">
+        <h2>{{form.name}}</h2>
+        <p><strong>Gmail :</strong> {{ form.email }}</p>
+        <p><strong>Message :</strong>{{ form.message }}</p>
+        <button>Close</button>
+    </div>
+</div>
+
+{% endblock %}

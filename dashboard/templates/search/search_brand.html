@@ -35,9 +35,10 @@
                 <tr>
                     <td>{{brand.id}}</td>
                     <td>{{brand.name}}</td>
-                    <a href="#" style="text-decoration: none; cursor: pointer;">
-                        <td>Details</td>
-                    </a>
+                    <td>
+                        <a href="{% url 'brand_detail' brand.id %}"
+                           style="text-decoration: none; cursor: pointer; color: #a3bdcc;">Details</a>
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>

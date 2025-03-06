@@ -63,6 +63,7 @@ def contact_us(request):
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
+        message = request.POST.get("message")
         cartItem = cart_items(request)
 
 
@@ -248,23 +249,6 @@ def process_order(request):
             order.complete = True 
             order.delivered = False  
             order.save()
-            return redirect('order_history') 
-        elif payment_method == "Esewa":
-            order.complete = True 
-            order.delivered = False  
-            order.save()
-            return redirect('order_history')
-            # return redirect('payment')
-
-        elif payment_method == "Credit Card":
-            order.complete = True 
-            order.delivered = False  
-            order.save()
-            return redirect('order_history')
-        
-        else:
-            order.complete = True  
-            order.delivered = False 
             return redirect('order_history') 
         
     

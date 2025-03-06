@@ -67,12 +67,14 @@
 
 
     <div class="right">
+    {% if user.is_superuser %}
         <div class="profile">
             <div class="info">
                 <p>Hey, <b>{{ user.username|capfirst }}</b></p>
                 <small class="text-muted">Admin</small>
             </div>
         </div>
+    {% endif %}
 
 
         <div class="recent-updates">
@@ -84,7 +86,6 @@
                     <div class="message">
                         <p><b>{{message.name}}</b> shared: 
                             "{{message.message}}"</p>
-                        <small class="text-muted">2 Minutes ago</small>
                     </div>
                 </div>
             </div>

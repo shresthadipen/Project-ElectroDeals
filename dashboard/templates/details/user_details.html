@@ -1,0 +1,14 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div id="product-details-container">
+    <div class="product-details">
+        <h2>{{customer.user.username}}</h2>
+        <p><strong>Name:</strong>{{ customer.name }}</p>
+        <p><strong>Email:</strong> {{ customer.email }}</p>
+        <button>Close</button>
+    </div>
+</div>
+
+{% endblock %}

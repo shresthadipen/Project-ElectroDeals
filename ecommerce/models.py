@@ -90,10 +90,8 @@ class Order(models.Model):
 
     @classmethod
     def get_next_transaction_id(cls):
-        """
-        Generate the next transaction ID, starting from 10000.
-        """
-        last_order = cls.objects.order_by('-id').first()  # Get the most recent order
+
+        last_order = cls.objects.order_by('-id').first() 
         if last_order and last_order.transaction_id:
             try:
                 return str(int(last_order.transaction_id) + 1)
@@ -137,11 +135,15 @@ class OrderItem(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.product.name} - {self.quantity} (Order {self.order.id})"
+        product_name = self.product.name if self.product else 'No Product'
+        order_id = self.order.id if self.order else 'No Order'
+        return f"{product_name} - {self.quantity} (Order {order_id})"
 
     @property
     def get_total(self):
-        return self.product.price * self.quantity
+        if self.product:
+            return self.product.price * self.quantity
+        return 0  
     
 class ShippingAddress(models.Model):
     customer = models.ForeignKey('Customer', on_delete=models.SET_NULL, null=True, blank=True)

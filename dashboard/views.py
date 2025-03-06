@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from ecommerce.models import *
-from django.http import JsonResponse
 from django.db.models import Q
-from datetime import datetime
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
@@ -36,7 +36,7 @@ def dashboard(request):
         },
     )
 
-
+@login_required
 def dashboard_home(request):
     totalOrder = Order.get_total_orders()
     totalSales = Order.get_total_sales()
@@ -66,7 +66,6 @@ def message_dash(request):
 
 def order_dash(request):
     message = ContactUs.objects.all().order_by("-id")
-
     order = Order.get_all_order().order_by("-id")
     return render(request, "order_dash.html", { "orders" : order, "messages" : message})
 
@@ -87,6 +86,8 @@ def setting_dash(request):
 
     return render(request, "setting_dash.html" , {"messages" : message})
 
+
+# ------------search result view------------
 
 def search_products_dash(request):
     query = request.GET.get('query', '')
@@ -171,6 +172,8 @@ def search_customer_dash(request):
     })
 
 
+
+# ----------------detail view -----------------
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     message = ContactUs.objects.all().order_by("-id")
@@ -182,3 +185,38 @@ def product_detail(request, product_id):
             "product": product,"messages" : message
         },
     )
+
+def user_detail(request, customer_id):
+    customer = get_object_or_404(Customer, pk=customer_id)
+    message = ContactUs.objects.all().order_by("-id")
+
+    return render(
+        request,
+        "details/user_details.html",
+        {
+            "customer": customer,"messages" : message
+        },
+    )
+
+def order_detail(request, order_transaction_id):
+    order = get_object_or_404(Order, transaction_id=order_transaction_id)
+    message = ContactUs.objects.all().order_by("-id")
+    
+    return render(request, 'details/order_details.html', { "order": order, "messages" : message})
+
+def brand_detail(request, brand_id):
+    brand = get_object_or_404(Brand, id= brand_id)
+    message = ContactUs.objects.all().order_by("-id")
+    
+    return render(request, 'details/brand_details.html', { "brand": brand, "messages" : message})
+
+def category_detail(request, category_id):
+    category = get_object_or_404(Category, id= category_id)
+    message = ContactUs.objects.all().order_by("-id")
+    
+    return render(request, 'details/category_details.html', { "category": category, "messages" : message})
+def message_detail(request, message_id):
+    form = get_object_or_404(ContactUs, id= message_id)
+    message = ContactUs.objects.all().order_by("-id")
+    
+    return render(request, 'details/message_details.html', { "form": form, "messages" : message})
