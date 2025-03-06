@@ -1,11 +1,18 @@
 {% extends 'dashboard.html' %}
 {% load static %}
 
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'css/add.css' %}">
+{% endblock %}
+
 {% block content %}
 <div id="product-details-container">
     <div class="product-details">
-        <h2>{{brand.name}}</h2>
-        <button>Close</button>
+        <img src="{{ brand.image.url }}" alt="Brand Image" style="max-width: 200px;" />
+        <h2>{{brand.name}}</h2> 
+        <div style="display: flex; gap: 20px;">
+            <button class="add">Close</button>
+        </div>
     </div>
 </div>
 

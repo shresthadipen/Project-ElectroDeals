@@ -1,5 +1,10 @@
 {% extends 'dashboard.html' %}
 {% load static %}
+
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'css/add.css' %}">
+{% endblock %}
+
 {% block content %}
 <div id="product-details-container">
     <div class="product-details">
@@ -13,7 +18,9 @@
         {% endfor %}
         <p><strong>Status :</strong> {{ order.complete }}</p>
         <p><strong>Payment Method :</strong> {{ order.payment_method }}</p>
-        <button>Close</button>
+        <div style="display: flex; gap: 20px;">
+            <button class="add">Close</button>
+        </div>
     </div>
 </div>
 

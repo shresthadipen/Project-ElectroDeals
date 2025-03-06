@@ -7,26 +7,26 @@
 
 {% block content %}
 
-<h1>Add New Product</h1>
+<h1>Edit Product</h1>
 
 <form method="POST" enctype="multipart/form-data" class="add-form">
     {% csrf_token %}
     
     <div class="form-group">
         <label for="name"><strong>Product Name :</strong></label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" value="{{ product.name }}" required>
     </div>
 
     <div class="form-group">
         <label for="price"><strong>Price (Rs) :</strong></label>
-        <input type="number" id="price" name="price" required>
+        <input type="number" id="price" name="price" value="{{ product.price }}" required>
     </div>
 
     <div class="form-group">
         <label for="category"><strong>Category :</strong></label>
         <select id="category" name="category" required>
             {% for category in categories %}
-                <option value="{{ category.id }}">{{ category.name }}</option>
+                <option value="{{ category.id }}" {% if category.id == product.category.id %}selected{% endif %}>{{ category.name }}</option>
             {% endfor %}
         </select>
     </div>
@@ -35,57 +35,58 @@
         <label for="brand"><strong>Brand :</strong></label>
         <select id="brand" name="brand" required>
             {% for brand in brands %}
-                <option value="{{ brand.id }}">{{ brand.name }}</option>
+                <option value="{{ brand.id }}" {% if brand.id == product.brand.id %}selected{% endif %}>{{ brand.name }}</option>
             {% endfor %}
         </select>
     </div>
 
     <div class="form-group">
         <label for="description"><strong>Description :</strong></label>
-        <textarea id="description" name="description"></textarea>
+        <textarea id="description" name="description">{{ product.description }}</textarea>
     </div>
 
     <div class="form-group">
         <label for="image"><strong>Product Image :</strong></label>
-        <input type="file" id="image" name="image" accept="image/*" style="border: none;" required>
+        <input type="file" id="image" name="image" accept="image/*" style="border: none;">
+        <img src="{{ product.image.url }}" alt="Product Image" width="100">
     </div>
 
     <div class="form-group">
-        <label for="display"><strong> Display :</strong></label>
-        <input type="text" id="display" name="display">
+        <label for="display"><strong>Display :</strong></label>
+        <input type="text" id="display" name="display" value="{{ product.display }}">
     </div>
 
     <div class="form-group">
         <label for="ram"><strong>RAM :</strong></label>
-        <input type="text" id="ram" name="ram">
+        <input type="text" id="ram" name="ram" value="{{ product.ram }}">
     </div>
 
     <div class="form-group">
         <label for="storage"><strong>Storage :</strong></label>
-        <input type="text" id="storage" name="storage">
+        <input type="text" id="storage" name="storage" value="{{ product.storage }}">
     </div>
 
     <div class="form-group">
         <label for="battery"><strong>Battery :</strong></label>
-        <input type="text" id="battery" name="battery">
+        <input type="text" id="battery" name="battery" value="{{ product.battery }}">
     </div>
 
     <div class="form-group">
         <label for="processor"><strong>Processor :</strong></label>
-        <input type="text" id="processor" name="processor">
+        <input type="text" id="processor" name="processor" value="{{ product.processor }}">
     </div>
 
     <div class="form-group">
         <label for="camera"><strong>Camera :</strong></label>
-        <input type="text" id="camera" name="camera">
+        <input type="text" id="camera" name="camera" value="{{ product.camera }}">
     </div>
 
     <div class="form-group">
         <label for="stock"><strong>Stock Quantity :</strong></label>
-        <input type="number" id="stock" name="stock">
+        <input type="number" id="stock" name="stock" value="{{ product.stock }}">
     </div>
 
-    <button type="submit" class="add">Add Product</button>
+    <button type="submit" class="add">Save Changes</button>
 </form>
 
 {% endblock %}

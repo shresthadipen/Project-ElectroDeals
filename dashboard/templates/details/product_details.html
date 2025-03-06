@@ -1,6 +1,10 @@
 {% extends 'dashboard.html' %}
 {% load static %}
 
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'css/add.css' %}">
+{% endblock %}
+
 {% block content %}
 <div id="product-details-container">
     <div class="product-details">
@@ -18,7 +22,10 @@
         <p><strong>Stock:</strong> {{ product.quantity }}</p>
         <p><strong>Status:</strong> {{ product.status }}</p>
         <p><strong>Description:</strong> {{ product.description }}</p>
-        <button>Close</button>
+        <div style="display: flex; gap: 20px;">
+            <a href="{% url 'edit_product' product.id%}" class="add" style="text-decoration: none;">Edit</a>
+            <button class="add">Close</button>
+        </div>
     </div>
 </div>
 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    {% block extra_css %} {% endblock %}
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="sidebar">
+            <div class="logo">
+                <p>ElectroDeals</p>
+            </div>
+            <a href="{% url 'dashboard' %}" class="icon">
+                <img src="{% static 'img/dashboard.svg' %}">
+                <h3>Dashboard</h3>
+            </a>
+            <a href="{% url 'customer_dash' %}" class="icon">
+                <img src="{% static 'img/users.svg' %}">
+                <h3>Users</h3>
+            </a>
+            <a href="{% url 'order_dash' %}" class="icon" >
+                <img src="{% static 'img/order.png' %}">
+                <h3>Orders</h3>
+            </a>
+            <a href="{% url 'message_dash' %}" class="icon">
+                <img src="{% static 'img/message.svg' %}">
+                <h3>Messages</h3>
+                <span class="message-count">25</span>
+            </a>
+            <a href="{% url 'product_dash' %}" class="icon">
+                <img src="{% static 'img/product.svg' %}">
+                <h3>Products</h3>
+            </a>
+            <a href="{% url 'brand_dash' %}" class="icon">
+                <img src="{% static 'img/brand.png' %}">
+                <h3>Brands</h3>
+            </a>
+            <a href="{% url 'category_dash' %}" class="icon">
+                <img src="{% static 'img/category.png' %}">
+                <h3>Categories</h3>
+            </a>
+            <a href="{% url 'setting_dash' %}" class="icon">
+                <img src="{% static 'img/setting.svg' %}">
+                <h3>Settings</h3>
+            </a>
+            <a href="/logout/" class="icon logout">
+                <img src="{% static 'img/logout.png' %}">
+                <h3>Logout</h3>
+            </a>
+        </div>
+    </div>
+
+    <main>
+        
+        {% block content %} 
+      {% endblock %}
+
+    </main>
+
+
+    <div class="right">
+    {% if user.is_superuser %}
+        <div class="profile">
+            <div class="info">
+                <p>Hey, <b>{{ user.username|capfirst }}</b></p>
+                <small class="text-muted">Admin</small>
+            </div>
+        </div>
+    {% endif %}
+
+    </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  margin-right: 10px;
+  width: 200px; /* Adjust width of label */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 500px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add {
+  color: white;
+  background: #202528;
+  height: 45px;
+  width: 150px;
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Some padding for size */
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.add:hover {
+  box-shadow: 0 5px 20px rgba(115, 111, 172, 0.1);
+  color: #7380ec;
+}

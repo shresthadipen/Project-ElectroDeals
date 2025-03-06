@@ -9,6 +9,8 @@ urlpatterns = [
     path('order_dash/', order_dash, name='order_dash'),
     path('product_dash/', product_dash, name='product_dash'),
     path('setting_dash/', setting_dash, name='setting_dash'),
+
+    # ----------search----------
     path('search_product_dash/', search_products_dash, name='search_products_dash'),
     path('search_order_dash/', search_order_dash, name='search_order_dash'),
     path('search_category_dash/', search_category_dash, name='search_category_dash'),
@@ -26,5 +28,13 @@ urlpatterns = [
     path('message_detail/<int:message_id>/', message_detail, name='message_detail'),
 
 
+    # -------------Add-------------
+    path('add_product', add_product, name='add_product'),
+    path('add_brand', add_brand, name='add_brand'),
+    path('add_category', add_category, name='add_category'),
 
+    # -------------Edit-----------
+    path('product/edit/<int:product_id>/', edit_product, name='edit_product'),
+
+    
 ]
