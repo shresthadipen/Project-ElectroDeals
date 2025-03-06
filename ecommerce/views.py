@@ -55,13 +55,16 @@ def base(request):
 
 
 def about(request):  
-    return render(request, "about_us.html",)
+    cartItem = cart_items(request)
+    
+    return render(request, "about_us.html",{"cartItems": cartItem["cartItems"]})
 
 def contact_us(request):
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
-        message = request.POST.get("message")
+        cartItem = cart_items(request)
+
 
         ContactUs.objects.create(name=name, email=email, message=message)
         return redirect("contact")  # Redirect after form submission

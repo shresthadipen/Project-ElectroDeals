@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import home, product,contact_us, base, about, product_list, updateItem, cart, checkout, buy_now, order_history, process_order,change_password, profile, search_products,generate_bill
-
+from .views import *
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('', home, name='home'),
