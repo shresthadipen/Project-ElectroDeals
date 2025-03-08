@@ -12,7 +12,7 @@
         <p><strong>Name:</strong>{{ customer.name }}</p>
         <p><strong>Email:</strong> {{ customer.email }}</p>
         <div style="display: flex; gap: 20px;">
-            <button class="add">Close</button>
+            <a href="{% url 'customer_dash' %}" class="add" style="text-decoration: none;">Close</a>
         </div>
     </div>
 </div>

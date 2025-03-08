@@ -33,6 +33,13 @@ urlpatterns = [
     path('add_brand', add_brand, name='add_brand'),
     path('add_category', add_category, name='add_category'),
 
+    # ------------Delete----------
+    path('delete/<int:brand_id>/', delete_brand, name='delete_brand'),
+    path('delete_product/<int:product_id>/', delete_product, name='delete_product'),
+    path('delete_category/<int:category_id>/', delete_category, name='delete_category'),
+
+
+
     # -------------Edit-----------
     path('product/edit/<int:product_id>/', edit_product, name='edit_product'),
 

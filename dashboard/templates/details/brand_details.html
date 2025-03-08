@@ -11,7 +11,7 @@
         <img src="{{ brand.image.url }}" alt="Brand Image" style="max-width: 200px;" />
         <h2>{{brand.name}}</h2> 
         <div style="display: flex; gap: 20px;">
-            <button class="add">Close</button>
+            <a href="{% url 'brand_dash' %}" class="add"  style="text-decoration: none;">Close</a>
         </div>
     </div>
 </div>

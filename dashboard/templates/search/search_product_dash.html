@@ -29,6 +29,7 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -42,6 +43,14 @@
                     <td>{{ product.stock }}</td>
                     <td>
                         <a href="{% url 'product_detail' product.id %}" style="text-decoration: none; cursor: pointer; color: #a3bdcc">Details</a>
+                    </td>
+                    <td>
+                        <form method="POST" action="{% url 'delete_product' product.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background: transparent; border: none; color: #a3bdcc; cursor: pointer;">
+                                Delete
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 {% empty %}

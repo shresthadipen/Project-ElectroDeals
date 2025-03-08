@@ -32,7 +32,6 @@ def dashboard(request):
             "totalOrders" : totalOrders,
             "totalUsers" : totalUsers,
 
-
         },
     )
 
@@ -44,7 +43,8 @@ def dashboard_home(request):
     order = Order.get_all_order().order_by("-id")
     message = ContactUs.objects.all().order_by("-id")
 
-    return render(request, "dashboardHome.html", {"totalOrder" : totalOrder, "totalSales" : totalSales, "totalUser" : totalUser, "orders": order, "messages" : message})
+
+    return render(request, "dashboardHome.html", {"totalOrder" : totalOrder, "totalSales" : totalSales, "totalUser" : totalUser, "orders": order, "messages" : message, })
 
 def category_dash(request):
     message = ContactUs.objects.all().order_by("-id")
@@ -324,6 +324,31 @@ def add_category(request):
         
         return render(request, 'add/add_category.html')
 
+# ------------Delete------------
+def delete_brand(request, brand_id):
+    brand = get_object_or_404(Brand, id=brand_id)
+    
+    if request.method == 'POST':
+        brand.delete()
+        return redirect('brand_dash') 
+    return redirect('brand_dash')
+ 
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    
+    if request.method == 'POST':
+        product.delete()
+        return redirect('product_dash') 
+    return redirect('product_dash') 
+
+def delete_category(request, catrgory_id):
+    category = get_object_or_404(Category, id=catrgory_id)
+    
+    if request.method == 'POST':
+        category.delete()
+        return redirect('category_dash') 
+    return redirect('category_dash')
+ 
 
 # ---------Edit-----------
 def edit_product(request, product_id):

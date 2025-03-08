@@ -12,7 +12,8 @@
         <p><strong>Gmail :</strong> {{ form.email }}</p>
         <p><strong>Message :</strong>{{ form.message }}</p>
         <div style="display: flex; gap: 20px;">
-            <button class="add">Close</button>
+            <a href="{% url 'message_dash' %}" class="add" style="text-decoration: none;">Close</a>
+
         </div>
     </div>
 </div>

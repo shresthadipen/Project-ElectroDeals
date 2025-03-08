@@ -80,9 +80,10 @@
                         <td>{{ order.complete }}</td>
                         <td>{{ order.transaction_id }}</td>
                         <td>{{ order.payment_method }}</td>
-                        <a href="#" style="text-decoration: none; cursor: pointer;">
-                            <td>Details</td>
-                        </a>
+                        <td>
+                            <a href="{% url 'order_detail' order.transaction_id %}"
+                               style="text-decoration: none; cursor: pointer; color: #a3bdcc;">Details</a>
+                        </td>
                     </tr>
                         {% endif %}
                         {% endfor %}

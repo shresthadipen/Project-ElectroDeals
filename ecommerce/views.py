@@ -121,6 +121,7 @@ def checkout(request):
     else:
         items = []
         order = {"get_cart_total": 0, "get_cart_items": 0}
+        order.delete()
 
     cartItem = cart_items(request)
     return render(
@@ -171,8 +172,6 @@ def updateItem(request):
             return JsonResponse({'error': 'Invalid JSON data'}, status=400)
     
     return JsonResponse({'error': 'Invalid request method'}, status=400)
-
-
 
 def cart_items(request):
     if request.user.is_authenticated:
@@ -232,7 +231,6 @@ def process_order(request):
         city = request.POST['city']
         zip_code = request.POST['zip']
         phone = request.POST['phone']
-        payment_method = request.POST['payment_method']
 
         shipping_address = ShippingAddress(
             customer=customer,
@@ -244,12 +242,11 @@ def process_order(request):
         )
         shipping_address.save()
 
-        order.payment_method = payment_method
-        if payment_method == "Cash on Delivery":
-            order.complete = True 
-            order.delivered = False  
-            order.save()
-            return redirect('order_history') 
+        order.payment_method = "Cash on Delivery"
+        order.complete = True 
+        order.delivered = False  
+        order.save()
+        return redirect('order_history') 
         
     
     return redirect('checkout')

@@ -28,6 +28,7 @@
                     <th>ID</th>
                     <th>Category</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -39,10 +40,18 @@
                         <a href="{% url 'category_detail' category.id %}"
                             style="text-decoration: none; cursor: pointer; color: #a3bdcc;">Details</a>
                     </td>
+                    <td>
+                        <form method="POST" action="{% url 'delete_category' category.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background: transparent; border: none; color: #a3bdcc; cursor: pointer;">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="3">No category found</td>
+                    <td colspan="4">No category found</td>
                 </tr>
                 {% endfor %}
             </tbody>
