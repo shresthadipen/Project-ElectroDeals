@@ -10,6 +10,7 @@
         <img src="{{ category.image.url }}" alt="Category Image" style="max-width: 200px;" />
         <h2>{{category.name}}</h2>
         <div style="display: flex; gap: 20px;">
+            <a href="{% url 'edit_category' category.id%}" class="add" style="text-decoration: none;">Edit</a>
             <a href="{% url 'category_dash' %}" class="add" style="text-decoration: none;">Close</a>
 
         </div>

@@ -395,3 +395,44 @@ def edit_product(request, product_id):
             return render(request, 'edit/product_edit.html', {'product': product, 'categories': categories, 'brands': brands, 'error': str(e)})
 
     return render(request, 'edit/product_edit.html', {'product': product, 'categories': categories, 'brands': brands})
+
+
+def edit_brand(request, brand_id):
+    brand = get_object_or_404(Brand, id=brand_id)
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        image = request.FILES.get('image')
+
+        brand.name = name
+
+        if image:
+            brand.image = image
+
+        try:
+            brand.save()
+            return redirect('brand_dash') 
+        except ValidationError as e:
+            return render(request, 'edit/brand_edit.html', {'brand': brand, 'error': str(e)})
+
+    return render(request, 'edit/brand_edit.html', {'brand': brand})
+
+def edit_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        image = request.FILES.get('image')
+
+        category.name = name
+
+        if image:
+            category.image = image
+
+        try:
+            category.save()
+            return redirect('category_dash') 
+        except ValidationError as e:
+            return render(request, 'edit/category_edit.html', {'category': category, 'error': str(e)})
+
+    return render(request, 'edit/category_edit.html', {'category': category})

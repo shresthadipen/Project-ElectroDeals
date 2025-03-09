@@ -42,6 +42,10 @@ urlpatterns = [
 
     # -------------Edit-----------
     path('product/edit/<int:product_id>/', edit_product, name='edit_product'),
+    path('brand_edit/<int:brand_id>/', edit_brand, name='edit_brand'),
+    path('edit_category/<int:category_id>/', edit_category, name='edit_category'),
+
+
 
     
 ]
